@@ -1,11 +1,14 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <title>Index page</title>
-</head>
-<body>
-<h1>Здровствуйте</h1>
-<h3>Как вам первая страница моего пет-проекта</h3>
-</body>
-</html>
+{% extends 'blog/Base_blog.html' %}
+
+
+
+
+{% block title %}
+    Blog Title
+{% endblock %}
+
+
+{% block content %}
+    <h1 class="mb-5">Здровствуйте</h1>
+    <h3>Как вам первая страница моего пет-проекта</h3>
+{% endblock %}
