@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Create account
+{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+        <h2 class="p-3">Please fill this little form out</h2>
+
+        <form method='post'>
+            {% csrf_token %}
+            <div class="row p-3">
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="First name" aria-label="First name"
+                           name="first_name">
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Last name" aria-label="Last name" name="last_name">
+                </div>
+            </div>
+
+            <div class="row p-3">
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Login" aria-label="Last name" name="username">
+                </div>
+            </div>
+
+            <div class="row p-3">
+                <div class="col">
+                    <input type="email" class="form-control" id="floatingInputValue"
+                           placeholder="Enter your email, ex: name@example.com" , name="email">
+                </div>
+            </div>
+
+            <div class="row p-3">
+                <div class="col">
+                    <input type="password" class="form-control" placeholder="Invent a password" aria-label="Password"
+                           name="password1">
+                </div>
+                <div class="col">
+                    <input type="password" class="form-control" placeholder="Repeat invented password" aria-label="Password"
+                           name="password2">
+                </div>
+            </div>
+            <div class="col p-3">
+                <button type="submit" class="btn btn-primary btn-lg p-3 ">Submit</button>
+            </div>
+
+        </form>
+    </div>
+
+{% endblock %}
