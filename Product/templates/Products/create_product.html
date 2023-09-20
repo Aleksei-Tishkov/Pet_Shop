@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Create account
+{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+        <h2 class="p-3">Adding new Product</h2>
+
+        <form method='post'>
+            {% csrf_token %}
+            <div class="row p-3">
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Product name" aria-label="Product name"
+                           name="product_name">
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Product price" aria-label="Product price" name="price">
+                </div>
+                </div>
+
+                <div class="row p-3">
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="Initial quantity" aria-label="Quantity" name="quantity">
+                    </div>
+                </div>
+
+                <div class="row p-3">
+                    <div class="col">
+                        <input type="text" class="form-control" id="floatingInputValue"
+                               placeholder="Description" name="description">
+                    </div>
+                </div>
+
+                <div class="row p-3">
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="Initial quantity" aria-label="Quantity" name="quantity">
+                    </div>
+                </div>
+
+            </div>
+            <div class="col p-3">
+                <button type="submit" class="btn btn-primary btn-lg p-3 ">Submit</button>
+            </div>
+
+        </form>
+
+        <div class="row p-3">
+            <div class="col">
+                <h3>Next step: a href here</h3>
+            </h3>
+        </div>
+
+    </div>
+
+{% endblock %}

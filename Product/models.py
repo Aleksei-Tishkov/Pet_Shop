@@ -1,12 +1,16 @@
 from django.db import models
 
-# Create your models here.
+
 class Product(models.Model):
-    def create_product(self, product_name, price, quantity, description, specs, photos=None, is_published=False):
-        self.product_name = product_name
-        self.price = price
-        self.quantity = quantity
-        self.description = description
-        self.specs = specs
-        self.photos = photos
-        self.is_published = is_published
+    product_name = models.CharField(default='Default_Product_Name', max_length=30, db_index=True)
+    price = models.FloatField(default=0)
+    quantity = models.IntegerField(default=0.0)
+    description = models.TextField(blank=True, db_index=True)
+    is_published = models.BooleanField(default=False)
+
+
+class ProductSpecs(models.Model):
+    product_photos = []
+
+    def add_photo(self, photo):
+        self.product_photos.append(photo)
