@@ -1,14 +1,39 @@
 {% extends 'blog/Base_blog.html' %}
 
 
-
-
 {% block title %}
     Blog Title
 {% endblock %}
 
 
-{% block content %}
-    <h1 class="mb-5">Здровствуйте</h1>
-    <h3>Как вам первая страница моего пет-проекта</h3>
+{% block content-left %}
+    <div>
+            <p style="color: #101010;
+                                    font-family: Koh Santepheap;
+                                    font-size: 7rem;
+                                    font-style: normal;
+                                    font-weight: 700;
+                                    line-height: 87%">
+                BUY<br> YOUR<br> DREAM</p>
+            </p>
+
+            <p style="color: rgba(122, 122, 122, 0.80);
+                                    font-family: Kodchasan;
+                                    font-size: 3rem;
+                                    font-style: normal;
+                                    font-weight: 400;
+                                    line-height: 107%;">
+                We’re here to help you<br> choose one
+            </p>
+
+    </div>
+
+{% endblock %}
+
+{% block content-right %}
+
+<div class="h-100">
+    <p style="color: #2aabd2">Some content</p>
+</div>
+
 {% endblock %}
