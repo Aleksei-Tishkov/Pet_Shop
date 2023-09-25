@@ -4,50 +4,100 @@
     Create account
 {% endblock %}
 
-{% block content %}
 
-    <div class="container">
-        <h2 class="p-3">Please fill this little form out</h2>
+{% block content-left %}
+
+    <div class="d-flex flex-column position-absolute top-50 translate-middle-y">
+
+        <p class="mb-1"
+           style="color: #101010; text-align: center; font-family: Koh Santepheap; font-size: 2.25rem; font-style: normal; font-weight: 400; line-height: 95%;">
+            Already have an account?
+        </p>
+
+        <p class="mb-2"
+           style="color: rgba(122, 122, 122, 0.80); text-align: center; font-family: Kodchasan; font-size: 1.5rem; font-style: normal; font-weight: 400; line-height: 100%">
+            Log In!
+        </p>
 
         <form method='post'>
             {% csrf_token %}
-            <div class="row p-3">
-                <div class="col">
-                    <input type="text" class="form-control" placeholder="First name" aria-label="First name"
-                           name="first_name">
-                </div>
-                <div class="col">
-                    <input type="text" class="form-control" placeholder="Last name" aria-label="Last name" name="last_name">
-                </div>
-            </div>
 
-            <div class="row p-3">
-                <div class="col">
-                    <input type="text" class="form-control" placeholder="Login" aria-label="Last name" name="username">
+            <div class="d-grid gap-2 mx-auto p-3" style="justify-content: center">
+                <div class="row auto">
+                    <div class="col"
+                         style="color: rgba(122, 122, 122, 0.80); text-align: center; font-family: Kodchasan; font-size: 1.5rem; font-style: normal; font-weight: 400; line-height: 100%">
+                        <input type="text" class="form-control" placeholder="Login" aria-label="Last name"
+                               name="username"
+                               style="border-radius: 1.125rem; border-style: hidden; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.05); width: 20rem">
+                    </div>
                 </div>
-            </div>
 
-            <div class="row p-3">
-                <div class="col">
-                    <input type="email" class="form-control" id="floatingInputValue"
-                           placeholder="Enter your email, ex: name@example.com" , name="email">
+                <div class="row auto">
+                    <div class="col col-block"
+                         style="color: rgba(122, 122, 122, 0.80); text-align: center; font-family: Kodchasan; font-size: 1.5rem; font-style: normal; font-weight: 400; line-height: 100%">
+                        <input type="password" class="form-control" placeholder="Password" aria-label="Password"
+                               name="password1"
+                               style="border-radius: 1.125rem; border-style: hidden; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.05); width: 20rem">
+                    </div>
                 </div>
-            </div>
 
-            <div class="row p-3">
-                <div class="col">
-                    <input type="password" class="form-control" placeholder="Invent a password" aria-label="Password"
-                           name="password1">
-                </div>
-                <div class="col">
-                    <input type="password" class="form-control" placeholder="Repeat invented password" aria-label="Password"
-                           name="password2">
-                </div>
+                <div class="flex-container"
+                ">
+                <button type="submit" class="btn btn-primary shadow-lg" style="border-radius: 1.125rem;
+background: #333646; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.05); width: 20.1rem">
+                    Submit
+                </button>
             </div>
-            <div class="col p-3">
-                <button type="submit" class="btn btn-primary btn-lg p-3 ">Submit</button>
-            </div>
+        </form>
+    </div>
+    </div>
 
+
+{% endblock %}
+
+{% block content-right %}
+
+    <div class="container">
+
+        <p class="mb-1"
+           style="color: #101010; text-align: center; font-family: Koh Santepheap; font-size: 2.25rem; font-style: normal; font-weight: 400; line-height: 95%;">
+            Already have an account?
+        </p>
+
+        <p class="mb-2"
+           style="color: rgba(122, 122, 122, 0.80); text-align: center; font-family: Kodchasan; font-size: 1.5rem; font-style: normal; font-weight: 400; line-height: 100%">
+            Log In!
+        </p>
+
+        <form method='post'>
+            {% csrf_token %}
+
+            <div class="d-grid gap-2 mx-auto p-3" style="justify-content: center">
+                <div class="row auto">
+                    <div class="col"
+                         style="color: rgba(122, 122, 122, 0.80); text-align: center; font-family: Kodchasan; font-size: 1.5rem; font-style: normal; font-weight: 400; line-height: 100%">
+                        <input type="text" class="form-control" placeholder="Login" aria-label="Last name"
+                               name="username"
+                               style="border-radius: 1.125rem; border-style: hidden; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.05); width: 20rem">
+                    </div>
+                </div>
+
+                <div class="row auto">
+                    <div class="col col-block"
+                         style="color: rgba(122, 122, 122, 0.80); text-align: center; font-family: Kodchasan; font-size: 1.5rem; font-style: normal; font-weight: 400; line-height: 100%">
+                        <input type="password" class="form-control" placeholder="Password" aria-label="Password"
+                               name="password1"
+                               style="border-radius: 1.125rem; border-style: hidden; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.05); width: 20rem">
+                    </div>
+                </div>
+
+                <div class="flex-container"
+                ">
+                <button type="submit" class="btn btn-primary shadow-lg" style="border-radius: 1.125rem;
+background: #333646; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.05); width: 20.1rem">
+                    Submit
+                </button>
+            </div>
         </form>
     </div>
 

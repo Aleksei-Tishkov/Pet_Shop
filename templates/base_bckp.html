@@ -1,15 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>
-        {% block title %}
-            Pet Blog
-        {% endblock %}
-    </title>
-    <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,6 +13,9 @@
     {% bootstrap_css %}
     {% bootstrap_javascript %}
 
+<style>html { overflow-x: hidden; }</style>
+
+
     <link href='http://fonts.googleapis.com/css?family=Kodchasan:400,300,700' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Koh%20Santepheap:400,300,700' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Judson:400,300,700' rel='stylesheet' type='text/css'>
@@ -30,8 +23,7 @@
 </head>
 <body>
 
-<div class="d-md-flex bd-highlight">
-
+<div class="d-md-flex bd-highlight" style="min-height: 100vh">
 
     <div class="text-bg-dark pt-3 px-3 pt-md-4 px-md-4 text-left overflow-hidden flex-fill" style="background: rgba(210, 255, 250, 1)">
         <nav class="navbar navbar-expand-lg">
@@ -45,7 +37,7 @@
                     </button>
 
                     <form class="d-flex" role="search">
-                        <input class="form-control me-2 p-1 mb-5 bg-body" style="border-radius: 15px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.05)" type="search" placeholder="  Search smth :)"
+                        <input class="form-control me-2 p-1 mb-5 bg-body" style="border-radius: 1.13rem; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.05)" type="search" placeholder="  Search smth :)"
                                aria-label="Search">
                     </form>
 
@@ -60,7 +52,7 @@
     </div>
 
 
-    <div class="text-bg-dark me-md-3 pt-3 px-3 pt-md-4 px-md-4 text-left flex-fill" style="background-color: rgba(51, 54, 70, 1);">
+    <div class="text-bg-dark pt-3 px-3 pt-md-4  text-left flex-fill" style="background-color: rgba(51, 54, 70, 1); position: static">
 
             <nav class="navbar navbar-expand-lg">
                     <div class="container-fluid justify-content-center">
@@ -137,55 +129,6 @@
             There's nothing here... yet
         {% endblock %}
       </div>
-
-</body>
-</html>
-</head>
-<body>
-
-    <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">Навигация</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Домой</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Вторая ссылка</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Иное
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Действие</a></li>
-                <li><a class="dropdown-item" href="#">Еще действие</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Кой-чего еще</a></li>
-              </ul>
-          </ul>
-          <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Что ищем?" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Поиск</button>
-          </form>
-        </div>
-      </div>
-    </nav>
-
-        <div class="container mt-5">
-            <div class="row">
-                <div class="col-6 offset-md-2">
-                    {% block content %}
-                        There's nothing here... yet
-                    {% endblock %}
-                </div>
-            </div>
-        </div>
-
 
 </body>
 </html>

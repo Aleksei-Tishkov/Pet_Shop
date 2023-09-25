@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bootstrap5',
     'User_Accounts',
-    'Blog_Engine',
+    'Home_Page',
     'Product',
 
 ]

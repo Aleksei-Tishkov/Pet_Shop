@@ -22,7 +22,7 @@ from Product.views import create_product
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('Blog_Engine.urls')),
+    path('', include('Home_Page.urls')),
     path('reg/', create_account, name='create_account_page'),
     path('add_prod/', create_product, name='create_product_page'),
 
