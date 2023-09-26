@@ -36,6 +36,7 @@
         </p>
 
         <form method='post'>
+
             {% csrf_token %}
 
 
@@ -79,7 +80,7 @@
                                class="form-control"
                                placeholder="Password"
                                aria-label="Password"
-                               name="password1"
+                               name="password"
                                style="
                                        border-radius: 1.125rem;
                                        border-style: hidden;
@@ -92,6 +93,7 @@
                 <div class="flex-container">
                 <button type="submit"
                         class="btn btn-primary shadow-lg"
+                        name="login_submit"
                         style="
                                 font-family: Kodchasan,serif;
                                 color: rgba(210, 255, 250, 1);
@@ -136,8 +138,9 @@
            line-height: 100%">
             Create an account!
         </p>
-<form method='post'>
-            {% csrf_token %}
+    <form method='post'>
+
+        {% csrf_token %}
 
             <div class="d-grid gap-2 mx-auto p-3" style="justify-content: center">
                 <div class="row auto">
@@ -191,7 +194,7 @@
                                class="form-control"
                                placeholder="Password"
                                aria-label="Password"
-                               name="password_create"
+                               name="password"
                                style="border-radius: 1.125rem;
                                border-style: hidden;
                                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.05);
@@ -201,6 +204,7 @@
 
                 <button type="submit"
                         class="btn btn-primary shadow-lg"
+                        name="register_submit"
                         style="
                                 font-family: Kodchasan,serif;
                                 color: rgba(16, 16, 16, 1);
