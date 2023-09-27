@@ -13,5 +13,4 @@ class RegisterNewAccountForm(forms.ModelForm):
         model = User
         fields = ['username', 'email', 'password']
 
-    #def __str__(self):
-        #return self.username, self.email, self.password
+

@@ -99,7 +99,11 @@
                                                 font-style: normal;
                                                 font-weight: 500;
                                                 line-height: 107.8%">
-                                    Username
+                                        {% if request.user.username %}
+                                            {{ request.user.username }}
+                                        {% else %}
+                                            Username
+                                        {% endif %}
                                 </a>
                                 <ul class="dropdown-menu" ">
                                     <li><a class="dropdown-item" href="#">My account</a></li>

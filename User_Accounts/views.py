@@ -1,3 +1,4 @@
+from django.core.checks import messages
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login, logout
 from User_Accounts.models import User, UserManager
@@ -9,36 +10,23 @@ def login_or_create_account(request):
         return render(request, 'User_Accounts/create_account.html')
     data = request.POST
     if 'login_submit' in data:
-        log_in_form = LogInForm(data)
-        if log_in_form.is_valid():
+        user = authenticate(request, username=data.get('username'), password=data.get('password'))
+        print(user)
+        if user is not None:
+            login(request, user)
+            print('yay')
+            return render(request, 'User_Accounts/create_account.html')
+        else:
             return render(request, 'User_Accounts/create_account.html')
     elif 'register_submit' in data:
         register_form = RegisterNewAccountForm(data)
-        if register_form.is_valid():
-            UserManager.create_user(username=register_form.cleaned_data.get('username_reg'),
-                                    email=register_form.cleaned_data.get('email_reg'),
-                                    password=register_form.cleaned_data.get('password_reg'))
-        else:
-            return render(request, 'base.html')
-        username = data.get('username')
-        email = data.get("email")
-        first_name = data.get('first_name')
-        last_name = data.get('last_name')
-        password1, password2 = data.get('password1'), data.get('password2')
-        if not username or not first_name or not last_name:
-            return render(request, 'reg/reg_other.html', context={'response': 'Please enter your first and last names'})
-        elif not email:
-            return render(request, 'reg/reg_other.html',
-                          context={'response': 'We need to spam someone, provide us your email'})
-        elif password1 is None or password2 is None:
-            return render(request, 'reg/reg_other.html', context={'response': 'Password?'})
-        elif password1 != password2:
-            return render(request, 'reg/reg_other.html', context={'response': 'Passwords?'})
-        else:
-            new_user = User()
-            print(email)
-            new_user.create_user(username, first_name, last_name, email, password1)
-            return render(request, 'reg/reg_other.html', context={'response': 'Congrats! You can add your notes now!'})
+        print(register_form.is_valid())
+        register_form.is_valid()
+            # messages.success(request, 'Account created successfully')
+        User.objects.create_user(username=register_form.cleaned_data.get('username'),
+                                email=register_form.cleaned_data.get('email'),
+                                password=register_form.cleaned_data.get('password'))
+        return render(request, 'User_Accounts/create_account.html')
 
 
 def user_login():
