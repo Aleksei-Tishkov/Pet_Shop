@@ -1,5 +1,7 @@
-{% extends 'Home_Page/Home_Page.html' %}
 
+
+{% extends 'base.html' %}
+{% load static %}
 
 {% block title %}
     Pet Shop
@@ -7,34 +9,54 @@
 
 
 {% block content-left %}
-    <div class="min-vw-10 my-3 py-3">
-            <p style="color: #101010;
-                                    font-family: Koh Santepheap;
-                                    font-size: 6rem;
+
+
+    <p class="display-1" style="color: #101010;
+                                    font-family: Koh Santepheap,serif;
                                     font-style: normal;
                                     font-weight: 700;
                                     line-height: 87%;
-                        ">
-                BUY<br> YOUR<br> DREAM</p>
-            </p>
+                                    margin-bottom: 0rem">
+        BUY<br> YOUR<br> DREAM</p>
 
-            <p style="color: rgba(122, 122, 122, 0.80);
-                                    font-family: Kodchasan;
-                                    font-size: 2rem;
+    <h3 style="color: rgba(122, 122, 122, 0.80);
+                                    font-family: Kodchasan,serif;
                                     font-style: normal;
                                     font-weight: 400;
                                     line-height: 107%;">
-                We’re here to help you<br> choose one
-            </p>
+        We’re here to help you<br> choose one
+    </h3>
 
+    <div class="col-12" style="padding-top: 3rem">
+
+        <form action="/reg" target="_self">
+                    <button
+                            class="btn btn-primary shadow-lg"
+                            name="log_in_or_register"
+                            href="/reg"
+                            style="
+                                    font-family: Kodchasan,serif;
+                                    color: rgba(16, 16, 16, 1);
+                                    border-radius: 1.125rem;
+                                    border-style: hidden;
+                                    background: rgba(255, 175, 41, 1);
+                                    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.05);
+                                    width: 11.5rem
+                            ">
+                        Log In / Register
+                    </button>
+        </form>
     </div>
+
+
+
 
 {% endblock %}
 
 {% block content-right %}
 
-<div class="h-100">
-    <p style="color: #2aabd2">Some content</p>
+<div class="container-fluid">
+    <img src="{% static "Home_Page/Images/Vector.svg" %}" alt="My image">
 </div>
 
 {% endblock %}

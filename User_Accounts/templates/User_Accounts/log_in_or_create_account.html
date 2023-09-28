@@ -7,8 +7,6 @@
 
 {% block content-left %}
 
-    <div class="d-flex flex-column">
-
         <p class="display-5 mb-1"
            style="
                     color: #101010;
@@ -90,32 +88,33 @@
                     </div>
                 </div>
 
-                <div class="flex-container">
-                <button type="submit"
-                        class="btn btn-primary shadow-lg"
-                        name="login_submit"
-                        style="
-                                font-family: Kodchasan,serif;
-                                color: rgba(210, 255, 250, 1);
-                                border-radius: 1.125rem;
-                                background: #333646;
-                                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.05);
-                                width: 20.1rem
-                            ">
-                    Submit
-                </button>
+                <div class="row auto">
+                    <div class="col col-block">
+                        <button type="submit"
+                                class="btn"
+                                name="login_submit"
+                                style="
+                                        font-family: Kodchasan,serif;
+                                        color: rgba(210, 255, 250, 1);
+                                        border-radius: 1.125rem;
+                                        border-style: hidden;
+                                        background: #333646;
+                                        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.05);
+                                        width: 20.1rem
+                                    ">
+                            Submit
+                        </button>
+                    </div>
+
+
             </div>
         </form>
-
-    </div>
-    </div>
-
 
 {% endblock %}
 
 {% block content-right %}
 
-    <div class="d-flex flex-column">
+
 
         <p class="mb-1"
            style="color: rgba(255, 175, 41, 1);
@@ -202,23 +201,26 @@
                     </div>
                 </div>
 
-                <button type="submit"
+
+                <div class="row auto">
+                    <div class="col col-block">
+                        <button type="submit"
                         class="btn btn-primary shadow-lg"
                         name="register_submit"
                         style="
                                 font-family: Kodchasan,serif;
                                 color: rgba(16, 16, 16, 1);
                                 border-radius: 1.125rem;
+                                border-style: hidden;
                                 background: rgba(255, 175, 41, 1);
                                 box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.05);
-                                width: 20.1rem
-                        ">
+                                width: 20.1rem">
                     Submit
-                </button>
+                        </button>
+                    </div>
             </div>
         </form>
 
-    </div>
-    </div>
+
 
 {% endblock %}
