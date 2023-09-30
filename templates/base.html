@@ -9,9 +9,11 @@
         {% endblock %}
     </title>
 
-    {% load bootstrap5 %}
-    {% bootstrap_css %}
-    {% bootstrap_javascript %}
+    {% load static %}
+
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" media="screen">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
 <style>html { overflow-x: hidden; }
             a { text-decoration: none }
@@ -45,7 +47,7 @@
 </head>
 <body>
 
-{% load static %}
+
 
 <div class="row" style="min-height: 100vh">
 
@@ -55,7 +57,7 @@
             <div class="col-auto align-self-center">
                 <div class="row">
                     <div class="col-auto align-self-center">
-                        <img src="{% static "Home_Page/Images/Logo.svg" %}" alt="My image">
+                        <img src="{% static "Images/Logo.svg" %}" alt="My image">
                     </div>
                     <div class="col-auto align-self-center" style="margin-left: -1rem">
                         <div style="color: #333646; font-family: Judson; font-size: 1.5rem; font-style: normal; font-weight: 700; line-height: 107.8%;"
@@ -64,6 +66,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="col-auto align-self-center">
 
 
@@ -95,6 +98,7 @@
             </div>
         </div>
     </div>
+</div>
 
 
     <div class="col xl-5" style="background-color: rgba(51, 54, 70, 1); padding: 2rem">
