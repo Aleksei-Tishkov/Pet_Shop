@@ -10,6 +10,10 @@
   font-family: Judson;
   src: url("../fonts/Judson/Judson-Regular.ttf") format("truetype");
 }
+html {
+  overflow-x: hidden;
+}
+
 body {
   font-family: "Kodchasan";
 }
@@ -29,13 +33,27 @@ h3 {
   font-family: "Judson";
 }
 
+.container {
+  border-radius: 1.125rem;
+}
+
+.back-drop {
+  border-radius: 1.125rem;
+  border: 1px solid transparent;
+}
+
+.navbar {
+  border-radius: 0rem;
+}
+
 .btn {
+  font-family: "Kodchasan";
+  text-transform: none;
   border-radius: 1.125rem;
 }
 
 .form-control {
   border-radius: 1.125rem;
-  outline: none;
 }
 
 .form-control:focus {
@@ -48,4 +66,8 @@ input[type=search]::-webkit-search-cancel-button {
   width: 0px;
   border-radius: 0px;
   background: none;
+}
+
+.card-title {
+  font-family: "KohSantepheap", serif;
 }
