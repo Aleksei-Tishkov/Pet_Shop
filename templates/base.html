@@ -9,176 +9,66 @@
         {% endblock %}
     </title>
 
-    {% load static %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="static/css/bootstrap_skin.css" rel="stylesheet" media="screen">
+    <link href="static/css/skin_default.css" rel="stylesheet" media="screen">
 
-    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" media="screen">
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-
-<style>html { overflow-x: hidden; }
-            a { text-decoration: none }
-            div { margin: 0rem; padding: 0rem}
-            custom-input {
-    position: relative;
-    &:before {
-      content: '';
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      right: 0;
-      margin: auto 0;
-      width: 25px;
-      height: 25px;
-      background: url('https://cdn0.iconfinder.com/data/icons/ThemeShock-credit-cards-icons/64/mastercard.png') no-repeat;
-      background-size: cover;
-    }
-    input {
-      width: 100%;
-      height: 25px;
-    }
-  }
-</style>
-
-
-    <link href='http://fonts.googleapis.com/css?family=Kodchasan:400,300,700' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Koh%20Santepheap:400,300,700' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Judson:400,300,700' rel='stylesheet' type='text/css'>
+    <script src="static/js/bootstrap.min.js"></script>
+    <script src="static/js/gsap.min.js" defer></script>
+    <script src="static/js/ScrollTrigger.min.js" defer></script>
+    <script src="static/js/ScrollSmoother.min.js" defer></script>
 
 </head>
 <body>
+{% load static %}
+<nav class="navbar navbar-expand-lg sticky-top justify-content-between m-2">
 
-
-
-<div class="row" style="min-height: 100vh">
-
-    <div class="col-xl-7" style="background: rgba(210, 255, 250, 1); padding: 2rem">
-        <div class="row justify-content-between">
-
-            <div class="col-auto align-self-center">
-                <div class="row">
-                    <div class="col-auto align-self-center">
-                        <img src="{% static "Images/Logo.svg" %}" alt="My image">
-                    </div>
-                    <div class="col-auto align-self-center" style="margin-left: -1rem">
-                        <div style="color: #333646; font-family: Judson; font-size: 1.5rem; font-style: normal; font-weight: 700; line-height: 107.8%;"
-                            href="#">PetShop
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-auto align-self-center">
-
-
-            </div>
-
-            <div class="col-auto w-50 align-self-center">
-                <form class="w-100" role="search">
-                    <input class="form-control bg-body"
-                           name="search"
-                           style="font-family: Kodchasan,serif;
-                                   color: rgba(16, 16, 16, 1);
-                                   border-radius: 1.13rem;
-                                   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.05);
-                                   border-style: hidden;
-                                   background: {% static "Home_Page/Images/Search.svg" %}; background-size: cover"
-                           type="search" placeholder="Search smth :)"
-                           aria-label="Search">
-
-                </form>
-
-            </div>
+    <a class="nav-link active align-self-start align-content-center m-2" href="#">
+        <div class="row">
+            <div class="col"><img src="{% static 'Images/Logo.svg' %}"></div>
+            <div class="col" style="margin-left: -1rem"><p class="fs-5" style="font-family: Judson,serif">Pet_Shop</p></div>
         </div>
-
-        <div class="row h-75 justify-content-center">
-            <div class="col-12 align-self-center" style="padding-top: 3rem; padding-bottom: 2rem">
-                {% block content-left %}
-                    There's nothing here... yet
-                {% endblock %}
-            </div>
+    </a>
+    <div class="d-flex w-25 justify-content-center align-content-center align-self-start  m-2">
+        <div class="input-group">
+            <input class="shadow-sm form-control main-btn-ps back-drop" type="search" placeholder="Search smth :)"
+                       id="example-search-input">
+            <button class="shadow-sm btn btn-primary" type="button" style="align-content: start">
+                    <img src="{% static 'Images/Search.svg' %}" style="align-self: auto; width: 75%">
+            </button>
         </div>
     </div>
-</div>
 
-
-    <div class="col xl-5" style="background-color: rgba(51, 54, 70, 1); padding: 2rem">
-        <div class="row justify-content-center align-items-center" style="
-                                                                        margin-top: 0.5rem;
-                                                                        margin-bottom: 1rem">
-
-            <div class="col-auto align-self-center">
-                <a href="/" style="color: #D2FFFA;
-                                                font-family: Kodchasan;
-                                                font-size: 1.3rem;
-                                                font-style: normal;
-                                                font-weight: 200;
-                                                line-height: 107.8%">
-                    Home
-                </a>
-            </div>
-
-            <div class="col-auto align-self-center">
-                <a href="#" style="color: #D2FFFA;
-                                                font-family: Kodchasan;
-                                                font-size: 1.3rem;
-                                                font-style: normal;
-                                                font-weight: 200;
-                                                line-height: 107.8%">
-                    Shop
-                </a>
-            </div>
-
-            <div class="col-auto align-self-center">
-                <a href="#" style="color: #D2FFFA;
-                                                font-family: Kodchasan;
-                                                font-size: 1.3rem;
-                                                font-style: normal;
-                                                font-weight: 200;
-                                                line-height: 107.8%">
-                    Blog
-                </a>
-            </div>
-
-            <div class="col-auto align-self-center">
-                <a class="text-capitalize" href="#" style="color: #D2FFFA;
-                                                font-family: Kodchasan;
-                                                font-size: 1.3rem;
-                                                font-style: normal;
-                                                font-weight: 200;
-                                                line-height: 107.8%" aria-current="page">
-                    {% if request.user.username %}
-                        {{ request.user.username }}
-                    {% else %}
-                        Username
-                    {% endif %}
-                </a>
-            </div>
-
-            <div class="col-auto align-self-center">
-                <a href="#" style="color: #D2FFFA;
-                                                font-family: Kodchasan;
-                                                font-size: 1.3rem;
-                                                font-style: normal;
-                                                font-weight: 200;
-                                                line-height: 107.8%" aria-current="page">
-                    Cart
-                </a>
-            </div>
-
+    <div class="d-flex w-auto justify-self-end">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse align-content-center m-2" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 align-content-end">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Shop</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">User</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Cart</a>
+                </li>
+            </ul>
         </div>
+    </div>
 
-        <div class="row h-75 justify-content-center" style="padding-top: 3rem; padding-bottom: 2rem">
-            <div class="col-12 align-self-center">
-
-                {% block content-right %}
-                    There's nothing here... yet
-                {% endblock %}
-
-            </div>
-        </div>
-
-
-</div>
+</nav>
+    {% block content %}
+    <h2>Some content</h2>
+    {% endblock %}
 
 </body>
 </html>

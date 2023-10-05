@@ -1,11 +1,11 @@
+
 body
-    background-color: rgba(1, 0, 56)
-    background-image: url('../Images/Background-4.jpg')
+    background-color: #212121
+    /*background-image: url('../Images/Background-4.jpg')
     background-size: cover
     background-attachment: fixed
     background-repeat: no-repeat
     color: rgba(244, 239, 238)
-    backdrop-filter: blur(1px)
     
 h1
     color: rgba(244, 239, 238)
@@ -17,14 +17,8 @@ h3
     color: rgba(156, 136, 136, .8)
 
 .back-drop
-    background-color: rgba(255, 255, 255, .1)
-    
-    backdrop-filter: blur(5px)
+    backdrop-filter: blur(10px)
 
-    border-top-color: rgba(244, 239, 238, .2)
-    border-left-color: rgba(244, 239, 238, .2)
-    border-right-color: rgba(244, 239, 238, .1)
-    border-bottom-color: rgba(244, 239, 238, .1)
 
 .navbar
     --bs-navbar-brand-color: rgba(244, 239, 238)
@@ -34,6 +28,9 @@ h3
     --bs-navbar-toggler-border-color: none
     --bs-border-width: 0
     backdrop-filter: blur(10px)
+
+.-navbar-brand:hover
+    color: rgba(244, 239, 238)
 
 .nav-item
     color: rgba(244, 239, 238)
@@ -53,9 +50,9 @@ h3
     outline: none
     box-shadow: none
 
-
 .form-control
     color: rgba(244, 239, 238)
+    background-color: rgba(244, 239, 238, .3)
     --bs-secondary-color: rgba(244, 239, 238, .6)
 
 .form-control:focus
@@ -63,7 +60,6 @@ h3
     --bs-body-bg: rgba(244, 239, 238, .3)
 
 .btn
-    
     --bs-btn-color: rgba(244, 239, 238, .85)
     --bs-btn-bg: rgba(41, 58, 128, .1)
     --bs-btn-hover-bg: rgba(83, 126, 197, .05)
@@ -80,7 +76,7 @@ h3
     background-color: rgba(243, 148, 34, .85)
     --bs-btn-color: #101010
     --bs-btn-bg: rgba(243, 148, 34, .85)
-    --bs-btn-hover-bg: rgba(243, 148, 34, .9)
+    --bs-btn-hover-bg: rgba(243, 148, 34, .75)
     --bs-btn-border-color: rgba(243, 148, 34, .45)
     --bs-btn-hover-color: #101010
     --bs-btn-hover-border-color: rgba(244, 239, 238, .45)
@@ -93,3 +89,22 @@ h3
 
 .card
     --bs-card-color: rgba(244, 239, 238)
+    background-color: rgba(255, 255, 255, .0)
+    position: relative
+    box-shadow: 0 25px 45px rgba(0,0,0,0.1)
+    border-top-color: rgba(244, 239, 238, .2)
+    border-left-color: rgba(244, 239, 238, .2)
+    border-right-color: rgba(244, 239, 238, .1)
+    border-bottom-color: rgba(244, 239, 238, .1)
+    
+
+.card-children
+    position: absolute
+    backdrop-filter: blur(10px)
+    background-color: rgba(255, 255, 255, .1)
+    border-radius: 1.125rem
+    border-top-color: rgba(244, 239, 238, .2)
+    border-left-color: rgba(244, 239, 238, .2)
+    border-right-color: rgba(244, 239, 238, .1)
+    border-bottom-color: rgba(244, 239, 238, .1)
+
