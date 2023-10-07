@@ -10,8 +10,17 @@
     font-family: Judson_ps
     src: url('../fonts/Judson_ps.woff2') format("woff2")
 
+$font-size-base: 1rem
+
+.content_ps, .doggo, .main_header, .transform
+    will-change: transform
+
+:root
+    --index: calc(1vh + 1vw)
+
 html
     overflow-x: hidden
+    scroll-behavior: smooth
 
 body
     font-family: Kodchasan_ps
@@ -21,15 +30,16 @@ body
 
 h1
     font-family: Judson_ps
-    font-size: 5rem
+    font-size: calc(var(--index) * 5)
     font-weight: 700
 
 h2
     font-family: KohSantepheap_ps
-    font-size: 2.6rem
+    font-size: calc(var(--index) * 2)
     font-weight: 400
 
-h3
+h4
+    font-size:1.5rem
     
 
 .container
@@ -59,10 +69,18 @@ input[type="search"]::-webkit-search-cancel-button
     border-radius: 0px
     background: none
     
+input[type="search"]
+    border: 1px
+
 .card
     border-radius: 1.125rem
     border: 1px solid transparent
     width: 16rem
+
+.card__image
+    height: 14rem
+    width: 14rem
+    object-fit: cover
 
 .card-children
     border-radius: 1.125rem
@@ -95,21 +113,19 @@ input[type="search"]::-webkit-search-cancel-button
     bottom: 15vh
     
 .doggo
-    width: 35vw
+    width: calc(var(--index) / 0.7 * 17)
     position: absolute
     left: 50vw
-    top: 15vh
+    top: 25vh
 
 .main_header
     position: absolute
-    bottom: 35vh
+    top: 35vh
     font-size: 15vh
     font-weight: 700
     box-shadow: 0 2 2 3
+    line-height: 1
 
 .sec_header
-    position: absolute
-    bottom: 50vh
     font-weight: 700
     box-shadow: 0 2 2 3
-    

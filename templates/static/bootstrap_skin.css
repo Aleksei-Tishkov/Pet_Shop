@@ -10,17 +10,8 @@
   font-family: Judson_ps;
   src: url("../fonts/Judson_ps.woff2") format("woff2");
 }
-.content_ps, .doggo, .main_header, .transform {
-  will-change: transform;
-}
-
-:root {
-  --index: calc(1vh + 1vw);
-}
-
 html {
   overflow-x: hidden;
-  scroll-behavior: smooth;
 }
 
 body {
@@ -32,13 +23,13 @@ body {
 
 h1 {
   font-family: Judson_ps;
-  font-size: calc(var(--index) * 5);
+  font-size: 5rem;
   font-weight: 700;
 }
 
 h2 {
   font-family: KohSantepheap_ps;
-  font-size: calc(var(--index) * 2);
+  font-size: 2rem;
   font-weight: 400;
 }
 
@@ -90,12 +81,6 @@ input[type=search] {
   width: 16rem;
 }
 
-.card__image {
-  height: 14rem;
-  width: 14rem;
-  object-fit: cover;
-}
-
 .card-children {
   border-radius: 1.125rem;
   border: 1px solid transparent;
@@ -131,15 +116,15 @@ input[type=search] {
 }
 
 .doggo {
-  width: calc(var(--index) / 0.7 * 17);
+  width: 35vw;
   position: absolute;
   left: 50vw;
-  top: 25vh;
+  top: 15vh;
 }
 
 .main_header {
   position: absolute;
-  top: 35vh;
+  bottom: 30vh;
   font-size: 15vh;
   font-weight: 700;
   box-shadow: 0 2 2 3;

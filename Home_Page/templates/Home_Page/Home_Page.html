@@ -8,13 +8,167 @@
 
 {% block content %}
 
-    <div class="main_container min-vh-100">
+    <div class="main_container min-vh-100 hero-section">
         <div class="main_block">
-            <img class="doggo" src="{% static 'Images/1-unsplash.png' %}">
-            <div class="row"><h2 class="sec_header p-2 pl-4 pr-4">Treat them the only way possible.</h2></div>
-            <div class="row"><h1 class="main_header p-2 pl-4 pr-4">THE BEST ONE</h1></div>
+            <img data-speed=".6" class="doggo" src="{% static 'Images/1-unsplash.png' %}">
 
+            <div data-speed=".86" class="row main_header">
+                <h2>Treat them the only way possible.</h2>
+                <h1>THE BEST ONE</h1>
+            </div>
         </div>
+    </div>
+    <div class="main_container justify-content-center">
+        <div class="row g-3 transform">
+            <div data-speed="1.1" class="col-lg-6 p-3">
+                <h4>Enjoy our finest selection of high-quality goods for the good boys and girls</h4>
+                <div class="row">
+                    <div data-lag=".2" class="col transform">
+                        <div class="card" style="top: 20px; left: 20px">                                    <!-- Card group -->
+
+                            <div class="card-children" style="--i:1;">
+                                <div class="p-3 container">
+                                    <img class="card__image" src={% static 'Images/Camera.webp' %} class="card-img-top" alt="..."
+                                         style="border-radius: 0.7rem">
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Product Name</h5>
+                                    <p class="card-text">The most important intel on the product</p>
+                                    <div class="d-flex justify-content-end mb-2"
+                                         style="font-family: KohSantepheap,serif">Price
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        <button type="button"
+                                                class="btn"
+                                                style="width: 40vw">
+                                            Buy
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card-children" style="--i:2;">
+                                <div class="p-3 container">
+                                    <img class="card__image" src={% static 'Images/Paw-Reos.webp' %} class="card-img-top" alt="..."
+                                         style="border-radius: 0.7rem">
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Product Name</h5>
+                                    <p class="card-text">The most important intel on the product</p>
+                                    <div class="d-flex justify-content-end mb-2"
+                                         style="font-family: KohSantepheap,serif">Price
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        <button type="button"
+                                                class="btn"
+                                                style="width: 40vw">
+                                            Buy
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card back-drop">
+                                <div class="p-3 container">
+                                    <img class="card__image" src={% static 'Images/Camera.webp' %} class="card-img-top" alt="..."
+                                         style="border-radius: 0.7rem">
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Furbo Dog Camera</h5>
+                                    <p class="card-text">360-degree camera to interact with your pup</p>
+                                    <div class="d-flex justify-content-end mb-2" style="font-family: KohSantepheap,serif">$210
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        <button type="button"
+                                                class="btn"
+                                                style="width: 40vw">
+                                            Buy
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div data-lag=".2" class="col transform">
+
+                        <div class="card" style="top: 20px; left: 20px">                                    <!-- Card group -->
+
+                            <div class="card-children" style="--i:1;">
+                                <div class="p-3 container">
+                                    <img class="card__image" src={% static 'Images/Paw-Reos.webp' %} class="card-img-top" alt="..."
+                                         style="border-radius: 0.7rem">
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Product Name</h5>
+                                    <p class="card-text">The most important intel on the product</p>
+                                    <div class="d-flex justify-content-end mb-2"
+                                         style="font-family: KohSantepheap,serif">Price
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        <button type="button"
+                                                class="btn"
+                                                style="width: 40vw">
+                                            Buy
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card-children" style="--i:2;">
+                                <div class="p-3 container">
+                                    <img class="card__image" src={% static 'Images/Camera.webp' %} class="card-img-top" alt="..."
+                                         style="border-radius: 0.7rem">
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Product Name</h5>
+                                    <p class="card-text">The most important intel on the product</p>
+                                    <div class="d-flex justify-content-end mb-2"
+                                         style="font-family: KohSantepheap,serif">Price
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        <button type="button"
+                                                class="btn"
+                                                style="width: 40vw">
+                                            Buy
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card back-drop">
+                                <div class="p-3 container">
+                                    <img class="card__image" src={% static 'Images/Paw-Reos.webp' %}
+                                            class="card-img-top" alt="..."
+                                            style="border-radius: 0.7rem">                          <!--front card-->
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Furbo Dog Camera</h5>
+                                    <p class="card-text">360-degree camera allows you to interact with your pup</p>
+                                    <div class="d-flex justify-content-end mb-2" style="font-family: KohSantepheap,serif">$210
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        <button type="button"
+                                                class="btn"
+                                                style="width: 40vw">
+                                            Buy
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+        </div>
+        </div>
+            <div class="col-lg-6 p-3 pt-5 mt-5 transform" data-speed=".9">
+                <h2>Already have an account?</h2>
+                <h4>Log in!</h4>
+            </div>
+        </div>
+
+    </div>
 
 
     </div>

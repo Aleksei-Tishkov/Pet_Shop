@@ -26,11 +26,9 @@ h3 {
 .navbar {
   --bs-navbar-brand-color: rgba(244, 239, 238);
   --bs-navbar-active-color: rgba(244, 239, 238);
-  --bs-navbar-toggler-icon-bg: url("../Images/icons8-hamburger-100.png");
   --bs-navbar-color: none;
   --bs-navbar-toggler-border-color: none;
   --bs-border-width: 0;
-  backdrop-filter: blur(10px);
 }
 
 .-navbar-brand:hover {
@@ -53,6 +51,12 @@ h3 {
 .navbar-toggler:active {
   outline: none;
   box-shadow: none;
+}
+
+.navbar-toggler-icon {
+  content: "Menu";
+  font-size: 0.8rem;
+  background-image: none;
 }
 
 .navbar-toggler-icon:focus {
