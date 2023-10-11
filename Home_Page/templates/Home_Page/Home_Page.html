@@ -7,33 +7,35 @@
 {% load static %}
 
 {% block content %}
-
     <div class="main_container min-vh-100 hero-section">
         <div class="main_block">
-            <img data-speed=".6" class="doggo" src="{% static 'Images/1-unsplash.png' %}">
+            <img data-speed=".5" class="doggo" src="{% static 'Images/Main_Doggo.png' %}" style="margin-bottom: -1rem">
 
-            <div data-speed=".86" class="row main_header">
+            <div data-speed=".9" class="row main_header">
                 <h2>Treat them the only way possible.</h2>
                 <h1>THE BEST ONE</h1>
             </div>
         </div>
     </div>
     <div class="main_container justify-content-center">
-        <div class="row g-3 transform">
-            <div data-speed="1.1" class="col-lg-6 p-3">
-                <h4>Enjoy our finest selection of high-quality goods for the good boys and girls</h4>
-                <div class="row">
-                    <div data-lag=".2" class="col transform">
-                        <div class="card" style="top: 20px; left: 20px">                                    <!-- Card group -->
+        <div class="row g-1 transform">
+            <div data-speed="1.1" class="col-lg-7 p-2 left__block">
+                <h4 class="left__item transform">Enjoy our finest selection of high-quality goods <br>for the good boys
+                    and girls</h4>
+                <div class="row left__item transform">
+                    <div class="col transform">
+                        <div class="card" style="top: 20px; left: 20px">
+                            <!-- Card group -->
 
                             <div class="card-children" style="--i:1;">
                                 <div class="p-3 container">
-                                    <img class="card__image" src={% static 'Images/Camera.webp' %} class="card-img-top" alt="..."
+                                    <img class="card__image" src={% static 'Images/Camera.webp' %} class="card-img-top"
+                                         alt="..."
                                          style="border-radius: 0.7rem">
                                 </div>
                                 <div class="card-body">
                                     <h5 class="card-title">Product Name</h5>
-                                    <p class="card-text">The most important intel on the product</p>
+                                    <p class="card-text d-none d-lg-block">The most important intel on the product</p>
                                     <div class="d-flex justify-content-end mb-2"
                                          style="font-family: KohSantepheap,serif">Price
                                     </div>
@@ -49,12 +51,13 @@
 
                             <div class="card-children" style="--i:2;">
                                 <div class="p-3 container">
-                                    <img class="card__image" src={% static 'Images/Paw-Reos.webp' %} class="card-img-top" alt="..."
+                                    <img class="card__image"
+                                         src={% static 'Images/Paw-Reos.webp' %} class="card-img-top" alt="..."
                                          style="border-radius: 0.7rem">
                                 </div>
                                 <div class="card-body">
                                     <h5 class="card-title">Product Name</h5>
-                                    <p class="card-text">The most important intel on the product</p>
+                                    <p class="card-text d-none d-lg-block">The most important intel on the product</p>
                                     <div class="d-flex justify-content-end mb-2"
                                          style="font-family: KohSantepheap,serif">Price
                                     </div>
@@ -69,14 +72,17 @@
                             </div>
 
                             <div class="card back-drop">
-                                <div class="p-3 container">
-                                    <img class="card__image" src={% static 'Images/Camera.webp' %} class="card-img-top" alt="..."
+                                <div class="p-3 container-flex">
+                                    <img class="card__image" src={% static 'Images/Camera.webp' %} class="card-img-top"
+                                         alt="..."
                                          style="border-radius: 0.7rem">
                                 </div>
                                 <div class="card-body">
                                     <h5 class="card-title">Furbo Dog Camera</h5>
-                                    <p class="card-text">360-degree camera to interact with your pup</p>
-                                    <div class="d-flex justify-content-end mb-2" style="font-family: KohSantepheap,serif">$210
+                                    <p class="card-text d-none d-lg-block">360-degree camera to interact with your
+                                        pup</p>
+                                    <div class="d-flex justify-content-end mb-2"
+                                         style="font-family: KohSantepheap,serif">$210
                                     </div>
                                     <div class="d-flex justify-content-center">
                                         <button type="button"
@@ -90,18 +96,20 @@
                         </div>
                     </div>
 
-                    <div data-lag=".2" class="col transform">
+                    <div class="col transform" style="margin-left: -10rem; z-index: -20">
 
-                        <div class="card" style="top: 20px; left: 20px">                                    <!-- Card group -->
+                        <div class="card" style="top: 20px; left: 20px">
+                            <!-- Card group -->
 
                             <div class="card-children" style="--i:1;">
                                 <div class="p-3 container">
-                                    <img class="card__image" src={% static 'Images/Paw-Reos.webp' %} class="card-img-top" alt="..."
+                                    <img class="card__image align-self-center"
+                                         src={% static 'Images/Paw-Reos.webp' %} class="card-img-top" alt="..."
                                          style="border-radius: 0.7rem">
                                 </div>
                                 <div class="card-body">
                                     <h5 class="card-title">Product Name</h5>
-                                    <p class="card-text">The most important intel on the product</p>
+                                    <p class="card-text d-none d-lg-block">The most important intel on the product</p>
                                     <div class="d-flex justify-content-end mb-2"
                                          style="font-family: KohSantepheap,serif">Price
                                     </div>
@@ -117,12 +125,13 @@
 
                             <div class="card-children" style="--i:2;">
                                 <div class="p-3 container">
-                                    <img class="card__image" src={% static 'Images/Camera.webp' %} class="card-img-top" alt="..."
+                                    <img class="card__image" src={% static 'Images/Camera.webp' %} class="card-img-top"
+                                         alt="..."
                                          style="border-radius: 0.7rem">
                                 </div>
                                 <div class="card-body">
                                     <h5 class="card-title">Product Name</h5>
-                                    <p class="card-text">The most important intel on the product</p>
+                                    <p class="card-text d-none d-lg-block">The most important intel on the product</p>
                                     <div class="d-flex justify-content-end mb-2"
                                          style="font-family: KohSantepheap,serif">Price
                                     </div>
@@ -137,15 +146,17 @@
                             </div>
 
                             <div class="card back-drop">
-                                <div class="p-3 container">
-                                    <img class="card__image" src={% static 'Images/Paw-Reos.webp' %}
-                                            class="card-img-top" alt="..."
-                                            style="border-radius: 0.7rem">                          <!--front card-->
+                                <div class="p-3 container justify-content-center">
+                                    <img class="card__image"
+                                         src={% static 'Images/Hear-Doggy-Flattie-Ultrasonic-Silent-Squeaker-Dog-Toy_20220228-170244_full.jpg' %}
+                                                 class="card-img-top" alt="..."
+                                         style="border-radius: 0.7rem">                          <!--front card-->
                                 </div>
                                 <div class="card-body">
-                                    <h5 class="card-title">Furbo Dog Camera</h5>
-                                    <p class="card-text">360-degree camera allows you to interact with your pup</p>
-                                    <div class="d-flex justify-content-end mb-2" style="font-family: KohSantepheap,serif">$210
+                                    <h5 class="card-title">Squeaker Toy</h5>
+                                    <p class="card-text d-none d-lg-block">Plush chewies with high-pitched squeak</p>
+                                    <div class="d-flex justify-content-end mb-2"
+                                         style="font-family: KohSantepheap,serif">$15
                                     </div>
                                     <div class="d-flex justify-content-center">
                                         <button type="button"
@@ -160,17 +171,55 @@
                     </div>
 
                 </div>
-        </div>
-        </div>
-            <div class="col-lg-6 p-3 pt-5 mt-5 transform" data-speed=".9">
-                <h2>Already have an account?</h2>
-                <h4>Log in!</h4>
+
+            </div>
+            <div class="col-lg-5 right__block transform" data-speed=".9" style="margin-top: 120px" id="canvas_father">
+                <img class="right__item" src="{% static 'Images/1-unsplash.png' %}" style="width: calc(var(--index) * 10)">
+            </div>
+            <h4 class="left__block transform mt-2 pt-5">Read the posts of pet experts. <br>Lifehacks, advices and much more!</h4>
+            <div class="left__item transform">
+                <div class="clearfix back-drop blog_post left__item">
+                    <h1 class='blog_body'>Blog Post Title</h1>
+                    <img src={% static 'Images/owner_1.jpg' %} class="col-6 float-md-start blog_main_img" alt="...">
+
+
+                    <h3 class="blog_body">Lorem ipsum dolor sit amet consectetur. Proin facilisis ullamcorper nisi sed
+                        tristique at.</h3>
+
+                    <p class="blog_body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fermentum
+                        tristique lacinia. Proin porttitor orci egestas, fermentum nisi sed, eleifend tellus. Phasellus
+                        pharetra ante quis ligula sodales, in sollicitudin nibh pellentesque. Morbi vitae massa in velit
+                        ultrices faucibus maximus et lacus. Vestibulum tristique, sapien quis faucibus ultricies, mauris
+                        augue molestie tellus, a finibus quam orci eget orci. Proin scelerisque risus a sem pretium, eu
+                        fermentum risus condimentum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
+                        posuere cubilia curae; Donec at semper ex, a laoreet ex. Fusce convallis dictum suscipit. Mauris
+                        ornare rutrum elit, et fermentum justo. Nulla ullamcorper eu tortor sed congue. Nam id eros
+                        scelerisque, vulputate nulla nec, malesuada tellus.</p>
+                    <p class="blog_body">Vestibulum elementum neque et efficitur cursus. Pellentesque ac nunc ligula. Ut
+                        aliquam justo at placerat ullamcorper. Donec arcu felis, sodales vitae placerat malesuada,
+                        feugiat non diam. Nulla vestibulum turpis et mi pellentesque varius. Nullam rutrum augue nec
+                        odio suscipit suscipit. Nunc a sem enim. Sed vulputate iaculis nulla, vel ullamcorper mi blandit
+                        quis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos
+                        himenaeos. Ut at eros nec turpis rutrum dictum. Suspendisse vestibulum sollicitudin tristique.
+                        Duis ut nisi aliquet, vulputate sapien eget, luctus neque. Aliquam turpis dolor, rhoncus id arcu
+                        eget, sagittis ullamcorper justo. Suspendisse potenti. Nullam consectetur metus ut nisi placerat
+                        lacinia. Sed dapibus blandit quam in venenatis.</p>
+                    <p class="blog_body">Phasellus consequat ex libero, at varius nulla luctus non. Nullam porta
+                        ultricies vestibulum. Praesent quis nisi pretium, fermentum orci euismod, ultricies massa.
+                        Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+                        Maecenas faucibus, augue efficitur consectetur bibendum, justo est bibendum nulla, in congue
+                        velit massa vel elit. Morbi ac arcu eros. Nullam fringilla purus leo, sed tempus nibh ornare
+                        non. Mauris dictum venenatis ipsum vitae imperdiet. Sed cursus lacus feugiat, mollis nulla sit
+                        amet, dignissim diam. In hac habitasse platea dictumst. Donec diam lorem, cursus eget
+                        pellentesque sit amet, convallis non ante. Maecenas lacinia dui justo, eu scelerisque sem
+                        tincidunt vitae. In tellus nisl, feugiat quis gravida nec, porta vitae sapien. Mauris in congue
+                        dolor. Proin et laoreet ligula, at elementum velit. Quisque sit amet lectus non nulla porta
+                        interdum.</p>
+                </div>
             </div>
         </div>
 
     </div>
 
-
-    </div>
 
 {% endblock %}

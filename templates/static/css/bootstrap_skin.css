@@ -10,6 +10,10 @@
   font-family: Judson_ps;
   src: url("../fonts/Judson_ps.woff2") format("woff2");
 }
+::-webkit-scrollbar {
+  width: 1px;
+}
+
 .content_ps, .doggo, .main_header, .transform {
   will-change: transform;
 }
@@ -21,6 +25,17 @@
 html {
   overflow-x: hidden;
   scroll-behavior: smooth;
+}
+
+canvas {
+  width: 200px;
+  height: 200px;
+  border: 1px solid black;
+  margin: 100px;
+  padding: 0px;
+  position: static;
+  top: 100px;
+  left: 100px;
 }
 
 body {
@@ -50,8 +65,18 @@ h4 {
   border-radius: 1.125rem;
 }
 
-.back-drop {
+.blog_post {
+  border-radius: 1.125rem;
   border: 1px solid transparent;
+}
+
+.blog_main_img {
+  padding: calc(var(--index));
+  border-radius: 1.125rem;
+}
+
+.blog_body {
+  padding: calc(var(--index));
 }
 
 .navbar {
@@ -85,15 +110,21 @@ input[type=search] {
 }
 
 .card {
+  position: relative;
   border-radius: 1.125rem;
   border: 1px solid transparent;
-  width: 16rem;
+  width: calc(var(--index) * 11);
 }
 
 .card__image {
-  height: 14rem;
-  width: 14rem;
+  align-self: center;
+  height: calc(var(--index) * 9.55);
+  width: calc(var(--index) * 9.4 - var(--index) / 15);
   object-fit: cover;
+}
+
+.card_image_container {
+  padding: calc(var(--index));
 }
 
 .card-children {
@@ -103,14 +134,14 @@ input[type=search] {
 }
 
 .card-children:nth-child(1) {
-  max-width: 16rem;
+  width: calc(var(--index) * 11);
   top: -10px;
   left: -10px;
   z-index: -1;
 }
 
 .card .card-children:nth-child(2) {
-  max-width: 16rem;
+  width: calc(var(--index) * 11);
   top: -20px;
   left: -20px;
   z-index: -2;
@@ -121,7 +152,8 @@ input[type=search] {
 }
 
 .main_container {
-  padding: 0 6vw;
+  padding: 6vh 6vw;
+  margin-bottom: 10rem;
 }
 
 .main-block {
@@ -131,15 +163,15 @@ input[type=search] {
 }
 
 .doggo {
-  width: calc(var(--index) / 0.7 * 17);
+  width: calc(var(--index) / 0.6 * 18);
   position: absolute;
-  left: 50vw;
+  right: calc(var(--index) * 9);
   top: 25vh;
 }
 
 .main_header {
   position: absolute;
-  top: 35vh;
+  top: 50vh;
   font-size: 15vh;
   font-weight: 700;
   box-shadow: 0 2 2 3;

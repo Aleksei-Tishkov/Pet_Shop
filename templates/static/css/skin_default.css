@@ -1,9 +1,6 @@
 body {
   background-color: #212121;
-  /*background-image: url('../Images/Background-4.jpg') */
-  background-size: cover;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
+  /*background-image: url('../Images/Bg_tile.jpg') */
   color: rgb(244, 239, 238);
 }
 
@@ -21,6 +18,14 @@ h3 {
 
 .back-drop {
   backdrop-filter: blur(10px);
+}
+
+.blog_post {
+  background-color: rgba(244, 239, 238, 0.1);
+  border-top-color: rgba(244, 239, 238, 0.2);
+  border-left-color: rgba(244, 239, 238, 0.2);
+  border-right-color: rgba(244, 239, 238, 0.1);
+  border-bottom-color: rgba(244, 239, 238, 0.1);
 }
 
 .navbar {
@@ -78,6 +83,7 @@ h3 {
 .btn {
   --bs-btn-color: rgba(244, 239, 238, .85);
   --bs-btn-bg: rgba(41, 58, 128, .1);
+  --bs-btn-border-color: rgba(244, 239, 238, .45);
   --bs-btn-hover-bg: rgba(83, 126, 197, .05);
   --bs-btn-hover-color: #D2FFFA;
   --bs-btn-hover-border-color: rgba(244, 239, 238, .45);
@@ -108,7 +114,6 @@ h3 {
 .card {
   --bs-card-color: rgba(244, 239, 238);
   background-color: rgba(255, 255, 255, 0);
-  position: relative;
   box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
   border-top-color: rgba(244, 239, 238, 0.2);
   border-left-color: rgba(244, 239, 238, 0.2);

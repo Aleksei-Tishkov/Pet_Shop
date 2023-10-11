@@ -9,43 +9,47 @@
         {% endblock %}
     </title>
 
-
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link href="static/css/bootstrap_skin.css" rel="stylesheet" media="screen">
     <link href="static/css/skin_default.css" rel="stylesheet" media="screen">
 
     <script src="static/js/bootstrap.min.js"></script>
-    <script src="static/js/gsap.min.js" ></script>
-    <script src="static/js/ScrollTrigger.min.js" ></script>
-    <script src="static/js/ScrollSmoother.min.js"></script>
-
-    <link href='http://fonts.googleapis.com/css?family=Kodchasan:400,300,700' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Koh%20Santepheap:400,300,700' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Judson:400,300,700' rel='stylesheet' type='text/css'>
+    <script src="static/js/gsap.min.js" defer></script>
+    <script src="static/js/ScrollTrigger.min.js" defer></script>
+    <script src="static/js/ScrollSmoother.min.js" defer></script>
+    <script src="static/js/app.js" defer></script>
 
 </head>
 <body>
 {% load static %}
-<nav class="navbar navbar-expand-lg sticky-top justify-content-between mt-0">
+<nav class="navbar navbar-expand-lg sticky-top justify-content-between m-2">
 
-    <a class="navbar-brand align-self-start m-2" href="#">Navbar</a>
-    <div class="d-flex w-25 justify-content-center align-self-start">
+    <a class="nav-link active m-2" href="#">
+        <div class="row align-items-center m-2">
+            <div class="col"><img src="{% static 'Images/Logo.svg' %}"></div>
+            <div class="col" style="margin-left: -1rem; margin-top: 1rem"><p class="fs-5"
+                                                                             style="font-family: Judson,serif">
+                Pet_Shop</p></div>
+        </div>
+    </a>
+    <div class="d-none d-sm-block w-25 justify-content-center justify-content-center align-content-center m-2">
         <div class="input-group">
             <input class="shadow-sm form-control main-btn-ps back-drop" type="search" placeholder="Search smth :)"
-                       id="example-search-input">
-            <button class="shadow-sm btn btn-primary" type="button" style="align-content: start">
-                    <img src="{% static 'Images/Search.svg' %}" style="align-self: auto; width: 75%">
+                   id="example-search-input">
+            <button class="shadow-sm btn btn-primary search_btn" type="button" style="align-content: start">
+                <img src="{% static 'Images/Search.svg' %}" style="width: 75%">
             </button>
         </div>
     </div>
 
-    <div class="d-flex w-auto justify-self-end m-2">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+    <div class="d-flex w-auto align-self-center mx-2" style="top: -1rem">
+        <button class="navbar-toggler align-self-start align-content-start" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+            <span>☰</span>
         </button>
-        <div class="collapse navbar-collapse m-2" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse align-content-center m-2" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 align-content-end">
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="#">Home</a>
@@ -67,12 +71,14 @@
     </div>
 
 </nav>
+<div class="wrapper_ps">
+    <div class="content_ps">
 
-<div class="container p-4">
-    {% block content %}
-    <h2>Some content</h2>
-    {% endblock %}
+        {% block content %}
+            <h2>Some content</h2>
+        {% endblock %}
+
+    </div>
 </div>
-
 </body>
 </html>
