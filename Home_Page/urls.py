@@ -3,5 +3,6 @@ from django.urls import path
 from .views import *
 
 urlpatterns = [
-    path('', post_list)
+    path('', home_page),
+    path('home/', home_page)
 ]

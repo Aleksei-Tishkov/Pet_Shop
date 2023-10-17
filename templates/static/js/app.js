@@ -26,7 +26,7 @@ if (ScrollTrigger.isTouch !== 1) {
         scrollTrigger: {
             trigger: '.hero-section',
             start: 'center',
-            end: '600',
+            end: '1600',
 
             scrub: true
         }
@@ -61,7 +61,7 @@ if (ScrollTrigger.isTouch !== 1) {
     let itemsR = gsap.utils.toArray('.right__block .right__item')
 
     itemsR.forEach(item => {
-        gsap.fromTo(item, { x: -100 }, {
+        gsap.fromTo(item, { x: 100 }, {
             x: 0,
             scrollTrigger: {
                 trigger: item,
@@ -71,6 +71,32 @@ if (ScrollTrigger.isTouch !== 1) {
         })
     })
 
-    
-
 }
+
+document.addEventListener("DOMContentLoaded", function(){
+
+    el_autohide = document.querySelector('.autohide');
+    
+    // add padding-top to bady (if necessary)
+    navbar_height = document.querySelector('.navbar').offsetHeight;
+    
+  
+    if(el_autohide){
+      var last_scroll_top = 0;
+      window.addEventListener('scroll', function() {
+            let scroll_top = window.scrollY;
+           if(scroll_top < last_scroll_top) {
+                el_autohide.classList.remove('scrolled-down');
+                el_autohide.classList.add('scrolled-up');
+            }
+            else {
+                el_autohide.classList.remove('scrolled-up');
+                el_autohide.classList.add('scrolled-down');
+            }
+            last_scroll_top = scroll_top;
+      }); 
+      // window.addEventListener
+    }
+    // if
+  
+  }); 

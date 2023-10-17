@@ -13,7 +13,7 @@ h2 {
 }
 
 h3 {
-  color: rgba(156, 136, 136, 0.8);
+  color: rgba(244, 239, 238, 0.9);
 }
 
 .back-drop {
@@ -78,6 +78,10 @@ h3 {
 .form-control:focus {
   color: rgb(244, 239, 238);
   --bs-body-bg: rgba(244, 239, 238, .3);
+}
+
+a {
+  color: rgba(244, 239, 238, 0.85);
 }
 
 .btn {

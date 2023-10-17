@@ -51,11 +51,29 @@ h2
     font-size: calc(var(--index) * 2)
     font-weight: 400
 
+h3
+    font-family: KohSantepheap_ps
+    font-size: calc(var(--index) * 1.5)
+    font-weight: 400
+
 h4
     font-size:1.5rem
+
+a
+    text-decoration: none
+    font-family: KohSantepheap_ps
     
 .container
     border-radius: 1.125rem
+
+.scrolled-down
+    transform: translateY(-100%)
+    transition: all 0.8s ease-in-out
+
+.scrolled-up
+    transform: translateY(0)
+    transition: all 0.8s ease-in-out
+
 
 .blog_post
     border-radius: 1.125rem
@@ -72,6 +90,11 @@ h4
     border-radius: 0rem
 
 .btn
+    font-family: Kodchasan_ps
+    text-transform: none
+    border-radius: 1.125rem
+
+.btn-primary
     font-family: Kodchasan_ps
     text-transform: none
     border-radius: 1.125rem
@@ -137,7 +160,7 @@ input[type="search"]
     bottom: 15vh
     
 .doggo
-    width: calc(var(--index) / 0.6 * 18)
+    width: calc(var(--index) / 0.6 * 16)
     position: absolute
     right: calc(var(--index) * 9)
     top: 25vh

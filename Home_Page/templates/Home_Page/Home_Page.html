@@ -9,9 +9,9 @@
 {% block content %}
     <div class="main_container min-vh-100 hero-section">
         <div class="main_block">
-            <img data-speed=".5" class="doggo" src="{% static 'Images/Main_Doggo.png' %}" style="margin-bottom: -1rem">
+            <img data-speed=".45" class="doggo" src="{% static 'Images/Main_Doggo.png' %}" style="margin-bottom: -1rem">
 
-            <div data-speed=".9" class="row main_header">
+            <div data-speed=".85" class="row main_header">
                 <h2>Treat them the only way possible.</h2>
                 <h1>THE BEST ONE</h1>
             </div>
@@ -19,9 +19,9 @@
     </div>
     <div class="main_container justify-content-center">
         <div class="row g-1 transform">
-            <div data-speed="1.1" class="col-lg-7 p-2 left__block">
-                <h4 class="left__item transform">Enjoy our finest selection of high-quality goods <br>for the good boys
-                    and girls</h4>
+            <div data-speed=".9" class="col-lg-7 p-2 left__block">
+                <h3 class="left__item transform">Enjoy our finest selection of high-quality goods for the good boys
+                    and girls</h3>
                 <div class="row left__item transform">
                     <div class="col transform">
                         <div class="card" style="top: 20px; left: 20px">
@@ -174,9 +174,107 @@
 
             </div>
             <div class="col-lg-5 right__block transform" data-speed=".9" style="margin-top: 120px" id="canvas_father">
-                <img class="right__item" src="{% static 'Images/1-unsplash.png' %}" style="width: calc(var(--index) * 10)">
+                <div class="right__item">
+
+                    {% if request.user.username %}
+
+                        <h3 class="text-center">Welcome back, {{ request.user.username|title }}!</h3>
+
+
+                    {% else %}
+
+                        <h3 class="text-center">
+                            Already have an account?
+                        </h3>
+
+                        <h3 class="text-center">
+                            Log In!
+                        </h3>
+
+                        <form method='post'>
+
+                            {% csrf_token %}
+
+                            <div class="d-grid gap-2 mx-auto p-3" style="justify-content: center">
+                                <div class="row auto">
+                                    <div class="col"
+                                         style="
+                                     color: rgba(122, 122, 122, 0.80);
+                                     text-align: center;
+                                     font-size: 1.5rem;
+                                     font-style: normal;
+                                     font-weight: 400;
+                                     line-height: 100%
+                                     ">
+                                        <input type="text"
+                                               class="form-control back-drop text-center"
+                                               placeholder="E-mail"
+                                               aria-label="E-mail"
+                                               name="email"
+                                               style="width: 15em">
+                                    </div>
+                                </div>
+
+                                <div class="row auto">
+                                    <div class="col col-block"
+                                         style="
+                                     color: rgba(122, 122, 122, 0.80);
+                                     text-align: center;
+                                     font-size: 1.5rem;
+                                     font-style: normal;
+                                     font-weight: 400;
+                                     line-height: 100%">
+                                        <input type="password"
+                                               class="form-control back-drop text-center"
+                                               placeholder="Password"
+                                               aria-label="Password"
+                                               name="password"
+                                               style="width: 15em">
+                                    </div>
+                                </div>
+
+                                <div class="row auto">
+                                    <div class="col col-block">
+                                        <button type="submit"
+                                                class="btn"
+                                                name="login_submit" style="width: 15em">
+                                            Submit
+                                        </button>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </form>
+
+                        <p class="mt-3"
+                           style="color: rgba(243, 148, 34, 1);
+                               text-align: center;
+                               font-family: Koh Santepheap,serif;
+                               font-size: 2.25rem;
+                               font-style: normal;
+                               font-weight: 400;
+                               line-height: 95%;">
+                            First time with us?
+                        </p>
+
+                        <div class="row auto">
+                            <div class="col col-block text-center">
+                                <a href="/reg" role="button"
+                                        class="btn btn-primary mt-1"
+                                        style="width: 15em">
+                                    Create an account!
+                                </a>
+                            </div>
+                        </div>
+
+                    {% endif %}
+
+                    </div>
             </div>
-            <h4 class="left__block transform mt-2 pt-5">Read the posts of pet experts. <br>Lifehacks, advices and much more!</h4>
+
+            <h3 class="left__block transform mt-2 pt-5">Read the posts of pet experts. <br>Lifehacks, advices and much
+                more!</h3>
             <div class="left__item transform">
                 <div class="clearfix back-drop blog_post left__item">
                     <h1 class='blog_body'>Blog Post Title</h1>
@@ -220,6 +318,166 @@
         </div>
 
     </div>
+    <div class="main_container justify-content-center">
+        <div class="row g-1 transform">
+            <div data-speed=".9" class="col-lg-7 p-2 left__block">
+                <h2 class="left__item transform">And here is another block!</h2>
+                <div class="row left__item transform">
+                    <div class="col transform">
+                        <div class="card" style="top: 20px; left: 20px">
+                            <!-- Card group -->
 
+                            <div class="card-children" style="--i:1;">
+                                <div class="p-3 container">
+                                    <img class="card__image" src={% static 'Images/Camera.webp' %} class="card-img-top"
+                                         alt="..."
+                                         style="border-radius: 0.7rem">
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Product Name</h5>
+                                    <p class="card-text d-none d-lg-block">The most important intel on the product</p>
+                                    <div class="d-flex justify-content-end mb-2"
+                                         style="font-family: KohSantepheap,serif">Price
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        <button type="button"
+                                                class="btn"
+                                                style="width: 40vw">
+                                            Buy
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card-children" style="--i:2;">
+                                <div class="p-3 container">
+                                    <img class="card__image"
+                                         src={% static 'Images/Paw-Reos.webp' %} class="card-img-top" alt="..."
+                                         style="border-radius: 0.7rem">
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Product Name</h5>
+                                    <p class="card-text d-none d-lg-block">The most important intel on the product</p>
+                                    <div class="d-flex justify-content-end mb-2"
+                                         style="font-family: KohSantepheap,serif">Price
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        <button type="button"
+                                                class="btn"
+                                                style="width: 40vw">
+                                            Buy
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card back-drop">
+                                <div class="p-3 container-flex">
+                                    <img class="card__image" src={% static 'Images/Camera.webp' %} class="card-img-top"
+                                         alt="..."
+                                         style="border-radius: 0.7rem">
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Furbo Dog Camera</h5>
+                                    <p class="card-text d-none d-lg-block">360-degree camera to interact with your
+                                        pup</p>
+                                    <div class="d-flex justify-content-end mb-2"
+                                         style="font-family: KohSantepheap,serif">$210
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        <button type="button"
+                                                class="btn"
+                                                style="width: 40vw">
+                                            Buy
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col transform" style="margin-left: -10rem; z-index: -20">
+
+                        <div class="card" style="top: 20px; left: 20px">
+                            <!-- Card group -->
+
+                            <div class="card-children" style="--i:1;">
+                                <div class="p-3 container">
+                                    <img class="card__image align-self-center"
+                                         src={% static 'Images/Paw-Reos.webp' %} class="card-img-top" alt="..."
+                                         style="border-radius: 0.7rem">
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Product Name</h5>
+                                    <p class="card-text d-none d-lg-block">The most important intel on the product</p>
+                                    <div class="d-flex justify-content-end mb-2"
+                                         style="font-family: KohSantepheap,serif">Price
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        <button type="button"
+                                                class="btn"
+                                                style="width: 40vw">
+                                            Buy
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card-children" style="--i:2;">
+                                <div class="p-3 container">
+                                    <img class="card__image" src={% static 'Images/Camera.webp' %} class="card-img-top"
+                                         alt="..."
+                                         style="border-radius: 0.7rem">
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Product Name</h5>
+                                    <p class="card-text d-none d-lg-block">The most important intel on the product</p>
+                                    <div class="d-flex justify-content-end mb-2"
+                                         style="font-family: KohSantepheap,serif">Price
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        <button type="button"
+                                                class="btn"
+                                                style="width: 40vw">
+                                            Buy
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card back-drop">
+                                <div class="p-3 container justify-content-center">
+                                    <img class="card__image"
+                                         src={% static 'Images/Hear-Doggy-Flattie-Ultrasonic-Silent-Squeaker-Dog-Toy_20220228-170244_full.jpg' %}
+                                                 class="card-img-top" alt="..."
+                                         style="border-radius: 0.7rem">                          <!--front card-->
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Squeaker Toy</h5>
+                                    <p class="card-text d-none d-lg-block">Plush chewies with high-pitched squeak</p>
+                                    <div class="d-flex justify-content-end mb-2"
+                                         style="font-family: KohSantepheap,serif">$15
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        <button type="button"
+                                                class="btn"
+                                                style="width: 40vw">
+                                            Buy
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-5 right__block transform" data-speed=".9" style="margin-top: 120px" id="canvas_father">
+                <h2 class="left__item transform">And here is another dog!</h2>
+                <img class="right__item" src="{% static 'Images/1-unsplash.png' %}"
+                     style="width: calc(var(--index) * 10)">
+            </div>
 
 {% endblock %}
