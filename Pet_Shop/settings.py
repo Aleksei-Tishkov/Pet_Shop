@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'User_Accounts',
     'Home_Page',
     'Product',
+    'Blog',
 
 ]
 

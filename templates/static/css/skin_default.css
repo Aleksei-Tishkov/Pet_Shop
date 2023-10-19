@@ -1,3 +1,16 @@
+/* ===== Scrollbar CSS ===== */
+ * /* Firefox */
+ *
+ * /* Chrome, Edge, and Safari */
+::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(244, 239, 238, 0.1);
+  border-radius: 10px;
+}
+
 body {
   background-color: #212121;
   /*background-image: url('../Images/Bg_tile.jpg') */
@@ -33,7 +46,7 @@ h3 {
   --bs-navbar-active-color: rgba(244, 239, 238);
   --bs-navbar-color: none;
   --bs-navbar-toggler-border-color: none;
-  --bs-border-width: 0;
+  border-bottom-color: rgba(244, 239, 238, 0.1);
 }
 
 .-navbar-brand:hover {

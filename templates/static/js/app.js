@@ -76,8 +76,7 @@ if (ScrollTrigger.isTouch !== 1) {
 document.addEventListener("DOMContentLoaded", function(){
 
     el_autohide = document.querySelector('.autohide');
-    
-    // add padding-top to bady (if necessary)
+
     navbar_height = document.querySelector('.navbar').offsetHeight;
     
   
@@ -95,8 +94,6 @@ document.addEventListener("DOMContentLoaded", function(){
             }
             last_scroll_top = scroll_top;
       }); 
-      // window.addEventListener
     }
-    // if
   
   }); 
