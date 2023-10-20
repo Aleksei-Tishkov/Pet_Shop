@@ -17,10 +17,15 @@
     <link href={% static 'css/skin_default.css' %} rel="stylesheet" media="screen">
 
     <script src={% static 'js/bootstrap.min.js' %} defer></script>
+    <script src={% static 'js/split_type.min.js' %} defer></script>
     <script src={% static 'js/gsap.min.js' %} defer></script>
     <script src={% static 'js/ScrollTrigger.min.js' %} defer></script>
     <script src={% static 'js/ScrollSmoother.min.js' %} defer></script>
+
+
+
     <script src={% static 'js/app.js' %} defer></script>
+
 
 </head>
 <body>
@@ -75,10 +80,13 @@
 </nav>
 <div class="wrapper_ps">
     <div class="content_ps">
+        <img src={% static 'Images/Bg_tile_l.png' %} data-speed=".2" style="position: absolute; z-index: -5">
+
 
         {% block content %}
             <h2>Some content</h2>
         {% endblock %}
+
 
     </div>
 </div>

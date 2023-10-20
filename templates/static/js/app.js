@@ -5,7 +5,7 @@ if (ScrollTrigger.isTouch !== 1) {
     ScrollSmoother.create({
         wrapper: '.wrapper_ps',
         content: '.content_ps',
-        smooth: 2,
+        smooth: 4,
         effects: true
     })
 
@@ -48,10 +48,11 @@ if (ScrollTrigger.isTouch !== 1) {
     let itemsL = gsap.utils.toArray('.left__block .left__item')
 
     itemsL.forEach(item => {
-        gsap.fromTo(item, { x: -100 }, {
+        gsap.fromTo(item, { x: -1000 }, {
             x: 0,
             scrollTrigger: {
                 trigger: item,
+                end: '-150',
                 scrub: true
             }
     
@@ -61,14 +62,29 @@ if (ScrollTrigger.isTouch !== 1) {
     let itemsR = gsap.utils.toArray('.right__block .right__item')
 
     itemsR.forEach(item => {
-        gsap.fromTo(item, { x: 100 }, {
+        gsap.fromTo(item, { x: 1000 }, {
             x: 0,
             scrollTrigger: {
                 trigger: item,
+                end: '-150',
                 scrub: true
             }
     
         })
+    })
+
+    let totalSection = document.querySelectorAll(".animate-heading")
+    totalSection.forEach((char, index) => {
+        
+        gsap.from(char, {
+            scrollTrigger: {
+                trigger: char,
+                scrub: true,
+                start: "top 80%",
+                end: "top 10%"
+            },
+            opacity: 0
+            })
     })
 
 }
@@ -97,3 +113,6 @@ document.addEventListener("DOMContentLoaded", function(){
     }
   
   }); 
+
+
+  
