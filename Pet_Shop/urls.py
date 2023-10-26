@@ -31,12 +31,10 @@ urlpatterns = [
 ]
 
 handler404 = page_not_found
-
 handler500 = server_error
-
 handler403 = permission_error
-
 handler400 = request_error
 
-
+admin.site.site_header = 'Pet_Shop Administration'
+admin.site.index_header = 'Pet_Shop Administration'
 
