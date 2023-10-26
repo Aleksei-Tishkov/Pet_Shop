@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from User_Accounts.views import create_account
+# from User_Accounts.views import create_account
 from Product.views import create_product
 from Pet_Shop.views import page_not_found, server_error, permission_error, request_error
 
@@ -24,7 +24,7 @@ from Pet_Shop.views import page_not_found, server_error, permission_error, reque
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('Home_Page.urls')),
-    path('reg/', create_account, name='create_account_page'),
+    # path('reg/', create_account, name='create_account_page'),
     path('add_prod/', create_product, name='create_product_page'),
     path('', include('Blog.urls')),
 

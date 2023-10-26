@@ -1,4 +1,3 @@
-from aiogram.utils.mixins import DataMixin
 from django.contrib.auth.views import LoginView
 from django.shortcuts import render
 from django.http import HttpResponse
@@ -6,8 +5,8 @@ from django.shortcuts import render
 from django.contrib.auth import authenticate, login
 from django.urls import reverse_lazy
 
-from User_Accounts.models import User, UserManager
-from User_Accounts.forms import LogInForm
+# from User_Accounts.models import User, UserManager
+# from User_Accounts.forms import LogInForm
 
 # Create your views here.
 

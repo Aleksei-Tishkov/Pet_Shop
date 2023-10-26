@@ -10,7 +10,7 @@ def post_view(request, slug):
         'main_ph': post.main_photo,
         'summary': post.summary,
         'content': post.content,
-        'autor': post.author,
+        #'autor': post.author,
         'time_create': post.time_create,
         'time_updated': post.time_updated
             }
