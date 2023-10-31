@@ -5,7 +5,9 @@ from Product.models import Product
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
+    fields = ('product_name', 'slug', 'price', 'quantity', 'is_published', 'product_type')
     list_display = ('product_name', 'price', 'quantity', 'is_published', 'product_type')
+    prepopulated_fields = {'slug': ('product_name', )}
     list_display_links = ('product_name', )
     list_editable = ('price', 'quantity', 'is_published')
     search_fields = ('product_name', 'description')
