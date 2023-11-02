@@ -1,0 +1,29 @@
+@font-face {
+  font-family: Kodchasan_ps;
+  src: url("../../fonts/Kodchasan_ps.woff2") format("woff2");
+}
+@font-face {
+  font-family: KohSantepheap_ps;
+  src: url("../../fonts/KohSantepheap_ps.woff2") format("woff2");
+}
+@font-face {
+  font-family: Judson_ps;
+  src: url("../../fonts/Judson_ps.woff2") format("woff2");
+}
+#header {
+  background: #212121;
+}
+
+#branding {
+  color: #F39422;
+}
+
+body {
+  font-family: KohSantepheap_ps, serif;
+}
+
+a {
+  color: #14FFEC;
+}
+
+/*# sourceMappingURL=admin.css.map */

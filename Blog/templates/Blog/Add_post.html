@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Post addition form 1/2
+{% endblock %}
+
+{% block content %}
+    <div class="main_container min-vh-100 hero-section">
+        <div class="main_block mt-5">
+            <h2 class="pt-5">Add new post here</h2>
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.non_field_errors }}
+                    {% for f in form %}
+                        <p>{{ f.label }} {{ f }}</p>
+                        <p>{{ f.errors }}</p>
+                    {% endfor %}
+                    <button type="submit" class="btn-primary" style="height: 4em; width: 10em">
+                        Save draft and continue
+                    </button>
+                </form>
+        </div>
+    </div>
+{% endblock %}

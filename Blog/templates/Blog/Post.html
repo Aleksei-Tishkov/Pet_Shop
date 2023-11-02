@@ -1,36 +1,20 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="main_container min-vh-100 hero-section">
-        <div class="main_block mt-5">
+    <div class="main_container mt-5">
+        <div class="mt-5">
             <div class="clearfix back-drop blog_post pt-5">
-                <img src={{ main_ph }} class="col-5 float-md-start blog_main_img" alt="...">
+            <div class="row">
+                {% if main_ph %}
+                <img src='{{ main_ph.url }}' class="col-6 float-md-start blog_main_img" width="100%" alt="...">
+                {% endif %}
+                <div class="col-6 position-relative">
+                <h1 class='blog_body blog-title'>{{ title }}</h1>
 
-                <h1 class='blog_body'>{{ title }}</h1>
-
-                <h3 class="blog_body">{{ summary }}</h3>
-
-                <p class="blog_body">{{ content }}</p>
-                <p class="blog_body">Vestibulum elementum neque et efficitur cursus. Pellentesque ac nunc ligula. Ut
-                    aliquam justo at placerat ullamcorper. Donec arcu felis, sodales vitae placerat malesuada, feugiat
-                    non diam. Nulla vestibulum turpis et mi pellentesque varius. Nullam rutrum augue nec odio suscipit
-                    suscipit. Nunc a sem enim. Sed vulputate iaculis nulla, vel ullamcorper mi blandit quis. Class
-                    aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Ut at eros nec
-                    turpis rutrum dictum. Suspendisse vestibulum sollicitudin tristique. Duis ut nisi aliquet, vulputate
-                    sapien eget, luctus neque. Aliquam turpis dolor, rhoncus id arcu eget, sagittis ullamcorper justo.
-                    Suspendisse potenti. Nullam consectetur metus ut nisi placerat lacinia. Sed dapibus blandit quam in
-                    venenatis.</p>
-                <p class="blog_body">Phasellus consequat ex libero, at varius nulla luctus non. Nullam porta ultricies
-                    vestibulum. Praesent quis nisi pretium, fermentum orci euismod, ultricies massa. Pellentesque
-                    habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Maecenas faucibus,
-                    augue efficitur consectetur bibendum, justo est bibendum nulla, in congue velit massa vel elit.
-                    Morbi ac arcu eros. Nullam fringilla purus leo, sed tempus nibh ornare non. Mauris dictum venenatis
-                    ipsum vitae imperdiet. Sed cursus lacus feugiat, mollis nulla sit amet, dignissim diam. In hac
-                    habitasse platea dictumst. Donec diam lorem, cursus eget pellentesque sit amet, convallis non ante.
-                    Maecenas lacinia dui justo, eu scelerisque sem tincidunt vitae. In tellus nisl, feugiat quis gravida
-                    nec, porta vitae sapien. Mauris in congue dolor. Proin et laoreet ligula, at elementum velit.
-                    Quisque sit amet lectus non nulla porta interdum.</p>
-                <p class="blog_author text-end">Author: {{ autor.username }}</p>
+                <h3 class="blog_body position-absolute bottom-0 end-0">{{ summary }}</h3>
+                </div>
+            </div>
+                <div class="blog_body blog_content">{{ content|linebreaks }}</div>
             </div>
         </div>
     </div>

@@ -1,15 +1,16 @@
 @font-face {
   font-family: Kodchasan_ps;
-  src: url("../fonts/Kodchasan_ps.woff2") format("woff2");
+  src: url("../fonts/PetrovSans-Book_ps.woff2") format("woff2");
 }
 @font-face {
   font-family: KohSantepheap_ps;
-  src: url("../fonts/KohSantepheap_ps.woff2") format("woff2");
+  src: url("../fonts/Minipax-Regular_ps.woff2") format("woff2");
 }
 @font-face {
-  font-family: Judson_ps;
-  src: url("../fonts/Judson_ps.woff2") format("woff2");
+  font-family: PS_Large;
+  src: url("../fonts/Nebulas-Bold_ps.otf") format("opentype");
 }
+
 * {
   scrollbar-width: thin;
 }
@@ -52,8 +53,8 @@ body {
 }
 
 h1 {
-  font-family: Judson_ps;
-  font-size: calc(var(--index) * 5);
+  font-family: PS_Large;
+  font-size: calc(var(--index) * 4.6);
   font-weight: 700;
 }
 
@@ -127,6 +128,12 @@ a {
   font-family: Kodchasan_ps;
   text-transform: none;
   border-radius: 1.125rem;
+}
+
+.add_post_btn {
+  position:relative;
+  left: 50%;
+  margin-top:50%;
 }
 
 .form-control {
@@ -215,10 +222,20 @@ input[type=search] {
   font-size: 15vh;
   font-weight: 700;
   box-shadow: 0 2 2 3;
-  line-height: 1;
+  line-height: 1
 }
 
 .sec_header {
   font-weight: 700;
   box-shadow: 0 2 2 3;
+}
+
+.blog_content {
+  padding: calc(var(--index) * .5);
+  margin: calc(var(--index) * .5);
+  line-height: 150%;
+}
+
+.blog-title {
+  font-size: 4rem;
 }

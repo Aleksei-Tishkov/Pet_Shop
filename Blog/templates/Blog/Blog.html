@@ -1,10 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-</body>
-</html>
+{% block content %}
+
+    <div class="main_container min-vh-100 mt-5">
+        <div class="main_block mt-5 mb-5">
+            {% for p in posts %}
+                <div class="clearfix back-drop blog_post p-3 mt-5">
+                    <div class="row">
+                        <div class="col-4">
+                            {% if p.main_photo %}
+                                <img src="{{ p.main_photo.url }}" width="80%" alt="">
+                            {% endif %}
+                        </div>
+                        <div class="col-8 position-relative">
+                            <h2>{{ p.title }}</h2>
+                            <p>{{ p.summary }}</p>
+                            <a class="btn position-absolute bottom-0" href="{{ p.slug }}">Read post</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block button %}
+<a href="add_post/" class="btn btn-primary add_post_btn">Add post</a>
+{% endblock %}
