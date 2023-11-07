@@ -4,17 +4,29 @@
     <div class="main_container mt-5">
         <div class="mt-5">
             <div class="clearfix back-drop blog_post pt-5">
-            <div class="row">
-                {% if main_ph %}
-                <img src='{{ main_ph.url }}' class="col-6 float-md-start blog_main_img" width="100%" alt="...">
-                {% endif %}
-                <div class="col-6 position-relative">
-                <h1 class='blog_body blog-title'>{{ title }}</h1>
-
-                <h3 class="blog_body position-absolute bottom-0 end-0">{{ summary }}</h3>
+                <div class="row">
+                    <div class="col-lg-6 d-flex justify-content-center">
+                        {% if post.main_photo %}
+                        <img src='{{ post.main_photo.url }}' class="text-center blog_main_image" alt="...">
+                        {% endif %}
+                    </div>
+                    <div class="col-lg-6">
+                        <h1 class='blog_body blog-title'>{{ post.title }}</h1>
+                        <h3 class="blog_body blog_summary">{{ post.summary }}</h3>
+                        <p class="blog_body">
+                            {% if tagz %}
+                                Tags:
+                                {% for t in tagz %}
+                                    <a href="/tag/{{ t.tag_slug }}/" class="btn">{{ t.tag_name }}</a>
+                                {% endfor %}
+                            {% endif %}
+                        </p>
+                    <h4 class="blog_body blog_author"> by Author </h4>
+                    </div>
                 </div>
-            </div>
-                <div class="blog_body blog_content">{{ content|linebreaks }}</div>
+                <div class="blog_body blog_content">
+                    {{ post.content|linebreaks }}
+                </div>
             </div>
         </div>
     </div>
