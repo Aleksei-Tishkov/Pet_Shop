@@ -59,7 +59,7 @@
         <div class="collapse navbar-collapse align-content-center m-2" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 align-content-end">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/home">Home</a>
+                    <a class="nav-link active" aria-current="page" href="/">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="#">Shop</a>
@@ -68,7 +68,7 @@
                     <a class="nav-link active" aria-current="page" href="/blog">Blog</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">User</a>
+                    <a class="nav-link active" aria-current="page" href="/login">User</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="#">Cart</a>
@@ -89,8 +89,13 @@
 
 
     </div>
-</div>
 {% block button %}
 {% endblock %}
+
+{% block paginate %}
+{% endblock %}
+</div>
+
+
 </body>
 </html>

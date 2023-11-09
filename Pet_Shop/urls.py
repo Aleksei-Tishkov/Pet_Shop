@@ -28,6 +28,7 @@ urlpatterns = [
     path('add_prod/', create_product, name='create_product_page'),
     path('', include('Product.urls')),
     path('', include('Blog.urls')),
+    path('', include('User.urls', namespace='User')),
 
 ]
 

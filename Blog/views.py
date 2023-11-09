@@ -14,6 +14,7 @@ class BlogView(ListView):
         'title': 'Pet Blog'
     }
     allow_empty = False
+    paginate_by = 4
 
     def get_queryset(self):
         return Post.objects.filter(is_published=True)

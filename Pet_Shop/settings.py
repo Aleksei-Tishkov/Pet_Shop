@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'Home_Page',
     'Product',
     'Blog',
+    'User',
 
 ]
 
