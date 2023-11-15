@@ -93,6 +93,13 @@ a {
   transition: all 0.8s ease-in-out;
 }
 
+.login-catto {
+  height: calc(var(--index) * 20);
+  position: absolute;
+  left: calc(var(--index) *4);
+  bottom: -1rem
+}
+
 .blog_post {
   border-radius: 1.125rem;
   border: 1px solid transparent;
@@ -133,6 +140,11 @@ a {
 .navbar {
   border-radius: 0rem;
   border: 1px solid transparent;
+}
+
+.errorlist {
+  list-style-type: none;
+  margin-left: -2rem;
 }
 
 .btn {

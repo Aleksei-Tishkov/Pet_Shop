@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+{% load static %}
+
+{% block content %}
+    <div class="main_container min-vh-100 hero-section d-flex align-items-center justify-content-center">
+
+        <div class="row main_block mt-5 text-center">
+            <a class="btn btn-primary" href="/password-change">Change password</a>
+        </div>
+        <div class="row main_block mt-5 text-center">
+            <a class="btn btn-primary" href="/logout">Log out</a>
+        </div>
+    </div>
+{% endblock %}

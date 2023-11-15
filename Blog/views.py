@@ -7,6 +7,8 @@ from Blog.models import Post, PostTag
 from Blog.forms import AddPostForm
 from django.utils import translation
 
+from Blog.services import get_published_posts, get_posts_by_tag, get_tag
+
 
 class BlogView(ListView):
     template_name = 'Blog/Blog.html'
@@ -17,7 +19,7 @@ class BlogView(ListView):
     paginate_by = 4
 
     def get_queryset(self):
-        return Post.objects.filter(is_published=True)
+        return get_published_posts()
 
 
 class TagView(ListView):
@@ -26,12 +28,12 @@ class TagView(ListView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        tag = PostTag.objects.get(tag_slug=self.kwargs['tag_slug'])
+        tag = get_tag(PostTag, self)
         context['title'] = tag.tag_name.title() + ' tag'
         return context
 
     def get_queryset(self):
-        return Post.objects.filter(is_published=True).filter(tags__tag_slug=self.kwargs['tag_slug'])
+        return get_posts_by_tag(get_published_posts(), self.kwargs['tag_slug'])
 
 
 class PostView(DetailView):
