@@ -5,11 +5,18 @@ def get_published_posts():
     return Post.objects.filter(is_published=True)
 
 
-
 def get_tag(model, instance):
     return model.objects.get(tag_slug=instance.kwargs['tag_slug'])
 
 
+def get_author(model, instance):
+    return model.objects.get(user_slug=instance.kwargs['author'])
+
+
 def get_posts_by_tag(queryset, tag):
     return queryset.filter(tags__tag_slug=tag)
+
+
+def get_posts_by_author(queryset, author):
+    return queryset.filter(author__user_slug=author)
 

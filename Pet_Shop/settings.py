@@ -78,7 +78,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Pet_Shop.wsgi.application'
 
-#AUTH_USER_MODEL = 'User_Accounts.User'
+AUTH_USER_MODEL = 'User.User'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases

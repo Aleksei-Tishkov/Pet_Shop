@@ -7,7 +7,8 @@ from Blog.models import Post, PostTag
 from Blog.forms import AddPostForm
 from django.utils import translation
 
-from Blog.services import get_published_posts, get_posts_by_tag, get_tag
+from Blog.services import get_published_posts, get_posts_by_tag, get_tag, get_author, get_posts_by_author
+from User.models import User
 
 
 class BlogView(ListView):
@@ -29,11 +30,26 @@ class TagView(ListView):
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
         tag = get_tag(PostTag, self)
-        context['title'] = tag.tag_name.title() + ' tag'
+        context['title'] = 'Posts about' + tag.tag_name.title()
         return context
 
     def get_queryset(self):
         return get_posts_by_tag(get_published_posts(), self.kwargs['tag_slug'])
+
+
+class AuthorView(ListView):
+    template_name = 'Blog/Tags.html'
+    allow_empty = False
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        author = get_author(User, self)
+        print(author.username)
+        context['title'] = 'Posts by ' + author.username
+        return context
+
+    def get_queryset(self):
+        return get_posts_by_author(get_published_posts(), self.kwargs['author'])
 
 
 class PostView(DetailView):

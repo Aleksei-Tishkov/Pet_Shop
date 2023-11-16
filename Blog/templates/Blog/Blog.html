@@ -19,7 +19,8 @@
                         <div class="col-8 position-relative">
                             <h2>{{ p.title }}</h2>
                             <p>{{ p.summary }}</p>
-                            <a class="btn position-absolute bottom-0" href="{{ p.slug }}">Read post</a>
+                            <p class="a_like">by <a href="../author/{{ p.author.user_slug }}">{{ p.author }}</a></p>
+                            <a class="btn mt-3" href="{{ p.slug }}">Read post</a>
                         </div>
                     </div>
                 </div>

@@ -4,6 +4,8 @@ from django.db import models
 #import User_Accounts.models
 from django.urls import reverse
 
+from User.models import User
+
 
 class PublishedManager(models.Manager):
     def get_queryset(self):
@@ -15,7 +17,7 @@ class Post(models.Model):
         DRAFT = 0, 'Draft'
         PUBLISHED = 1, 'Published'
 
-    #author = models.ForeignKey(User_Accounts.models.User, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='author')
     title = models.CharField(max_length=50, db_index=True)
     slug = models.SlugField(max_length=75, unique=True, db_index=True, verbose_name='URL')
     main_photo = models.ImageField(upload_to='blog_photos/%Y/%m/%d',

@@ -1,3 +1,16 @@
+from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.utils.text import slugify
 
-# Create your models here.
+
+class User(AbstractUser):
+    profile_photo = models.ImageField(upload_to='avatars/%Y/%m/%d', blank=True,
+                                      default='Images/default_avatar.webp',
+                                      verbose_name='Avatar')
+    user_slug = models.SlugField(unique=True)
+
+    def save(self, *args, **kwargs):
+        self.user_slug = slugify(self.username)
+        super().save(*args, **kwargs)
+
+

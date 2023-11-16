@@ -6,7 +6,7 @@ from Blog.models import Post, PostTag
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
-    fields = ('title', 'slug', 'tags', 'main_photo', 'post_photo', 'summary', 'content', 'is_published')
+    fields = ('title', 'slug', 'tags', 'author', 'main_photo', 'post_photo', 'summary', 'content', 'is_published')
     readonly_fields = ('post_photo', )
     prepopulated_fields = {'slug': ('title', )}
     search_fields = ('title', )
