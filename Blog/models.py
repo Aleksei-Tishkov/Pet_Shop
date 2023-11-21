@@ -23,7 +23,7 @@ class Post(models.Model):
     main_photo = models.ImageField(upload_to='blog_photos/%Y/%m/%d',
                                    blank=True, verbose_name='Main photo')
     summary = models.TextField(max_length=255, db_index=True)
-    content = models.TextField(db_index=True)
+    content = models.TextField()
     time_create = models.DateTimeField(auto_now_add=True)
     time_updated = models.DateTimeField(auto_now=True)
     is_published = models.BooleanField(default=False)

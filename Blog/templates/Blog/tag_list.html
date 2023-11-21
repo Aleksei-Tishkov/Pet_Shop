@@ -1,0 +1,3 @@
+{% for tag in blog_tags %}
+    <a href="{{ tag.get_absolute_url }}"> <button class="btn tag">{{ tag.tag_name }}</button> </a>
+{% endfor %}

@@ -1,32 +1,31 @@
-{% extends 'base.html' %}
+{% extends 'Blog/blog_base.html' %}
 
-{% block title %}
+{% block blog_title %}
     {{ title }}
 {% endblock %}
 
-{% block content %}
+{% block blog_content %}
 
-    <div class="main_container min-vh-100 mt-5">
-        <div class="main_block mt-5 mb-5">
-            {% for p in object_list %}
-                <div class="clearfix back-drop blog_post p-3 mt-5">
-                    <div class="row">
-                        <div class="col-4">
-                            {% if p.main_photo %}
-                                <img src="{{ p.main_photo.url }}" width="80%" style="max-height: 15rem; object-fit: cover" alt="">
-                            {% endif %}
+                    {% for p in object_list %}
+                        <div class="clearfix back-drop blog_post p-3 mt-5">
+                            <div class="row">
+                                <div class="col-4">
+                                    {% if p.main_photo %}
+                                        <img src="{{ p.main_photo.url }}" width="80%"
+                                             style="max-height: 15rem; object-fit: cover" alt="">
+                                    {% endif %}
+                                </div>
+                                <div class="col-8 position-relative">
+                                    <h2>{{ p.title }}</h2>
+                                    <p>{{ p.summary }}</p>
+                                    <p class="a_like">by <a href="./author/{{ p.author.user_slug }}">{{ p.author }}</a>
+                                    </p>
+                                    <a class="btn mt-3" href="{{ p.slug }}">Read post</a>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-8 position-relative">
-                            <h2>{{ p.title }}</h2>
-                            <p>{{ p.summary }}</p>
-                            <p class="a_like">by <a href="../author/{{ p.author.user_slug }}">{{ p.author }}</a></p>
-                            <a class="btn mt-3" href="{{ p.slug }}">Read post</a>
-                        </div>
-                    </div>
-                </div>
-            {% endfor %}
-        </div>
-    </div>
+                    {% endfor %}
+
 
 {% endblock %}
 

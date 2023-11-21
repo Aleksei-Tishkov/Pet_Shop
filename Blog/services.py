@@ -2,7 +2,15 @@ from Blog.models import Post, PostTag
 
 
 def get_published_posts():
-    return Post.objects.filter(is_published=True)
+    return Post.objects.filter(is_published=True).select_related('author')
+
+
+def get_all_tags():
+    return PostTag.objects.all()
+
+
+def get_post_tags():
+    return PostTag.objects.all()
 
 
 def get_tag(model, instance):
@@ -13,8 +21,12 @@ def get_author(model, instance):
     return model.objects.get(user_slug=instance.kwargs['author'])
 
 
+def get_all_authors():
+    return get_published_posts().order_by().distinct('author')
+
+
 def get_posts_by_tag(queryset, tag):
-    return queryset.filter(tags__tag_slug=tag)
+    return queryset.filter(tags__tag_slug=tag).select_related('author')
 
 
 def get_posts_by_author(queryset, author):

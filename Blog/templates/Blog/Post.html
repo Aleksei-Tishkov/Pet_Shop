@@ -15,9 +15,8 @@
                         <h3 class="blog_body blog_summary">{{ post.summary }}</h3>
                         <p class="blog_body">
                             {% if tagz %}
-                                Tags:
                                 {% for t in tagz %}
-                                    <a href="/tag/{{ t.tag_slug }}/" class="btn">{{ t.tag_name }}</a>
+                                    <a href="{% url 'blog_main' %}tag/{{ t.tag_slug }}/" class="btn tag">{{ t.tag_name }}</a>
                                 {% endfor %}
                             {% endif %}
                         </p>

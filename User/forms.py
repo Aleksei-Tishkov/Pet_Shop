@@ -9,7 +9,7 @@ class UserLoginForm(AuthenticationForm):
     username = forms.CharField(label='Username',
                                widget=forms.TextInput(attrs={'class': 'form-control back-drop text-center',
                                                              'placeholder': 'Username'}))
-    #email = forms.EmailField(label='E-mail', widget=forms.EmailInput(attrs={'class': 'form-control back-drop'}))
+    # email = forms.EmailField(label='E-mail', widget=forms.EmailInput(attrs={'class': 'form-control back-drop'}))
     password = forms.CharField(label='Password',
                                widget=forms.PasswordInput(attrs={'class': 'form-control back-drop text-center',
                                                                  'placeholder': 'Password'}))
@@ -52,8 +52,31 @@ class ChangePassword(PasswordChangeForm):
 
 class UserPasswordResetForm(PasswordResetForm):
     email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control back-drop text-center',
-                                                                     'placeholder': 'Enter your e-mail'}))
+                                                            'placeholder': 'Enter your e-mail'}))
 
 
 class UserPasswordResetCompleteForm():
     pass
+
+
+class ProfilePageForm(forms.ModelForm):
+    email = forms.EmailField(disabled=True, widget=forms.EmailInput(
+        attrs={'class': 'form-control back-drop text-center'})
+                             )
+
+    class Meta:
+        model = get_user_model()
+        fields = ['username', 'email', 'first_name', 'last_name']
+        labels = {
+            'username': 'Username',
+            'email': 'E-mail',
+            'first_name': 'First name',
+            'last_name': 'Last name',
+        }
+        widgets = {
+            'username': forms.TextInput(attrs={'class': 'form-control back-drop text-center'}),
+            'first_name': forms.TextInput(attrs={'class': 'form-control back-drop text-center'}),
+            'last_name': forms.TextInput(attrs={'class': 'form-control back-drop text-center'}),
+        }
+
+

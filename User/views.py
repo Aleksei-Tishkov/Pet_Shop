@@ -1,9 +1,12 @@
-
+from django.contrib.auth import get_user_model
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView, PasswordChangeView, PasswordResetView, PasswordResetDoneView, \
     PasswordResetConfirmView, PasswordResetCompleteView
 from django.urls import reverse_lazy, reverse
+from django.views.generic import UpdateView
 
-from User.forms import UserLoginForm, UserRegisterForm, ChangePassword, UserPasswordResetForm
+from Pet_Shop import settings
+from User.forms import UserLoginForm, UserRegisterForm, ChangePassword, UserPasswordResetForm, ProfilePageForm
 from django.shortcuts import render, redirect
 
 from User.services import save_new_user
@@ -18,8 +21,19 @@ class UserLogin(LoginView):
     # return reverse_lazy('home')
 
 
-def profile_page(request):
-    return render(request, 'User/Profile_page.html', {'title': 'Profile page'})
+class ProfilePage(LoginRequiredMixin, UpdateView):
+    model = get_user_model()
+    form_class = ProfilePageForm
+    template_name = 'User/Profile_page.html'
+    extra_context = {
+        'title': "Profile page"
+    }
+
+    def get_success_url(self):
+        return reverse_lazy('User:profile')
+
+    def get_object(self, queryset=None):
+        return self.request.user
 
 
 def register_user(request):
@@ -60,6 +74,7 @@ class UserPasswordResetConfirmView(PasswordResetConfirmView):
     template_name = 'User/Password_reset_confirm.html'
     extra_context = {'title': 'Change password'}
     success_url = reverse_lazy('User:password_reset_complete')
+
 
 class UserPasswordResetCompleteView(PasswordResetCompleteView):
     template_name = 'User/Password_change_success.html'

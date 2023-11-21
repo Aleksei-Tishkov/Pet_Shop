@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load blog_tags %}
+
+{% block title %}
+    {% block blog_title %}
+    {% endblock %}
+{% endblock %}
+
+{% block content %}
+<div class="main_container min-vh-100">
+        <div class="row main_block mb-5">
+
+                <div data-speed="1.5"  class="col-9">
+                    {% block blog_content %}
+                    {% endblock %}
+                </div>
+                <div data-speed=".05" class="col-3 right_block text-end">
+                    <div class="tag_block back-drop text-center">
+                        <h4 class="mb-4">Tags</h4>
+                        {% show_tag_list %}
+                    </div>
+                    <div class="tag_block back-drop text-center mt-5">
+                        <h4 class="mb-4">Authors</h4>
+                        {% show_author_list %}
+                    </div>
+                </div>
+
+        </div>
+</div>
+
+{% endblock %}

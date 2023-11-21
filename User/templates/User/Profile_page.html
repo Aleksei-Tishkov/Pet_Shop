@@ -7,12 +7,45 @@
 
 {% block content %}
     <div class="main_container min-vh-100 hero-section d-flex align-items-center justify-content-center">
+        <div class="row auto mt-5 text-center">
+            <div class="col-lg-3 mt-3 align-items-center justify-content-center">
+                <div class="row mt-2 text-center">
+                    <img src="{{ user.profile_photo.url }}" alt="" class="user_photo">
+                </div>
+                <div class="row mt-2 text-center">
+                    <a class="btn btn-primary" href="/password-change">Change password</a>
+                </div>
+                <div class="row mt-2 text-center">
+                    <a class="btn btn-primary" href="/logout">Log out</a>
+                </div>
+            </div>
+            <div class="col-lg-6 mt-3 align-items-center justify-content-center">
+                <div class="row mt-2 text-center">
+                    <h2>{{ user.username }}</h2>
+                </div>
+                <div class="row mt-2 text-center">
+                    <h3 class="col-12 text-center">
+                        You can change your profile info here
+                    </h3>
+                </div>
+                <div class="row mt-2 text-center justify-content-center">
+                    <form method="post" enctype="multipart/form-data" style="width: 65%">
+                        {% csrf_token %}
+                        {{ form.non_field_errors }}
+                        {% for f in form %}
+                            <p>{{ f.label }} {{ f }}</p>
+                            <p>{{ f.errors }}</p>
+                        {% endfor %}
+                        <button type="submit" class="btn btn-primary mt-4" style="height: 2.5rem; width: 100%">
+                            Submit
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-3 mt-3 align-items-center justify-content-center">
 
-        <div class="row main_block mt-5 text-center">
-            <a class="btn btn-primary" href="/password-change">Change password</a>
-        </div>
-        <div class="row main_block mt-5 text-center">
-            <a class="btn btn-primary" href="/logout">Log out</a>
-        </div>
+            </div>
+
+
     </div>
 {% endblock %}

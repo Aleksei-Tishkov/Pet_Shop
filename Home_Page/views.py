@@ -5,19 +5,11 @@ from django.shortcuts import render
 from django.contrib.auth import authenticate, login
 from django.urls import reverse_lazy
 
-# from User_Accounts.models import User, UserManager
-# from User_Accounts.forms import LogInForm
-
-# Create your views here.
+from Blog.models import Post
+from Blog.services import get_published_posts
+from Home_Page.services import get_random_instance
 
 
 def home_page(request):
-    if request.method == 'GET':
-        return render(request, 'Home_Page/Home_Page.html')
-    data = request.POST
-    user = authenticate(request, username=data.get('email'), password=data.get('password'))
-    if user is not None:
-        login(request, user)
-        return render(request, 'Home_Page/Home_Page.html')
-    else:
-        return render(request, 'Home_Page/Home_Page.html')
+
+    return render(request, 'Home_Page/Home_Page.html', {'post': get_random_instance(get_published_posts())})

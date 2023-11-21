@@ -4,7 +4,27 @@
     {{ title }}
 {% endblock %}
 {% load static %}
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '{your-app-id}',
+      cookie     : true,
+      xfbml      : true,
+      version    : '{api-version}'
+    });
 
+    FB.AppEvents.logPageView();
+
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
 {% block content %}
     <div class="main_container min-vh-100 hero-section d-flex align-items-center justify-content-center">
         <img src="{% static 'Images/Login_Cat.png' %}" alt="" class="login-catto">
@@ -31,6 +51,9 @@
                 <a class="text-center " href="/password-reset">
                     Forgot the password?
                 </a>
+            </div>
+            <div class="col-12 mt-2 d-flex align-items-center justify-content-center">
+                <a href="{% url 'social:begin' 'facebook' %}"><img src="{% static 'Images/icons8-facebook-50.png' %}" alt=""></a>
             </div>
             <div class="col-12 mt-3 d-flex align-items-center justify-content-center">
                 <h3 class="text-center mt-3"

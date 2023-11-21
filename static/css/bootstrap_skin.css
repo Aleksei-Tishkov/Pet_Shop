@@ -83,6 +83,10 @@ a {
   font-family: KohSantepheap_ps
 }
 
+.user_photo {
+  border-radius: 2rem;
+}
+
 .container {
   border-radius: 1.125rem;
 }
@@ -151,10 +155,14 @@ a {
   margin-left: -2rem;
 }
 
-.btn {
+.btn, .tag {
   font-family: Kodchasan_ps;
   text-transform: none;
   border-radius: 1.125rem;
+}
+
+.tag {
+  padding: .1rem 1rem;
 }
 
 .btn-primary {
@@ -187,6 +195,28 @@ input[type=search]::-webkit-search-cancel-button {
 
 input[type=search] {
   border: 1px;
+}
+
+input[type=password] {
+  border: 1px;
+  font-family: Kodchasan_ps;
+  text-transform: none;
+  border-radius: 1.125rem;
+  text-align: center;
+  width: 100%;
+  height: 2.5rem;
+}
+
+
+.right_block {
+  position: absolute;
+  right: calc(var(--index));
+}
+
+.tag_block {
+  padding: calc(var(--index) * .8);
+  border-radius: 1.125rem;
+  border: 1px solid transparent;
 }
 
 .card {
@@ -232,7 +262,7 @@ input[type=search] {
 }
 
 .main_container {
-  padding: 6vh 6vw;
+  padding: calc(var(--index)*2);
   margin-bottom: 10rem;
 }
 
