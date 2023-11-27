@@ -29,18 +29,4 @@
 
 {% endblock %}
 
-{% block button %}
-    <a href="add_post/" class="btn btn-primary add_post_btn">Add post</a>
-{% endblock %}
 
-{% block paginate %}
-    {% if page_obj.has_other_pages %}
-        <div class="row">
-            {% for i in paginator.page_range %}
-                <div class="col">
-                    <a href="{{ i }}" class="pagination__elem">{{ i }}</a>
-                </div>
-            {% endfor %}
-        </div>
-    {% endif %}
-{% endblock %}

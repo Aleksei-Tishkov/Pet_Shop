@@ -1,7 +1,14 @@
-/* ===== Scrollbar CSS ===== */
- * /* Firefox */
- *
- * /* Chrome, Edge, and Safari */
+:root {
+  --pet-main: 33, 33, 33;
+  --pet-secondary-dark: 50, 50, 50;
+  --pet-secondary-bright: 13, 115, 119;
+  --pet-blue: 62, 147, 188;
+  --pet-white: 20, 255, 236;
+  --pet-typography-main: 224, 239, 238;
+  --pet-typography-sec: 156, 136, 136;
+  --pet-accent-bright: 243, 148, 34;
+}
+
 ::-webkit-scrollbar-track {
   background: #ffffff;
 }
@@ -12,38 +19,34 @@
 }
 
 body {
-  background-color: #212121;
+  background-color: rgb(var(--pet-main));
   /*background-image: url('../Images/Bg_tile.jpg') */
-  color: rgb(244, 239, 238);
+  color: rgb(var(--pet-typography-main));
 }
 
 h1 {
-  color: rgb(243, 148, 34);
-}
-
-h2 {
-  color: rgb(244, 239, 238);
+  color: rgb(var(--pet-accent-bright));
 }
 
 h3 {
-  color: rgba(244, 239, 238, 0.9);
+  color: rgba(var(--pet-typography-main), .9);
 }
 
 a {
-  color: rgba(13, 115, 119, 1)
+  color: rgb(var(--pet-secondary-bright))
 
 }
 
 a:disabled {
-  color: rgba(20, 255, 236, .5)
+  color: rgba(var(--pet-white), .5)
 }
 
 a:hover {
-  color: rgba(20, 255, 236, 1)
+  color: rgb(var(--pet-typography-main))
 }
 
 input:disabled {
-  background-color: rgba(20, 255, 236, .1);
+  background-color: rgba(var(--pet-typography-main), .1);
 }
 
 .back-drop {
@@ -51,32 +54,34 @@ input:disabled {
 }
 
 .blog_post {
-  background-color: rgba(244, 239, 238, 0.1);
-  border-top-color: rgba(244, 239, 238, 0.2);
-  border-left-color: rgba(244, 239, 238, 0.2);
-  border-right-color: rgba(244, 239, 238, 0.1);
-  border-bottom-color: rgba(244, 239, 238, 0.1);
+  background-color: rgba(var(--pet-white), 0.1);
+  border-top-color: rgba(var(--pet-white), 0.2);
+  border-left-color: rgba(var(--pet-white), 0.2);
+  border-right-color: rgba(var(--pet-white), 0.1);
+  border-bottom-color: rgba(var(--pet-white), 0.1);
 }
 
 .a_like {
-  color: rgba(13, 115, 119, 1)
+  color: rgb(var(--pet-secondary-bright))
 }
 
 .navbar {
-  --bs-navbar-brand-color: rgba(244, 239, 238);
-  --bs-navbar-active-color: rgba(244, 239, 238);
+  --bs-navbar-brand-color: rgb(var(--pet-typography-main));
+  --bs-navbar-active-color: rgb(var(--pet-typography-main));
+  --bs-navbar-hover-color: rgb(var(--pet-typography-sec));
   --bs-navbar-color: none;
   --bs-navbar-toggler-border-color: none;
-  border-bottom-color: rgba(244, 239, 238, 0.1);
+  border-bottom-color: rgba(var(--pet-typography-main), .1);
 }
 
 .-navbar-brand:hover {
-  color: rgb(244, 239, 238);
+  color: rgb(var(--pet-typography-sec));
 }
 
-.nav-item {
-  color: rgb(244, 239, 238);
+.nav-link {
+  color: rgb(var(--pet-typography-main));
 }
+
 
 .navbar-toggler {
   color: none;
@@ -103,42 +108,52 @@ input:disabled {
   box-shadow: none;
 }
 
+.page__num {
+  color: rgba(var(--pet-blue), 0.9);
+  border-color: rgba(var(--pet-blue), .3);
+  background-color: rgba(var(--pet-secondary-dark), .1);
+}
+
+.footer {
+  background-color: rgba(var(--pet-secondary-dark), .5);
+}
+
 .tag_block {
-  border-top-color: rgba(244, 239, 238, 0.2);
-  border-left-color: rgba(244, 239, 238, 0.2);
-  border-right-color: rgba(244, 239, 238, 0.1);
-  border-bottom-color: rgba(244, 239, 238, 0.1);
+  border-top-color: rgba(var(--pet-white), 0.2);
+  border-left-color: rgba(var(--pet-white), 0.2);
+  border-right-color: rgba(var(--pet-white), 0.1);
+  border-bottom-color: rgba(var(--pet-white), 0.1);
 }
 
 .form-control {
-  color: rgb(244, 239, 238);
-  background-color: rgba(244, 239, 238, 0.3);
-  --bs-secondary-color: rgba(244, 239, 238, .6);
+  color: rgb(var(--pet-typography-main));
+  background-color: rgba(var(--pet-typography-main), 0.3);
+  --bs-secondary-color: rgba(var(--pet-typography-main), .6);
 }
 
 input[type=password] {
-  color: rgb(244, 239, 238);
-  background-color: rgba(244, 239, 238, 0.3);
+  color: rgb(var(--pet-typography-main));
+  background-color: rgba(var(--pet-typography-main), 0.3);
 }
 
 .form-control:focus {
-  color: rgb(244, 239, 238);
-  --bs-body-bg: rgba(244, 239, 238, .3);
+  color: rgb(var(--pet-typography-main));
+  --bs-body-bg: rgba(var(--pet-typography-main), .3);
 }
 
 .form-control:disabled {
-  color: rgba(41, 58, 128);
-  background-color: rgba(20, 255, 236, .7)
+  color: rgba(var(--pet-blue));
+  background-color: rgba(var(--pet-white), .7)
 }
 
 .btn {
-  --bs-btn-color: rgba(244, 239, 238, .85);
+  --bs-btn-color: rgba(var(--pet-typography-main), .85);
   --bs-btn-bg: rgba(41, 58, 128, .1);
-  --bs-btn-border-color: rgba(244, 239, 238, .45);
+  --bs-btn-border-color: rgba(var(--pet-typography-main), .45);
   --bs-btn-hover-bg: rgba(83, 126, 197, .05);
   --bs-btn-hover-color: #D2FFFA;
-  --bs-btn-hover-border-color: rgba(244, 239, 238, .45);
-  --bs-btn-active-color: rgba(244, 239, 238, .45);
+  --bs-btn-hover-border-color: rgba(var(--pet-typography-main), .45);
+  --bs-btn-active-color: rgba(var(--pet-typography-main), .45);
   --bs-btn-active-bg: rgba(41, 58, 128, .2);
   --bs-btn-disabled-bg: none;
   --bs-btn-disabled-color: rgba(41, 58, 128);
@@ -146,43 +161,43 @@ input[type=password] {
 }
 
 .tag {
-  --bs-btn-color: rgba(83, 126, 197, 1);
-  --bs-btn-bg: rgba(41, 58, 128, .1);
-  --bs-btn-border-color: rgba(83, 126, 197, .9);
-  --bs-btn-hover-bg: rgba(83, 126, 197, .3);
+  --bs-btn-color: rgba(var(--pet-blue), 1);
+  --bs-btn-bg: rgba(var(--pet-blue), .1);
+  --bs-btn-border-color: rgba(var(--pet-blue), .9);
+  --bs-btn-hover-bg: rgba(var(--pet-blue), .3);
   --bs-btn-hover-color: #D2FFFA;
-  --bs-btn-hover-border-color: rgba(244, 239, 238, .45);
-  --bs-btn-active-color: rgba(244, 239, 238, .45);
-  --bs-btn-active-bg: rgba(41, 58, 128, .2);
+  --bs-btn-hover-border-color: rgba(var(--pet-typography-main), .45);
+  --bs-btn-active-color: rgba(var(--pet-typography-main), .45);
+  --bs-btn-active-bg: rgba(var(--pet-blue), .2);
   --bs-btn-disabled-bg: none;
-  --bs-btn-disabled-color: rgba(41, 58, 128);
-  --bs-btn-disabled-border-color: rgba(41, 58, 128);
+  --bs-btn-disabled-color: rgba(var(--pet-blue));
+  --bs-btn-disabled-border-color: rgba(var(--pet-blue));
 }
 
 .btn-primary {
-  background-color: rgba(243, 148, 34, 0.85);
+  background-color: rgba(var(--pet-accent-bright), 0.85);
   --bs-btn-color: #101010;
-  --bs-btn-bg: rgba(243, 148, 34, .85);
-  --bs-btn-hover-bg: rgba(243, 148, 34, .75);
-  --bs-btn-border-color: rgba(243, 148, 34, .45);
+  --bs-btn-bg: rgba(var(--pet-accent-bright), .85);
+  --bs-btn-hover-bg: rgba(var(--pet-accent-bright), .75);
+  --bs-btn-border-color: rgba(var(--pet-accent-bright), .45);
   --bs-btn-hover-color: #101010;
-  --bs-btn-hover-border-color: rgba(244, 239, 238, .45);
+  --bs-btn-hover-border-color: rgba(var(--pet-typography-main), .45);
   --bs-btn-active-color: #101010;
-  --bs-btn-active-bg: rgba(243, 148, 34);
-  --bs-btn-active-border-color: rgba(243, 148, 34, .25);
+  --bs-btn-active-bg: rgb(var(--pet-accent-bright));
+  --bs-btn-active-border-color: rgba(var(--pet-accent-bright), .25);
   --bs-btn-disabled-bg: none;
-  --bs-btn-disabled-color: rgba(243, 148, 34, .55);
-  --bs-btn-disabled-border-color: rgba(243, 148, 34, .55);
+  --bs-btn-disabled-color: rgba(var(--pet-accent-bright), .55);
+  --bs-btn-disabled-border-color: rgba(var(--pet-accent-bright), .55);
 }
 
 .card {
-  --bs-card-color: rgba(244, 239, 238);
+  --bs-card-color: rgba(var(--pet-typography-main));
   background-color: rgba(255, 255, 255, 0);
   box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
-  border-top-color: rgba(244, 239, 238, 0.2);
-  border-left-color: rgba(244, 239, 238, 0.2);
-  border-right-color: rgba(244, 239, 238, 0.1);
-  border-bottom-color: rgba(244, 239, 238, 0.1);
+  border-top-color: rgba(var(--pet-typography-main), 0.2);
+  border-left-color: rgba(var(--pet-typography-main), 0.2);
+  border-right-color: rgba(var(--pet-typography-main), 0.1);
+  border-bottom-color: rgba(var(--pet-typography-main), 0.1);
 }
 
 .card-children {
@@ -190,14 +205,14 @@ input[type=password] {
   backdrop-filter: blur(10px);
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 1.125rem;
-  border-top-color: rgba(244, 239, 238, 0.2);
-  border-left-color: rgba(244, 239, 238, 0.2);
-  border-right-color: rgba(244, 239, 238, 0.1);
-  border-bottom-color: rgba(244, 239, 238, 0.1);
+  border-top-color: rgba(var(--pet-typography-main), 0.2);
+  border-left-color: rgba(var(--pet-typography-main), 0.2);
+  border-right-color: rgba(var(--pet-typography-main), 0.1);
+  border-bottom-color: rgba(var(--pet-typography-main), 0.1);
 }
 
 .upload__file::file-selector-button{
-  color: rgba(244, 239, 238, .85);
-  border-color: rgba(244, 239, 238, .85);
+  color: rgba(var(--pet-typography-main), .85);
+  border-color: rgba(var(--pet-typography-main), .85);
   border-radius: 1.125rem; backdrop-filter: blur(10px);
   background-color: rgba(255, 255, 255, 0.1)}
