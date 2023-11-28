@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 import os
 import dotenv
 from pathlib import Path
+
+from django.core.mail import get_connection
 from django.utils.translation import gettext_lazy as _
 
 dotenv.load_dotenv()
@@ -45,6 +47,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'debug_toolbar',
     'social_django',
+    'ckeditor',
     'Home_Page',
     'Product',
     'Blog',
@@ -148,6 +151,8 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static/'
 ]
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 MEDIA_ROOT = BASE_DIR / 'media'
 
 MEDIA_URL = 'media/'
@@ -180,6 +185,8 @@ SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
 SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
     'fields': 'name, email'
 }
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_PORT = 465

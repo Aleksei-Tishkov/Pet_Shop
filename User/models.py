@@ -15,4 +15,3 @@ class User(AbstractUser):
         self.user_slug = slugify(self.username)
         super().save(*args, **kwargs)
 
-

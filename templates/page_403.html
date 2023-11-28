@@ -1,33 +1,24 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}
-    Error 404
+    Error 403
 {% endblock %}
 
 
 {% block content %}
-    <div class="main_container min-vh-100 hero-section">
-            <p class="text-center mt-5" style="
-                                    font-family: Koh Santepheap;
-                                    font-size: 8rem;
-                                    font-style: normal;
-                                    font-weight: 700;
-                                    line-height: 87%;
-                        ">
+    <img src="{% static 'Images/Grumpy.webp' %}" alt="" class="grumpy-doggo">
+    <div class="main_container min-vh-100 hero-section m-5 text-center">
+            <h1 class="h1__error">
                 403
-            </p>
+            </h1>
 
-            <p style="color: rgba(122, 122, 122, 0.80);
-                                    font-family: Kodchasan;
-                                    font-size: 2rem;
-                                    font-style: normal;
-                                    font-weight: 400;
-                                    line-height: 107%;">
+            <h3 class="mt-5">
                 It seems like you’ve tried to<br>
 do something that you don’t<br>
 have permission to.<br>
 It’s ok, we just won’t let you! :)
-            </p>
+            </h3>
 
     </div>
 

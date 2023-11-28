@@ -21,6 +21,10 @@
                                     <p class="a_like">by <a href="./author/{{ p.author.user_slug }}">{{ p.author }}</a>
                                     </p>
                                     <a class="btn mt-3" href="{{ p.slug }}">Read post</a>
+                                    {% if user.id == p.author.id %}
+                                        <a class="btn mt-3" href="edit_post/{{ p.slug }}">Change post</a>
+                                        <a class="btn mt-3" href="delete_post/{{ p.slug }}">Delete post</a>
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>

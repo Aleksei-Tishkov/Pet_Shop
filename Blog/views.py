@@ -1,10 +1,14 @@
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.core.exceptions import PermissionDenied
+from django.http import request
 from django.shortcuts import render, get_object_or_404, redirect
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
+from django.utils.text import slugify
 from django.views import View
-from django.views.generic import ListView, DetailView, FormView
+from django.views.generic import ListView, DetailView, FormView, CreateView, UpdateView
 
 from Blog.models import Post, PostTag
-from Blog.forms import AddPostForm
+from Blog.forms import AddPostForm, EditPostForm
 from django.utils import translation
 
 from Blog.services import get_published_posts, get_posts_by_tag, get_tag, get_author, get_posts_by_author
@@ -67,12 +71,40 @@ class PostView(DetailView):
         return get_object_or_404(Post.published, slug=self.kwargs[self.slug_url_kwarg])
 
 
-class AddPost(FormView):
+class AddPost(LoginRequiredMixin, CreateView):
     form_class = AddPostForm
     template_name = 'Blog/Add_post.html'
-    success_url = reverse_lazy('blog_main')
-    extra_context = {'title': 'Post addition form 1/2'}
+    extra_context = {'title': 'Compose a new post'}
 
     def form_valid(self, form):
-        form.save()
+        form.instance.author = self.request.user
+        form.instance.slug = slugify(self.request.POST['title'])
         return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse('edit_post', args=(self.object.slug,))
+
+
+class AddTag(CreateView):
+    model = PostTag
+    fields = '__all__'
+    template_name = 'Blog/Add_tag.html'
+    success_url = reverse_lazy('blog_main')
+    extra_context = {'title': 'Tag addition form'}
+
+
+class EditPost(UpdateView):
+    model = Post
+    form_class = EditPostForm
+    template_name = 'Blog/Add_post.html'
+    success_url = reverse_lazy('blog_main')
+    extra_context = {
+        'title': 'Edit your post',
+    }
+
+    def get(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        if self.object.author != request.user:
+            raise PermissionDenied()
+        return super().get(request, *args, **kwargs)
+

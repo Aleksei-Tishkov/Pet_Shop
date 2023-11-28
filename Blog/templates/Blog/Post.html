@@ -24,7 +24,7 @@
                     </div>
                 </div>
                 <div class="blog_body blog_content">
-                    {{ post.content|linebreaks }}
+                    {{ post.content|safe|linebreaks }}
                 </div>
             </div>
         </div>
