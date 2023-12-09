@@ -1,6 +1,10 @@
 from Blog.models import Post, PostTag
 
 
+def get_all_posts():
+    return Post.objects.all()
+
+
 def get_published_posts():
     return Post.objects.filter(is_published=True).select_related('author')
 
@@ -31,4 +35,9 @@ def get_posts_by_tag(queryset, tag):
 
 def get_posts_by_author(queryset, author):
     return queryset.filter(author__user_slug=author)
+
+
+#def publish(post) -> None:
+    #post.published
+
 

@@ -289,8 +289,10 @@
                     </div>
                 </div>
                 <div class="blog_body blog_content animate-heading">
-                    {{ post.content|linebreaks }}
+                    {{ post.content|linebreaks|truncatewords_html:300 }}
+<a href="{% url 'read_post' post.slug %}" class="btn btn-primary">Read more</a>
                 </div>
+
             </div>
                 </div>
             </div>

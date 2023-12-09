@@ -89,6 +89,7 @@ a {
 
 .user_photo {
   border-radius: 2rem;
+  max-width: calc(var(--index) * 20);
 }
 
 .container {
@@ -229,6 +230,14 @@ input#file-upload-button {
 
 }
 
+.form-switch {
+  padding-left: 0;
+}
+
+input#id_is_published {
+  margin-left: .3rem;
+}
+
 .left_block {
 
   left: calc(var(--index));
@@ -325,3 +334,6 @@ input#file-upload-button {
   box-shadow: 0 2 2 3;
 }
 
+.bi {
+  width: 20%;
+}

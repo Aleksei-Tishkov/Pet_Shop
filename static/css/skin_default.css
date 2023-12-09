@@ -175,13 +175,13 @@ input[type=password] {
 }
 
 .btn-primary {
-  background-color: rgba(var(--pet-accent-bright), 0.85);
+  background-color: rgba(var(--pet-accent-bright), 0.75);
   --bs-btn-color: #101010;
   --bs-btn-bg: rgba(var(--pet-accent-bright), .85);
-  --bs-btn-hover-bg: rgba(var(--pet-accent-bright), .75);
+  --bs-btn-hover-bg: rgba(var(--pet-accent-bright), .95);
   --bs-btn-border-color: rgba(var(--pet-accent-bright), .45);
   --bs-btn-hover-color: #101010;
-  --bs-btn-hover-border-color: rgba(var(--pet-typography-main), .45);
+  --bs-btn-hover-border-color: rgba(var(--pet-accent-bright), .85);
   --bs-btn-active-color: #101010;
   --bs-btn-active-bg: rgb(var(--pet-accent-bright));
   --bs-btn-active-border-color: rgba(var(--pet-accent-bright), .25);

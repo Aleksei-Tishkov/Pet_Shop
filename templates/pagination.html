@@ -9,7 +9,7 @@
                     {% endif %}
                     {% for p in paginator.page_range %}
                         {% if page_obj.number == p %}
-                        <a class="col btn page__num back-drop m-1">
+                        <a class="col btn page__num back-drop m-1 disabled">
                                 {{ p }}
                         </a>
                         {% elif p >= page_obj.number|add:-2 and p <= page_obj.number|add:2 %}

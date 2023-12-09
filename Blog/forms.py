@@ -36,6 +36,17 @@ class EditPostForm(forms.ModelForm):
             'summary': forms.Textarea(attrs={'class': 'form-control back-drop', 'rows': 2}),
             'content': forms.Textarea(attrs={'class': 'form-control back-drop'}),
             'main_photo': forms.FileInput(attrs={'class': 'upload__file'}),
+            'is_published': forms.CheckboxInput(attrs={'class': "form-check-input",
+                                                       'type': "checkbox",
+                                                       'role': "switch"}
+                                                )
         }
+        labels = {'is_published': 'Publish'}
+
+
+
+
+
+
 
 

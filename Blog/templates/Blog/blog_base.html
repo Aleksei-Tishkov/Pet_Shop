@@ -29,9 +29,8 @@
                     <div class="text-center mt-2">
                     {% if "user.has_perm('Post.add_post')" %}
                         <a href="{% url 'add_post' %}" class="btn btn-primary m-2">Create new post</a>
-                    {% endif %}
-                    {% if "user.has_perm('Post.add_tag')" %}
                         <a href="{% url 'add_tag' %}" class="btn btn-primary m-2">Add new tag</a>
+                        <a href="{% url 'editorial' %}" class="btn btn-primary m-2">Edit your posts</a>
                     {% endif %}
                     </div>
                 </div>

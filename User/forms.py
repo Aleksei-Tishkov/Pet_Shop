@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, PasswordChangeForm, PasswordResetForm
+from image_uploader_widget.widgets import ImageUploaderWidget
 
 from User.services import check_email
 
@@ -60,23 +61,20 @@ class UserPasswordResetCompleteForm():
 
 
 class ProfilePageForm(forms.ModelForm):
-    email = forms.EmailField(disabled=True, widget=forms.EmailInput(
-        attrs={'class': 'form-control back-drop text-center'})
-                             )
-
     class Meta:
         model = get_user_model()
-        fields = ['username', 'email', 'first_name', 'last_name']
-        labels = {
-            'username': 'Username',
-            'email': 'E-mail',
-            'first_name': 'First name',
-            'last_name': 'Last name',
-        }
         widgets = {
             'username': forms.TextInput(attrs={'class': 'form-control back-drop text-center'}),
             'first_name': forms.TextInput(attrs={'class': 'form-control back-drop text-center'}),
             'last_name': forms.TextInput(attrs={'class': 'form-control back-drop text-center'}),
+            'profile_photo': ImageUploaderWidget(attrs={'accept': 'image/png'})
         }
+        fields = ['username', 'first_name', 'last_name', 'profile_photo']
+        labels = {
+            'username': 'Username',
+            'first_name': 'First name',
+            'last_name': 'Last name',
+        }
+
 
 
