@@ -12,7 +12,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('__debug__/', include("debug_toolbar.urls")),
     path('', include('Home_Page.urls')),
-    path('', include('Product.urls')),
+    path('', include('Shop.urls')),
     path('', include('Blog.urls')),
     path('', include('User.urls', namespace='User')),
     path('social-auth/', include('social_django.urls', namespace='social')),

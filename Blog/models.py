@@ -24,7 +24,7 @@ class Post(models.Model):
     time_updated = models.DateTimeField(auto_now=True)
     is_published = models.BooleanField(default=False)
     tags = models.ManyToManyField('PostTag', blank=True, related_name='tags')
-    # related_product = models.ManyToManyField('Shop.Product', blank=True, related_name='product')
+    # related_product = models.ManyToManyField('Shop.Shop', blank=True, related_name='product')
 
     objects = models.Manager()
     published = PublishedManager()

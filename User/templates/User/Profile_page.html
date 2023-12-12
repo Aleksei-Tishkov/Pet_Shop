@@ -36,8 +36,8 @@
                         {% csrf_token %}
                         {{ form.non_field_errors }}
                         {% for f in form %}
-                            <p>{{ f.label }} </p>
-                                <p>{{ f }}</p>
+                            <p class="form__title">{{ f.label }} </p>
+                            <p>{{ f }}</p>
                             <p>{{ f.errors }}</p>
                         {% endfor %}
                         <button type="submit" class="btn btn-primary mt-4" style="height: 2.5rem; width: 100%">

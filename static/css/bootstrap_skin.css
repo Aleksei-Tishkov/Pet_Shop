@@ -234,6 +234,14 @@ input#file-upload-button {
   padding-left: 0;
 }
 
+.form__title {
+  padding-bottom: calc(var(--index) * .1);
+}
+
+.iuw-root {
+  justify-content: center !important;
+}
+
 input#id_is_published {
   margin-left: .3rem;
 }

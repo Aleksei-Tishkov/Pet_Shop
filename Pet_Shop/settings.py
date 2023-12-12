@@ -51,9 +51,9 @@ INSTALLED_APPS = [
     'social_django',
     'ckeditor',
     'Home_Page',
-    'Product',
     'Blog',
     'User',
+    'Shop',
 
 ]
 

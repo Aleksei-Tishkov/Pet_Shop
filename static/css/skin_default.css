@@ -49,6 +49,14 @@ input:disabled {
   background-color: rgba(var(--pet-typography-main), .1);
 }
 
+.form__title {
+  color: rgb(var(--pet-accent-bright));
+}
+
+.iuw-root {
+  background-color: rgba(var(--pet-secondary-dark), .4) !important;
+}
+
 .back-drop {
   backdrop-filter: blur(10px);
 }
