@@ -17,16 +17,15 @@ class Product(models.Model):
     product_seller = models.ForeignKey(to=User, on_delete=models.CASCADE, related_name='seller')
 
     def get_absolute_url(self):
-        return reverse('shop', args=(self.slug, ))
+        return reverse('shop', args=(self.slug,))
 
-    # def save(self, *args, **kwargs):
-    #     self.slug = slugify(self.product_name)
-    #     super().save(*args, **kwargs)
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.product_name)
+        super().save(*args, **kwargs)
 
 
 class ProductPhoto(models.Model):
     product_photo = models.ImageField(upload_to='product_photos/%Y/%m/%d', )
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
-
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='product_photo')
 
 # class ProductSpecs(models.Model):

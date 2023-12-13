@@ -16,6 +16,13 @@
                         <p>{{ f }}</p>
                         <p>{{ f.errors }}</p>
                     {% endfor %}
+                    {% if image_form %}
+                        {{ image_form.management_form }}
+                            {% for f in image_form %}
+                                {{ f }}
+                            {% endfor %}
+
+                    {% endif %}
                     <button type="submit" class="btn-primary" style="height: 4em; width: 10em">
                         Save draft and continue
                     </button>

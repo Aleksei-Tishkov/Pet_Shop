@@ -230,6 +230,10 @@ input#file-upload-button {
 
 }
 
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
 .form-switch {
   padding-left: 0;
 }

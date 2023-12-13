@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}
+    Post deleting confirmation
+{% endblock %}
+
+{% block content %}
+    <div class="main_container min-vh-100 hero-section">
+        <div class="main_block mt-5 text-center">
+            <h2 class="pt-5">This will delete the post<br>
+                '{{ post.title }}'<br>
+                You won't be able to restore it!</h2>
+            <h3 class="mt-5">If you want to just hide it from public,<br>you may just <a href="{% url 'edit_post' post.slug %}">unpublish it!</a></h3>
+            <h2 class="mt-5">Are you sure you want to delete it?</h2>
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <button type="submit" class="btn-primary mt-5" style="height: 4em; width: 10em">
+                        Yes, delete it!
+                    </button>
+                </form>
+        </div>
+    </div>
+{% endblock %}

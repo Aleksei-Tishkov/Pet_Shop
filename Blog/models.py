@@ -32,7 +32,6 @@ class Post(models.Model):
     def get_absolute_url(self):
         return reverse('post', args=(self.slug, ))
 
-
     class Meta:
         ordering = ['-time_create']
         indexes = [

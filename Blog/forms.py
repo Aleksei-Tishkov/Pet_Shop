@@ -42,11 +42,3 @@ class EditPostForm(forms.ModelForm):
                                                 )
         }
         labels = {'is_published': 'Publish'}
-
-
-
-
-
-
-
-
