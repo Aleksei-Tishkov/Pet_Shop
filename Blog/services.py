@@ -35,9 +35,3 @@ def get_posts_by_tag(queryset, tag):
 
 def get_posts_by_author(queryset, author):
     return queryset.filter(author__user_slug=author)
-
-
-#def publish(post) -> None:
-    #post.published
-
-

@@ -161,6 +161,8 @@ MEDIA_URL = 'media/'
 
 DEFAULT_USER_IMAGE = 'static/Images/default_avatar.webp'
 
+DEFAULT_PRODUCT_IMAGE = 'Images/default_product_image.webp'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 

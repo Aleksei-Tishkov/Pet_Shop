@@ -49,6 +49,12 @@ input:disabled {
   background-color: rgba(var(--pet-typography-main), .1);
 }
 
+input#file-upload-button {
+  color: rgba(var(--pet-typography-main), .85);
+  background-color: rgba(41, 58, 128, .1);
+  border-color: rgba(var(--pet-typography-main), .45)
+}
+
 .form__title {
   color: rgb(var(--pet-accent-bright));
 }
@@ -201,7 +207,7 @@ input[type=password] {
 .card {
   --bs-card-color: rgba(var(--pet-typography-main));
   background-color: rgba(255, 255, 255, 0);
-  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
   border-top-color: rgba(var(--pet-typography-main), 0.2);
   border-left-color: rgba(var(--pet-typography-main), 0.2);
   border-right-color: rgba(var(--pet-typography-main), 0.1);

@@ -12,7 +12,7 @@
                     {% csrf_token %}
                     {{ form.non_field_errors }}
                     {% for f in form %}
-                        <p>{{ f.label }}</p>
+                        <h4>{{ f.label }}</h4>
                         <p>{{ f }}</p>
                         <p>{{ f.errors }}</p>
                     {% endfor %}

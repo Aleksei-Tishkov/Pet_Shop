@@ -173,7 +173,7 @@ a {
   margin-left: -2rem;
 }
 
-.btn, .tag {
+.btn, input#file-upload-button, .tag {
   font-family: Kodchasan_ps;
   text-transform: none;
   border-radius: 1.125rem;

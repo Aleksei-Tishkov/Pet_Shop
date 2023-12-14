@@ -5,35 +5,14 @@
 {% endblock %}
 
 {% block shop_content %}
-    <div class="row">
-        <div class="col-lg-4 col-sm-2">
+    {% load static %}
+    <div class="row mt-3">
+
             {% for p in object_list %}
-                        <div class="clearfix back-drop blog_post p-3 mt-5">
-                            <div class="row">
-                                <div class="col-4">
 
-                                </div>
-                                <div class="col-8 position-relative">
-                                    <img src="{{ p.product_photo.get.product_photo.url }}" alt="">
-                                    <p>{{ p.summary }}</p>
-                                    <h2>{{ p.product_name }}</h2>
-                                    <p>{{ p.summary }}</p>
-                                    <p class="a_like">by <a href="./author/{{ p.author.user_slug }}">{{ p.author }}</a>
-                                    </p>
-                                    <a class="btn mt-3" href="{% url 'read_post' p.slug %}">Read post</a>
-                                    {% if user.id == p.author.id %}
-                                        <a class="btn mt-3" href="{% url 'edit_post' p.slug %}">Change post</a>
-                                        <a class="btn mt-3" href="{% url 'delete_post' p.slug %}">Delete post</a>
-                                    {% endif %}
-                                </div>
-                            </div>
-                        </div>
-                    {% endfor %}
+                {% include 'Shop/Product_card.html' %}
 
-        </div>
+            {% endfor %}
+
     </div>
-
-
 {% endblock %}
-
-

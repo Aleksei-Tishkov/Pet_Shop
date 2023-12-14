@@ -20,8 +20,18 @@ class CreateProductForm(forms.ModelForm):
 class EditProductForm(forms.ModelForm):
     class Meta:
         model = Product
-        fields = '__all__'
-        widgets = {}
+        fields = ('product_name', 'product_main_photo', 'slug', 'product_short_description', 'product_description',
+                  'product_price', 'product_quantity', )
+        widgets = {
+            'product_name': forms.TextInput(attrs={'class': 'form-control back-drop'}),
+            'product_main_photo': forms.FileInput(attrs={'class': 'upload__file'}),
+            'slug': forms.TextInput(attrs={'class': 'form-control back-drop'}),
+            'product_short_description': forms.Textarea(attrs={'class': 'form-control back-drop', 'rows': 2}),
+            'product_description': forms.Textarea(attrs={'class': 'form-control back-drop', 'rows': 5}),
+            'product_price': forms.NumberInput(attrs={'class': 'form-control back-drop'}),
+            'product_quantity': forms.NumberInput(attrs={'class': 'form-control back-drop'}),
+
+        }
 
 
 class MultipleFileInput(forms.ClearableFileInput):
@@ -30,7 +40,7 @@ class MultipleFileInput(forms.ClearableFileInput):
 
 class MultipleFileField(forms.FileField):
     def __init__(self, *args, **kwargs):
-        kwargs.setdefault("widget", MultipleFileInput())
+        kwargs.setdefault("widget", MultipleFileInput(attrs={'class': 'upload__file'}))
         super().__init__(*args, **kwargs)
 
     def clean(self, data, initial=None):
@@ -40,17 +50,6 @@ class MultipleFileField(forms.FileField):
         else:
             result = single_file_clean(data, initial)
         return result
-
-
-class ProductImagesForm(forms.ModelForm):
-    class Meta:
-        model = ProductPhoto
-        fields = ('product_photo',)
-
-    product_photo = forms.ImageField(
-        label='Product photos',
-        widget=MultipleFileField()
-    )
 
 
 class ProductImagesForm(forms.Form):

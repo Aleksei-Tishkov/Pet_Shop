@@ -9,6 +9,12 @@ class PublishedManager(models.Manager):
 
 
 class Post(models.Model):
+    class Meta:
+        ordering = ['-time_create']
+        indexes = [
+            models.Index(fields=['-time_create'])
+        ]
+
     class Status(models.IntegerChoices):
         DRAFT = 0, 'Draft'
         PUBLISHED = 1, 'Published'
@@ -31,12 +37,6 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse('post', args=(self.slug, ))
-
-    class Meta:
-        ordering = ['-time_create']
-        indexes = [
-            models.Index(fields=['-time_create'])
-        ]
 
 
 class PostTag(models.Model):

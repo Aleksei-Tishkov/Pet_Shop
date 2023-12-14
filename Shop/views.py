@@ -3,7 +3,7 @@ from django.core.exceptions import PermissionDenied
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse, reverse_lazy
 from django.utils.text import slugify
-from django.views.generic import CreateView, UpdateView, ListView
+from django.views.generic import CreateView, UpdateView, ListView, DetailView
 from django.views.generic.edit import FormView
 
 
@@ -39,7 +39,6 @@ class EditProductView(UpdateView):
 
     def get(self, request, *args, **kwargs):
         __object = self.get_object()
-        image_form = ProductImagesForm()
         if __object.product_seller != request.user:
             raise PermissionDenied()
         return super().get(request, *args, **kwargs)
@@ -55,3 +54,12 @@ class EditProductView(UpdateView):
 class ShopView(ListView):
     template_name = 'Shop/Shop.html'
     model = Product
+    paginate_by = 8
+    extra_context = {'title': 'Shop'}
+
+
+class ProductView(DetailView):
+    model = Product
+    template_name = 'Shop/Product_detail.html'
+    context_object_name = 'product'
+
