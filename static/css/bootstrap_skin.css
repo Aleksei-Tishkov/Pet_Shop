@@ -87,9 +87,11 @@ a {
   font-family: KohSantepheap_ps
 }
 
-.fixed__content {
+.right_side {
   position: fixed;
   height: 100%;
+  width: 20% !important;
+  padding: calc(var(--index)*2);
 }
 
 .user_photo {

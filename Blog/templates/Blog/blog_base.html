@@ -7,36 +7,40 @@
 {% endblock %}
 
 {% block content %}
-<div class="main_container min-vh-100">
+    <div class="main_container min-vh-100">
         <div class="row main_block mb-5">
 
-                <div data-speed="1" class="col-lg-9 mt-5">
-                    {% block blog_content %}
-                    {% endblock %}
-                    <div class="row mt-5">
-                        {% include 'pagination.html' %}
-                    </div>
+            <div data-speed="1" class="col-lg-9 mt-5">
+                {% block blog_content %}
+                {% endblock %}
+                <div class="row mt-5">
+                    {% include 'pagination.html' %}
                 </div>
-                <div data-speed=".1" class="col-lg-3 align-self-center">
-                    <div class="tag_block back-drop text-center">
-                        <h4 class="mb-4">Tags</h4>
-                        {% show_tag_list %}
-                    </div>
-                    <div class="tag_block back-drop text-center mt-2">
-                        <h4 class="mb-4">Authors</h4>
-                        {% show_author_list %}
-                    </div>
-                    <div class="text-center mt-2">
-                    {% if perms.Post.add_post %}
-                        <a href="{% url 'add_post' %}" class="btn btn-primary m-2">Create new post</a>
-                        <a href="{% url 'add_tag' %}" class="btn btn-primary m-2">Add new tag</a>
-                        <a href="{% url 'editorial' %}" class="btn btn-primary m-2">Edit your posts</a>
-                    {% endif %}
-                    </div>
-                </div>
+            </div>
 
         </div>
-</div>
+    </div>
+
+{% endblock %}
+
+{% block right_side %}
+    <div id="right_side" class="col-lg-3 align-self-center position-absolute sticky-bottom sticky-lg-top
+                                        end-0 top-25 m-5 p-5 pe-0">
+    <div class="tag_block back-drop text-center mt-5">
+        <h4 class="mb-4">Tags</h4>
+        {% show_tag_list %}
+    </div>
+    <div class="tag_block back-drop text-center mt-2">
+        <h4 class="mb-4">Authors</h4>
+        {% show_author_list %}
+    </div>
+    <div class="text-center mt-2">
+        {% if perms.Post.add_post %}
+            <a href="{% url 'add_post' %}" class="btn btn-primary m-2">Create new post</a>
+            <a href="{% url 'add_tag' %}" class="btn btn-primary m-2">Add new tag</a>
+            <a href="{% url 'editorial' %}" class="btn btn-primary m-2">Edit your posts</a>
+        {% endif %}
+    </div>
 
 {% endblock %}
 
