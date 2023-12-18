@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="main_container min-vh-100 hero-section">
+        <div class="main_block mt-5">
+
+            <div id="carouselExampleInterval" class="carousel slide mt-5 w-50" data-bs-ride="carousel">
+              <div class="carousel-inner">
+                  {% for p in product.product_photo.all %}
+                    <div class="carousel-item active" data-bs-interval="10000">
+                      <img src="{{ p.product_photo.url }}" class="d-block w-75 " alt="...">
+                    </div>
+                  {% endfor %}
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

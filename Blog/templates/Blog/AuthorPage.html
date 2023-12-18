@@ -20,8 +20,6 @@
                                 <div class="col-8 position-relative">
                                     <h2>{{ p.title }}</h2>
                                     <p>{{ p.summary }}</p>
-                                    <p class="a_like">by <a href="./author/{{ p.author.user_slug }}">{{ p.author }}</a>
-                                    </p>
                                     <a class="btn mt-3" href="{% url 'view_post' p.slug %}">View post</a>
                                     {% if user.id == p.author.id %}
                                         <a class="btn mt-3" href="{% url 'edit_post' p.slug %}">Change post</a>

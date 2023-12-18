@@ -1,0 +1,25 @@
+<div class="card back-drop m-2">
+    <div class="p-2 container text-center">
+        {% if user.id == p.product_seller_id %}
+        edit
+        {% endif %}
+        <img class="card__image mt-2"
+             src={{ p.product_main_photo.url }}
+                     class="card-img-top" alt="..."
+             style="border-radius: 0.7rem">
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">{{ p.product_name }}</h5>
+        <p class="card-text d-none d-lg-block">{{ p.product_short_description }}</p>
+        <div class="d-flex justify-content-end mb-2"
+             style="font-family: KohSantepheap,serif">${{ p.product_price }}
+        </div>
+        <div class="d-flex justify-content-center">
+            <button type="button"
+                    class="btn"
+                    style="width: 40vw">
+                Buy
+            </button>
+        </div>
+    </div>
+</div>

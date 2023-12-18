@@ -12,7 +12,7 @@ from Shop.models import Product
 from django.shortcuts import render
 
 # Create your views here.
-from Shop.services import link_product_photo_to_product
+from Shop.services import link_product_photo_to_product, get_published_products, get_product_by_seller, get_all_products
 
 
 class ProductCreateView(LoginRequiredMixin, CreateView):
@@ -34,7 +34,7 @@ class EditProductView(UpdateView):
     form_class = EditProductForm
     success_url = reverse_lazy('shop_main')
     template_name = 'Shop/Product_create.html'
-    image_form = ProductImagesForm
+    image_form = ProductImagesForm()
     extra_context = {'title': 'Edit your product', 'image_form': image_form}
 
     def get(self, request, *args, **kwargs):
@@ -57,9 +57,24 @@ class ShopView(ListView):
     paginate_by = 8
     extra_context = {'title': 'Shop'}
 
+    def get_queryset(self):
+        return get_published_products()
+
 
 class ProductView(DetailView):
     model = Product
     template_name = 'Shop/Product_detail.html'
     context_object_name = 'product'
+
+
+class SellerPage(LoginRequiredMixin, ListView):
+    template_name = 'Shop/Shop.html'
+    paginate_by = 8
+    extra_context = {
+        'title': "Edit your products"
+    }
+    allow_empty = False
+
+    def get_queryset(self):
+        return get_product_by_seller(get_all_products(), self.request.user.pk)
 

@@ -45,6 +45,10 @@ a:hover {
   color: rgb(var(--pet-typography-main))
 }
 
+input, textarea {
+  --bs-border-color: None;
+}
+
 input:disabled {
   background-color: rgba(var(--pet-typography-main), .1);
 }
@@ -143,6 +147,11 @@ input#file-upload-button {
   color: rgb(var(--pet-typography-main));
   background-color: rgba(var(--pet-typography-main), 0.3);
   --bs-secondary-color: rgba(var(--pet-typography-main), .6);
+}
+
+.form-check-input:checked {
+  background-color: rgb(var(--pet-accent-bright));
+  border-color: rgb(var(--pet-blue));
 }
 
 input[type=password] {

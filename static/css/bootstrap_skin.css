@@ -87,6 +87,11 @@ a {
   font-family: KohSantepheap_ps
 }
 
+.fixed__content {
+  position: fixed;
+  height: 100%;
+}
+
 .user_photo {
   border-radius: 2rem;
   max-width: calc(var(--index) * 20);
@@ -246,7 +251,7 @@ input[type=number]::-webkit-inner-spin-button {
   justify-content: center !important;
 }
 
-input#id_is_published {
+input#id_is_published, input#id_product_is_published {
   margin-left: .3rem;
 }
 

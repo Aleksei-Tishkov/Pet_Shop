@@ -47,7 +47,7 @@ class Product(models.Model):
 
 
 class ProductPhoto(models.Model):
-    product_photo = models.ImageField(upload_to='product_photos/%Y/%m/%d', )
+    product_photo = models.ImageField(upload_to='product_photos/%Y/%m/%d', blank=True)
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='product_photo')
 
 # class ProductSpecs(models.Model):
