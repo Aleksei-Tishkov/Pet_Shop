@@ -78,6 +78,11 @@ h4 {
   font-size: 1.5rem;
 }
 
+button.close {
+  border-radius: 2rem;
+  border: none;
+}
+
 a {
   text-decoration: none;
   font-family: KohSantepheap_ps;
@@ -85,6 +90,10 @@ a {
 
 .a_like {
   font-family: KohSantepheap_ps
+}
+
+.modal-content {
+  border-radius: 1.125rem;
 }
 
 .right_side {
@@ -97,6 +106,13 @@ a {
 .user_photo {
   border-radius: 2rem;
   max-width: calc(var(--index) * 20);
+}
+
+.product__carousel__photo {
+  border-radius: 1.125rem;
+
+  height: calc(var(--index) * 15);
+  object-fit: cover;
 }
 
 .container {
@@ -233,8 +249,8 @@ input[type=password] {
   height: 2.5rem;
 }
 
-input#file-upload-button {
-
+input {
+  border-radius: 1.125rem;
 }
 
 input[type=number]::-webkit-inner-spin-button {

@@ -10,6 +10,7 @@ urlpatterns = [
     path('shop/editorial/', views.SellerPage.as_view(), name='shop_editorial'),
     path('shop/edit_product/<slug:slug>/', views.EditProductView.as_view(), name='edit_product'),
     path('shop/product/<slug:slug>/', views.ProductView.as_view(), name='product_view'),
+    path('shop/add_to_cart/<slug:slug>/', views.CartEntryCreator.as_view(), name='add_to_cart'),
 
 ]
 

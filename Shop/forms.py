@@ -1,6 +1,7 @@
 from django import forms
 
-from Shop.models import Product, ProductPhoto
+from Shop.models import Product, ProductPhoto, Cart
+from bootstrap_modal_forms.forms import BSModalModelForm
 
 
 class CreateProductForm(forms.ModelForm):
@@ -60,3 +61,8 @@ class ProductImagesForm(forms.Form):
     product_photo = MultipleFileField(required=False)
     use_required_attribute = False
 
+
+class CartAdditionForm(BSModalModelForm):
+    class Meta:
+        model = Cart
+        fields = ('quantity', )

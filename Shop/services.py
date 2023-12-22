@@ -1,4 +1,5 @@
-from Shop.models import Product, ProductPhoto
+from Shop.models import Product, ProductPhoto, Cart
+from User.models import User
 
 
 def publish_prod(queryset):
@@ -25,3 +26,9 @@ def get_product_by_seller(queryset, seller):
     return queryset.filter(product_seller_id=seller)
 
 
+def add_to_cart(customer: User, product: Product, quantity: int) -> None:
+    Cart.objects.create(customer_id=customer.pk, product_id=product.pk, quantity=quantity)
+
+
+def get_product_by_slug(queryset, slug):
+    return queryset.filter(slug=slug)

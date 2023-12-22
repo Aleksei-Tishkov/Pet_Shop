@@ -3,23 +3,43 @@
 {% block content %}
     <div class="main_container min-vh-100 hero-section">
         <div class="main_block mt-5">
+            <div class="row h-50">
+                <div class="col-md-4 text-center">
 
-            <div id="carouselExampleInterval" class="carousel slide mt-5 w-50" data-bs-ride="carousel">
-              <div class="carousel-inner">
-                  {% for p in product.product_photo.all %}
-                    <div class="carousel-item active" data-bs-interval="10000">
-                      <img src="{{ p.product_photo.url }}" class="d-block w-75 " alt="...">
+                    <div class="container align-items-center mt-5">
+                        <div id="carouselExampleFade" class="carousel slide carousel-fade mt-2" data-bs-ride="carousel">
+                          <div class="carousel-inner">
+                                <div class="carousel-item active text-center" data-bs-interval=3000">
+                                  <img src="{{ product.product_main_photo.url }}" class="product__carousel__photo d-block w-100" alt="...">
+                                </div>
+                              {% for p in product.product_photo.all %}
+                                <div class="carousel-item text-center" data-bs-interval="3000">
+                                  <img src="{{ p.product_photo.url }}" class="product__carousel__photo d-block w-100" alt="...">
+                                </div>
+                              {% endfor %}
+                          </div>
+                          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                          </button>
+                          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                          </button>
+                        </div>
                     </div>
-                  {% endfor %}
-              </div>
-              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-              </button>
-              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-              </button>
+
+                </div>
+            <div class="mt-5 col-md-6">
+                <h2>{{ product.product_name }}</h2>
+                <h3 class="mt-2"><p>{{ product.product_short_description }}</p></h3>
+                {{ product.product_description }}
+            </div>
+            <div class="mt-5 col-md-2">
+
+                <button data-form-url="{% url 'add_to_cart' product.slug %}" class="btn w-100 m-2 add_to_cart">Add to cart</button>
+                <a href="" class="btn btn-primary w-100 m-2">Buy</a>
+            </div>
             </div>
         </div>
     </div>

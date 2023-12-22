@@ -50,4 +50,10 @@ class ProductPhoto(models.Model):
     product_photo = models.ImageField(upload_to='product_photos/%Y/%m/%d', blank=True)
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='product_photo')
 
+
+class Cart(models.Model):
+    customer = models.ForeignKey(User, on_delete=models.CASCADE, related_name='cart_customer')
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='cart_product')
+    quantity = models.IntegerField(blank=False, default=1)
+
 # class ProductSpecs(models.Model):

@@ -5,14 +5,16 @@ from django.urls import reverse, reverse_lazy
 from django.utils.text import slugify
 from django.views.generic import CreateView, UpdateView, ListView, DetailView
 from django.views.generic.edit import FormView
+from bootstrap_modal_forms.generic import BSModalCreateView
 
 
-from Shop.forms import CreateProductForm, EditProductForm, ProductImagesForm
-from Shop.models import Product
+from Shop.forms import CreateProductForm, EditProductForm, ProductImagesForm, CartAdditionForm
+from Shop.models import Product, Cart
 from django.shortcuts import render
 
 # Create your views here.
-from Shop.services import link_product_photo_to_product, get_published_products, get_product_by_seller, get_all_products
+from Shop.services import link_product_photo_to_product, get_published_products, get_product_by_seller, \
+    get_all_products, add_to_cart, get_product_by_slug
 
 
 class ProductCreateView(LoginRequiredMixin, CreateView):
@@ -77,4 +79,25 @@ class SellerPage(LoginRequiredMixin, ListView):
 
     def get_queryset(self):
         return get_product_by_seller(get_all_products(), self.request.user.pk)
+
+
+class CartEntryCreator(LoginRequiredMixin, BSModalCreateView):
+    template_name = 'Shop/Cart_Addition.html'
+    form_class = CartAdditionForm
+    success_message = 'Product added to the cart'
+    success_url = reverse_lazy('shop_main')
+
+    def get_queryset(self):
+        return get_product_by_slug(get_published_products(), self.kwargs['slug'])
+
+    def form_valid(self, form):
+        form.instance.customer_id = self.request.user.pk
+        form.instance.product = self.get_object()
+        return super().form_valid(form)
+
+
+
+
+
+
 
