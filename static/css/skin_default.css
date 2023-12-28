@@ -88,7 +88,7 @@ button.close {
   backdrop-filter: blur(10px);
 }
 
-.blog_post, .page__num {
+.blog_post, .page__num, .product__line {
   background-color: rgba(var(--pet-white), 0.1);
   border-top-color: rgba(var(--pet-white), 0.2);
   border-left-color: rgba(var(--pet-white), 0.2);
@@ -116,7 +116,6 @@ button.close {
 .nav-link {
   color: rgb(var(--pet-typography-main));
 }
-
 
 .navbar-toggler {
   color: none;
@@ -151,6 +150,23 @@ button.close {
 
 .footer {
   background-color: rgba(var(--pet-secondary-dark), .5);
+}
+
+.product__line__divided {
+  border-left-color: rgba(var(--pet-white), 0.2);
+  border-right-color: rgba(var(--pet-white), 0.1);
+}
+
+.table {
+  --bs-table-bg: rgb(var(--pet-white));
+}
+
+.product__table {
+  --bs-table-bg: rgb(var(--pet-white));
+}
+
+.table-responsive {
+  background-color: rgb(var(--pet-white));
 }
 
 .tag_block {

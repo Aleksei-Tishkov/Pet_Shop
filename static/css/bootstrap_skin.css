@@ -115,6 +115,34 @@ a {
   object-fit: cover;
 }
 
+.product__line {
+  border-radius: 1.125rem;
+  border: 1px solid transparent;
+}
+
+.product__line__divided {
+  border-right: 1px solid transparent;
+}
+
+.product__table {
+  border-right: 1px solid transparent;
+  border-radius: 1.125rem;
+}
+
+.table__card {
+  position: relative;
+  border-radius: 1.125rem;
+  border: 1px solid transparent;
+}
+
+.table-responsive {
+  width: 100%;
+}
+
+.table__total {
+  font-weight: bold;
+}
+
 .container {
   border-radius: 1.125rem;
 }

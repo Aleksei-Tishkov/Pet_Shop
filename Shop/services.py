@@ -1,5 +1,6 @@
 from Shop.models import Product, ProductPhoto, Cart
 from User.models import User
+from django.db.models import Sum
 
 
 def publish_prod(queryset):
@@ -32,3 +33,20 @@ def add_to_cart(customer: User, product: Product, quantity: int) -> None:
 
 def get_product_by_slug(queryset, slug):
     return queryset.filter(slug=slug)
+
+
+def get_cart_by_user(user):
+    if not user:
+        raise
+    return Cart.objects.filter(customer_id=user)
+
+
+def get_products_in_cart(user):
+    return Product.objects.filter(pk__in=Cart.objects.filter(customer_id=user).values_list('product_id'))
+
+
+def get_cart_sum(cart):
+    res = 0
+    for o in cart:
+        res += o.quantity * o.product.product_price
+    return res

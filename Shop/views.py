@@ -14,7 +14,7 @@ from django.shortcuts import render
 
 # Create your views here.
 from Shop.services import link_product_photo_to_product, get_published_products, get_product_by_seller, \
-    get_all_products, add_to_cart, get_product_by_slug
+    get_all_products, add_to_cart, get_product_by_slug, get_products_in_cart, get_cart_by_user, get_cart_sum
 
 
 class ProductCreateView(LoginRequiredMixin, CreateView):
@@ -96,8 +96,12 @@ class CartEntryCreator(LoginRequiredMixin, BSModalCreateView):
         return super().form_valid(form)
 
 
+class CartView(LoginRequiredMixin, ListView):
+    template_name = 'Shop/Cart.html'
+    model = Cart
+    extra_context = {'title': 'Cart', 'cart_sum': ''}
 
-
-
-
-
+    def get_queryset(self):
+        res = get_cart_by_user(self.request.user)
+        self.extra_context['cart_sum'] = get_cart_sum(res)
+        return res
