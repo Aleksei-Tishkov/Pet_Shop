@@ -1,11 +1,11 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.exceptions import PermissionDenied
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse, reverse_lazy
 from django.utils.text import slugify
-from django.views.generic import CreateView, UpdateView, ListView, DetailView
+from django.views.generic import CreateView, UpdateView, ListView, DetailView, DeleteView
 from django.views.generic.edit import FormView
-from bootstrap_modal_forms.generic import BSModalCreateView
+from bootstrap_modal_forms.generic import BSModalCreateView, BSModalFormView
 
 
 from Shop.forms import CreateProductForm, EditProductForm, ProductImagesForm, CartAdditionForm
@@ -14,7 +14,8 @@ from django.shortcuts import render
 
 # Create your views here.
 from Shop.services import link_product_photo_to_product, get_published_products, get_product_by_seller, \
-    get_all_products, add_to_cart, get_product_by_slug, get_products_in_cart, get_cart_by_user, get_cart_sum
+    get_all_products, add_to_cart, get_product_by_slug, get_products_in_cart, get_cart_by_user, get_cart_sum, \
+    clear_cart, delete_product_from_cart
 
 
 class ProductCreateView(LoginRequiredMixin, CreateView):
@@ -60,6 +61,7 @@ class ShopView(ListView):
     extra_context = {'title': 'Shop'}
 
     def get_queryset(self):
+        self.extra_context['cart'] = get_products_in_cart(self.request.user)
         return get_published_products()
 
 
@@ -67,6 +69,18 @@ class ProductView(DetailView):
     model = Product
     template_name = 'Shop/Product_detail.html'
     context_object_name = 'product'
+
+    def get_context_data(self, **kwargs):
+        """Insert the single object into the context dict."""
+        context = {}
+        if self.object:
+            context["object"] = self.object
+            context_object_name = self.get_context_object_name(self.object)
+            if context_object_name:
+                context[context_object_name] = self.object
+        context['cart'] = get_products_in_cart(self.request.user)
+        context.update(kwargs)
+        return super().get_context_data(**context)
 
 
 class SellerPage(LoginRequiredMixin, ListView):
@@ -92,8 +106,22 @@ class CartEntryCreator(LoginRequiredMixin, BSModalCreateView):
 
     def form_valid(self, form):
         form.instance.customer_id = self.request.user.pk
-        form.instance.product = self.get_object()
+        _object = self.get_object()
+        form.instance.product = _object
+        if form.instance.quantity > _object.product_quantity:
+            form.instance.quantity = _object.product_quantity
         return super().form_valid(form)
+
+
+class CartEntryDeleter(DeleteView):
+    model = Cart
+    #template_name = 'Blog/DeletePost.html'
+    context_object_name = 'cart'
+    slug_url_kwarg = 'slug'
+    success_url = reverse_lazy('cart')
+
+    def get_object(self, queryset=None):
+        return get_object_or_404()
 
 
 class CartView(LoginRequiredMixin, ListView):
@@ -105,3 +133,19 @@ class CartView(LoginRequiredMixin, ListView):
         res = get_cart_by_user(self.request.user)
         self.extra_context['cart_sum'] = get_cart_sum(res)
         return res
+
+
+class CartClearView(BSModalFormView):
+    model = Cart
+    template_name = 'Shop/Cart_clear.html'
+    success_url = reverse_lazy('shop_main')
+    form_class = CartAdditionForm
+
+    def post(self, request, *args, **kwargs):
+        clear_cart(user=request.user.pk)
+        return super().post(request, *args, **kwargs)
+
+
+def delete_cart_entry(request, pk):
+    delete_product_from_cart(cart_pk=pk, user=request.user)
+    return redirect('cart')

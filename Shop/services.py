@@ -1,3 +1,5 @@
+from django.core.exceptions import ObjectDoesNotExist
+
 from Shop.models import Product, ProductPhoto, Cart
 from User.models import User
 from django.db.models import Sum
@@ -36,8 +38,6 @@ def get_product_by_slug(queryset, slug):
 
 
 def get_cart_by_user(user):
-    if not user:
-        raise
     return Cart.objects.filter(customer_id=user)
 
 
@@ -50,3 +50,18 @@ def get_cart_sum(cart):
     for o in cart:
         res += o.quantity * o.product.product_price
     return res
+
+
+def delete_product_from_cart(cart_pk, user) -> None:
+    try:
+        product = Cart.objects.get(pk=cart_pk)
+        if product.customer == user:
+            product.delete()
+    except ObjectDoesNotExist:
+        return
+
+
+def clear_cart(user) -> None:
+    get_cart_by_user(user).delete()
+
+

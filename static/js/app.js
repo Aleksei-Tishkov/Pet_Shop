@@ -54,4 +54,37 @@ document.addEventListener('DOMContentLoaded', (e) => {
                 });
             }
         });
-  
+
+
+document.addEventListener('DOMContentLoaded', (e) => {
+            modalForm(document.getElementById('clear-cart'), {
+                    formURL: "clear_cart"
+            })
+        });
+
+let constrain = 20;
+let mouseOverContainer = document.getElementById('card-row');
+let cards = document.getElementsByClassName('card');
+
+function transforms(x, y, el) {
+  let box = el.getBoundingClientRect();
+  let calcX = -(y - box.y - (box.height / 2)) / constrain / 50;
+  let calcY = (x - box.x - (box.width / 2)) / constrain / 50;
+
+  return "perspective(100px) "
+    + "   rotateX("+ calcX +"deg) "
+    + "   rotateY("+ calcY +"deg) ";
+};
+
+function transformElement(el, xyEl) {
+  el.style.transform  = transforms.apply(null, xyEl);
+};
+
+mouseOverContainer.onmousemove = function(e) {
+    for (let idx = 0; idx < cards.length; idx++) {
+        let position = [e.clientX, e.clientY].concat([cards[idx]]);
+        window.requestAnimationFrame(function () {
+            transformElement(cards[idx], position);
+        });
+    }
+};

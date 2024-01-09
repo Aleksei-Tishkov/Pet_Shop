@@ -1,0 +1,5 @@
+.upload__file::file-selector-button{
+  color: rgba(244, 239, 238, .85);
+  border-color: rgba(244, 239, 238, .85);
+  border-radius: 1.125rem; backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.1)}

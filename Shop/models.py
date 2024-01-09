@@ -1,9 +1,21 @@
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.template.defaultfilters import slugify
 from django.urls import reverse
 
 from Pet_Shop import settings
 from User.models import User
+
+
+class IntegerRangeField(models.IntegerField):
+    def __init__(self, verbose_name=None, name=None, min_value=None, max_value=None, **kwargs):
+        self.min_value, self.max_value = min_value, max_value
+        models.IntegerField.__init__(self, verbose_name, name, **kwargs)
+
+    def formfield(self, **kwargs):
+        defaults = {'min_value': self.min_value, 'max_value': self.max_value}
+        defaults.update(kwargs)
+        return super(IntegerRangeField, self).formfield(**defaults)
 
 
 class PublishedManager(models.Manager):
@@ -54,6 +66,7 @@ class ProductPhoto(models.Model):
 class Cart(models.Model):
     customer = models.ForeignKey(User, on_delete=models.CASCADE, related_name='cart_customer')
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='cart_product')
-    quantity = models.IntegerField(blank=False, default=1)
+    quantity = models.PositiveIntegerField(blank=True, default=1,
+                                           validators=(MinValueValidator(1),))
 
 # class ProductSpecs(models.Model):

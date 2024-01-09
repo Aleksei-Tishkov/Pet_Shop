@@ -1,0 +1,19 @@
+<div class="card back-drop m-2">
+    <div class="p-2 row text-center">
+        <div class="col-md-2">
+            <img class="card__image mt-2"
+                 src={{ p.product_main_photo.url }}
+                         class="card-img-top" alt="..."
+                 style="border-radius: 0.7rem;
+                        width: 10%">
+        </div>
+    </div>
+    <div class="col-md-8 card-body d-flex align-content-between flex-wrap">
+            <h5 class="card-title">{{ p.product_name }}</h5>
+            <div class="col-md-2 d-flex justify-content-end mb-2"
+                 style="font-family: KohSantepheap,serif">${{ p.product_price }}
+            </div>
+            </div>
+        </div>
+    </div>
+</div>

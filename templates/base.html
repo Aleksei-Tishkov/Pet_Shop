@@ -76,14 +76,16 @@
                     <a class="nav-link active" aria-current="page" href="/blog">Blog</a>
                 </li>
                 <li class="nav-item">
-                    {% if user.is_authenticated %}
-                    <a class="nav-link active" aria-current="page" href="/accounts/profile">{{ user.username | capfirst }}</a>
-                    {% else %}
-                    <a class="nav-link active" aria-current="page" href="/login">User</a>
-                    {% endif %}
+                    <a class="nav-link active" aria-current="page" href="/cart">Cart</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/cart">Cart</a>
+                    {% if user.is_authenticated %}
+                        <a class="nav-link active user__nav" aria-current="page" href="/accounts/profile">
+                            {{ user.username | capfirst }}
+                        </a>
+                    {% else %}
+                    <a class="nav-link active" aria-current="page" href="/login">Log in</a>
+                    {% endif %}
                 </li>
             </ul>
         </div>
@@ -101,23 +103,25 @@
 
 
 
-        <div class="footer mt-5 min-vw-100">
-            <div class="row">
-                <div class="col-3">
-                    <p>© Aleksei Tishkov, 2023</p>
-                </div>
-                <div class="col-6">
-                    Here will be site info
-                </div>
-                <div class="col-3">
-                    Here will be socials
-                </div>
-            </div>
-        </div>
-    </div>
+
     {% block right_side %}
     {% endblock %}
 </div>
+<div class="footer mt-5 min-vw-100">
+        <div class="row ps-5 pe-5">
+            <div class="col-3">
+                <p>© Aleksei Tishkov, 2024</p>
+            </div>
+            <div class="col-6">
+                Here will be site info
+            </div>
+            <div class="col-3">
+                Here will be socials
+            </div>
+        </div>
+    </div>
+</div>
+
 
 
 

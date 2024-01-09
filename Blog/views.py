@@ -146,7 +146,6 @@ class DeletePostView(DeleteView):
     template_name = 'Blog/DeletePost.html'
     context_object_name = 'post'
     slug_url_kwarg = 'slug'
-    #permission_required = 'Post.delete_post'
     success_url = reverse_lazy('editorial')
 
     def get_object(self, queryset=None):

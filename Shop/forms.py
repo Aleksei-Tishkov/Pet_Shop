@@ -66,3 +66,16 @@ class CartAdditionForm(BSModalModelForm):
     class Meta:
         model = Cart
         fields = ('quantity', )
+        widgets = {'quantity': forms.NumberInput(attrs={'min_value': 1, 'max_value': 100})}
+
+
+
+
+class CartForm(forms.ModelForm):
+    class Meta:
+        model = Cart
+        fields = '__all__'
+        widgets = {
+        }
+
+

@@ -108,6 +108,11 @@ a {
   max-width: calc(var(--index) * 20);
 }
 
+.user_photo__small {
+  border-radius: 2rem;
+  max-width: calc(var(--index)*1.5);
+}
+
 .product__carousel__photo {
   border-radius: 1.125rem;
 
@@ -315,6 +320,8 @@ input#id_is_published, input#id_product_is_published {
 .footer {
   position: absolute;
   bottom: 0;
+  left: 0;
+  border: 1px solid transparent;
 }
 
 .tag_block {

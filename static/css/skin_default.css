@@ -150,6 +150,7 @@ button.close {
 
 .footer {
   background-color: rgba(var(--pet-secondary-dark), .5);
+  border-color: rgba(var(--pet-white), 0.1);
 }
 
 .product__line__divided {
@@ -210,10 +211,14 @@ input[type=password] {
   --bs-btn-hover-color: #D2FFFA;
   --bs-btn-hover-border-color: rgba(var(--pet-typography-main), .45);
   --bs-btn-active-color: rgba(var(--pet-typography-main), .45);
-  --bs-btn-active-bg: rgba(41, 58, 128, .2);
+  --bs-btn-active-bg: rgba(var(--pet-secondary-bright), .25);
   --bs-btn-disabled-bg: none;
-  --bs-btn-disabled-color: rgba(41, 58, 128);
-  --bs-btn-disabled-border-color: rgba(41, 58, 128);
+  --bs-btn-disabled-color: rgba(var(--pet-typography-main), .45);
+  --bs-btn-disabled-border-color: rgba(var(--pet-typography-main), .45);
+}
+
+.delete__btn {
+  color: rgb(var(--pet-accent-bright));
 }
 
 .tag {
@@ -272,3 +277,7 @@ input[type=password] {
   border-color: rgba(var(--pet-typography-main), .85);
   border-radius: 1.125rem; backdrop-filter: blur(10px);
   background-color: rgba(255, 255, 255, 0.1)}
+
+.user__nav {
+  color: rgb(var(--pet-accent-bright)) !important;
+}

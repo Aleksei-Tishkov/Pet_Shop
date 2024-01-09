@@ -36,9 +36,15 @@
                 {{ product.product_description }}
             </div>
             <div class="mt-5 col-md-2">
-
+                {% if product in cart %}
+                <button type="button"
+                        id="add_to_cart"
+                        class="btn w-100 m-2 add_to_cart disabled"
+                        style="width: 50%; max-height: 2.4rem">In cart
+                </button>
+                {% else %}
                 <button data-form-url="{% url 'add_to_cart' product.slug %}" class="btn w-100 m-2 add_to_cart">Add to cart</button>
-                <a href="" class="btn btn-primary w-100 m-2">Buy</a>
+                {% endif %}
             </div>
             </div>
         </div>
