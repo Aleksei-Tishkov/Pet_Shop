@@ -33,5 +33,9 @@ def get_posts_by_tag(queryset, tag):
     return queryset.filter(tags__tag_slug=tag).select_related('author')
 
 
+def get_products_by_related_post(queryset, post):
+    return
+
+
 def get_posts_by_author(queryset, author):
     return queryset.filter(author__user_slug=author)

@@ -1,4 +1,6 @@
-<div class="card back-drop m-2">
+
+<div class="card m-2">
+<div class="card__wrapper back-drop">
     <div class="p-2 container text-center">
 
         <img class="card__image mt-2"
@@ -15,29 +17,31 @@
             <div class="d-flex justify-content-end mb-2"
                  style="font-family: KohSantepheap,serif">${{ p.product_price }}
             </div>
-            <div class="d-flex justify-content-center">
+            <div class="d-flex justify-content-end">
                 <a type="button"
                    class="btn m-1"
                    href="{% url 'product_view' p.slug %}"
                    style="width: 50%; max-height: 2.4rem">
                     More...
                 </a>
+            {% if user.is_authenticated %}
+                {% if p in cart %}
+                    <button type="button"
+                            id="add_to_cart"
+                            class="btn m-1 add_to_cart bs-modal disabled"
+                            data-form-url="{% url 'add_to_cart' p.slug %}"
+                            style="width: 50%; max-height: 2.4rem">In cart
+                    </button>
 
-            {% if p in cart %}
-                <button type="button"
-                        id="add_to_cart"
-                        class="btn m-1 add_to_cart bs-modal disabled"
-                        data-form-url="{% url 'add_to_cart' p.slug %}"
-                        style="width: 50%; max-height: 2.4rem">In cart
-                </button>
+                {% else %}
+                    <button type="button"
+                            id="add_to_cart"
+                            class="btn m-1 add_to_cart bs-modal"
+                            data-form-url="{% url 'add_to_cart' p.slug %}"
+                            style="width: 50%; max-height: 2.4rem">To cart
+                    </button>
+                {% endif %}
 
-            {% else %}
-                <button type="button"
-                        id="add_to_cart"
-                        class="btn m-1 add_to_cart bs-modal"
-                        data-form-url="{% url 'add_to_cart' p.slug %}"
-                        style="width: 50%; max-height: 2.4rem">To cart
-                </button>
             {% endif %}
             </div>
             <div class="d-flex justify-content-center">
@@ -50,4 +54,5 @@
             </div>
         </div>
     </div>
+</div>
 </div>

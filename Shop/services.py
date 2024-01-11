@@ -25,6 +25,11 @@ def get_published_products():
     return Product.objects.filter(product_is_published=True).select_related('product_seller')
 
 
+def get_available_products():
+    return get_published_products().filter(product_quantity__gt=0)
+
+
+
 def get_product_by_seller(queryset, seller):
     return queryset.filter(product_seller_id=seller)
 

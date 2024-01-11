@@ -218,7 +218,7 @@ input[type=password] {
 }
 
 .delete__btn {
-  color: rgb(var(--pet-accent-bright));
+  color: rgb(var(--pet-secondary-bright));
 }
 
 .tag {
@@ -253,6 +253,10 @@ input[type=password] {
 
 .card {
   --bs-card-color: rgba(var(--pet-typography-main));
+  background-color: rgba(255, 255, 255, 0);
+}
+
+.card__wrapper {
   background-color: rgba(255, 255, 255, 0);
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
   border-top-color: rgba(var(--pet-typography-main), 0.2);

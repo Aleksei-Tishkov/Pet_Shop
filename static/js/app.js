@@ -58,12 +58,13 @@ document.addEventListener('DOMContentLoaded', (e) => {
 
 document.addEventListener('DOMContentLoaded', (e) => {
             modalForm(document.getElementById('clear-cart'), {
-                    formURL: "clear_cart"
+                    formURL: "clear_cart/"
             })
         });
 
 let constrain = 20;
 let mouseOverContainer = document.getElementById('card-row');
+let card_wrappers = document.getElementsByClassName('card__wrapper');
 let cards = document.getElementsByClassName('card');
 
 function transforms(x, y, el) {
@@ -75,6 +76,10 @@ function transforms(x, y, el) {
     + "   rotateX("+ calcX +"deg) "
     + "   rotateY("+ calcY +"deg) ";
 };
+
+function translateZ(el) {
+    el.style.transform = 'translateZ(10px)'
+}
 
 function transformElement(el, xyEl) {
   el.style.transform  = transforms.apply(null, xyEl);

@@ -27,7 +27,20 @@
                     {{ post.content|safe|linebreaks }}
                 </div>
             </div>
+        <div class="mt-5 mb-5">
+            {% if post.related_post.exists %}
+                <h3>...And here are some products related to this post!</h3>
+                <div class="row mt-2">
+                {% for p in post.related_post.iterator %}
+                    <div class="col-2">
+                    {% include 'Shop/Product_card.html' %}
+                    </div>
+                {% endfor %}
+                </div>
+            {% endif %}
         </div>
-    </div>
+
+        </div>
+
 
 {% endblock %}

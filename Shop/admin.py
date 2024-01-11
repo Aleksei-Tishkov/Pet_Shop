@@ -6,9 +6,10 @@ from Shop.models import Product
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     fields = ('product_name', 'slug', 'product_price', 'product_quantity', 'product_is_published',
-              'product_type'
+              'product_type', 'related_post', 'product_seller'
               )
-    list_display = ('product_name', 'product_price', 'product_quantity', 'product_is_published', 'product_type')
+    list_display = ('product_name', 'product_price', 'product_quantity', 'product_is_published', 'product_type',
+                    'product_seller',)
     prepopulated_fields = {'slug': ('product_name', )}
     list_display_links = ('product_name', )
     list_editable = ('product_price', 'product_quantity', 'product_is_published')

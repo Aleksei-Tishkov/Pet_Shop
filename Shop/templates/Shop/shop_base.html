@@ -31,7 +31,7 @@
         </div>
 
         <div class="text-center mt-2">
-            {% if "user.has_perm('Post.add_post')" %}
+            {% if perms.Shop.add_product %}
                 <a href="{% url 'add_product' %}" class="btn btn-primary m-2">Create new product</a>
                 <a href="{% url 'add_tag' %}" class="btn btn-primary m-2">Add new tag</a>
                 <a href="{% url 'shop_editorial' %}" class="btn btn-primary m-2">Edit your products</a>

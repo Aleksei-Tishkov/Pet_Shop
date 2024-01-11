@@ -1,4 +1,5 @@
 from django import forms
+from django.forms import formset_factory
 
 from Shop.models import Product, ProductPhoto, Cart
 from bootstrap_modal_forms.forms import BSModalModelForm
@@ -66,16 +67,15 @@ class CartAdditionForm(BSModalModelForm):
     class Meta:
         model = Cart
         fields = ('quantity', )
-        widgets = {'quantity': forms.NumberInput(attrs={'min_value': 1, 'max_value': 100})}
+        widgets = {'quantity': forms.NumberInput()}
 
 
-
-
-class CartForm(forms.ModelForm):
+class CartEntryChange(forms.ModelForm):
     class Meta:
         model = Cart
-        fields = '__all__'
-        widgets = {
-        }
+        fields = ('quantity', )
+
+
+CartEntryChangeFormSet = formset_factory(CartEntryChange)
 
 

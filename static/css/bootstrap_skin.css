@@ -331,10 +331,15 @@ input#id_is_published, input#id_product_is_published {
 }
 
 .card {
+  --bs-card-border-width: 0;
   position: relative;
+  width: calc(var(--index) * 11);
+}
+
+.card__wrapper {
   border-radius: 1.125rem;
   border: 1px solid transparent;
-  width: calc(var(--index) * 11);
+  width: calc(var(--index) * 11.1);
 }
 
 .card__image {
@@ -370,6 +375,15 @@ input#id_is_published, input#id_product_is_published {
 
 .card-title {
   font-family: KohSantepheap_ps;
+}
+
+.card-wrapper {
+  transition: width 1s ease-in-out, height 1s ease-in-out;
+  transition-timing-function: cubic-bezier(.17,.67,.83,.67);
+}
+
+.card__wrapper:hover {
+  transform: scale(1.03);
 }
 
 .main_container {

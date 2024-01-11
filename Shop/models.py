@@ -1,8 +1,10 @@
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
+from django.db.models import CheckConstraint, Q
 from django.template.defaultfilters import slugify
 from django.urls import reverse
 
+from Blog.models import Post
 from Pet_Shop import settings
 from User.models import User
 
@@ -46,6 +48,8 @@ class Product(models.Model):
     product_type = models.CharField(max_length=30, db_index=True)
     product_seller = models.ForeignKey(to=User, on_delete=models.CASCADE, related_name='seller')
     time_create = models.TimeField(auto_now_add=True)
+    related_post = models.ManyToManyField(to=Post, blank=True,
+                                          related_name='related_post')
 
     objects = models.Manager()
     published = PublishedManager()
@@ -67,6 +71,14 @@ class Cart(models.Model):
     customer = models.ForeignKey(User, on_delete=models.CASCADE, related_name='cart_customer')
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='cart_product')
     quantity = models.PositiveIntegerField(blank=True, default=1,
-                                           validators=(MinValueValidator(1),))
+                                           validators=(MinValueValidator(1), MaxValueValidator(25000)))
+
+    class Meta:
+        constraints = [
+            CheckConstraint(
+                name="%(app_label)s_%(class)s_quantity_range",
+                check=Q(quantity__range=(1, 25000)),
+            ),
+        ]
 
 # class ProductSpecs(models.Model):
