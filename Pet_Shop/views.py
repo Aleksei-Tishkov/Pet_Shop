@@ -1,5 +1,8 @@
-from django.http import HttpResponse, HttpResponseNotFound
-from django.shortcuts import render
+from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
+from django.shortcuts import render, redirect
+from rest_framework import viewsets
+
+from Pet_Shop.services import change_theme
 
 
 def page_not_found(request, exception):
@@ -16,3 +19,9 @@ def permission_error(request, exception):
 
 def request_error(request, exception):
     return render(request, 'page_400.html', status=400)
+
+
+def change_theme_view(request):
+    change_theme(request.user)
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+

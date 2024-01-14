@@ -39,8 +39,9 @@ class ProfilePage(LoginRequiredMixin, UpdateView):
 def register_user(request):
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
-        save_new_user(form)
-        return redirect('home')
+        if form.is_valid():
+            save_new_user(form)
+            return redirect('home:home')
     else:
         form = UserRegisterForm()
     return render(request, 'User/Register.html', {'form': form})

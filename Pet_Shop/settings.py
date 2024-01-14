@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.forms',
+    'rest_framework',
     'bootstrap_modal_forms',
     'image_uploader_widget',
     'django_extensions',
