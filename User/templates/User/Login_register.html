@@ -1,0 +1,45 @@
+{% load static %}
+
+
+<div class="col-12 mt-3 d-flex align-items-center justify-content-center">
+    <h3 class="col-12 text-center">
+        Already have an account?<br>Log In!
+    </h3>
+</div>
+<div class="col-12 mt-3 d-flex align-items-center justify-content-center">
+    <form method="post" style="width: 35%" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        {% for f in form %}
+            <p>{{ f }}</p>
+            <p>{{ f.errors }}</p>
+        {% endfor %}
+        <button type="submit" class="btn btn-primary" style="height: 2.5rem; width: 100%">
+            Log in
+        </button>
+    </form>
+</div>
+<div class="col-12 mt-3 d-flex align-items-center justify-content-center">
+    <a class="text-center " href="/password-reset">
+        Forgot the password?
+    </a>
+</div>
+<div class="col-12 mt-2 d-flex align-items-center justify-content-center">
+    <a href="{% url 'social:begin' 'facebook' %}"><img src="{% static 'Images/icons8-facebook-50.png' %}"
+                                                       alt=""></a>
+</div>
+<div class="col-12 mt-3 d-flex align-items-center justify-content-center">
+    <h3 class="text-center mt-3"
+        style="color: rgba(243, 148, 34, 1)">
+        First time with us?
+    </h3>
+</div>
+
+<div class="col-12 mt-3 d-flex align-items-center justify-content-center">
+    <a href="/register" role="button"
+       class="btn btn-primary mt-1"
+       style="height: 2.5rem; width: 35%">
+        Create an account!
+    </a>
+</div>
+</div>

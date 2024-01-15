@@ -102,6 +102,7 @@ class CartEntryCreator(LoginRequiredMixin, BSModalCreateView):
     form_class = CartAdditionForm
     success_message = 'Product added to the cart'
     success_url = reverse_lazy('shop_main')
+    extra_context = {'quantity': 1}
 
     def get_queryset(self):
         return get_product_by_slug(get_published_products(), self.kwargs['slug'])
@@ -109,9 +110,10 @@ class CartEntryCreator(LoginRequiredMixin, BSModalCreateView):
     def form_valid(self, form):
         form.instance.customer_id = self.request.user.pk
         _object = self.get_object()
+        self.quantity = _object.product_quantity
         form.instance.product = _object
-        if form.instance.quantity > _object.product_quantity:
-            form.instance.quantity = _object.product_quantity
+        if form.instance.quantity > self.quantity:
+            form.instance.quantity = self.quantity
         if form.instance.quantity < 1:
             form.instance.quantity = 1
         return super().form_valid(form)

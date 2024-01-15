@@ -286,9 +286,9 @@ input {
   border-radius: 1.125rem;
 }
 
-input[type=number]::-webkit-inner-spin-button {
+/* input[type=number]::-webkit-inner-spin-button {
   -webkit-appearance: none;
-}
+ } */
 
 .form-switch {
   padding-left: 0;
@@ -355,8 +355,6 @@ input#id_is_published, input#id_product_is_published {
 
 .card-children {
   border-radius: 1.125rem;
-  border: 1px solid transparent;
-  width: 16rem;
 }
 
 .card-children:nth-child(1) {
