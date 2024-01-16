@@ -115,9 +115,7 @@ a {
 
 .product__carousel__photo {
   border-radius: 1.125rem;
-
-  height: calc(var(--index) * 15);
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .product__line {
@@ -418,4 +416,17 @@ input#id_is_published, input#id_product_is_published {
 
 .bi {
   width: 20%;
+}
+
+.carousel .carousel-item {
+  height: calc(var(--index) * 18);
+}
+
+.carousel-item img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-height: calc(var(--index) * 18);
+  height: 100%;
+  width: 100%;
 }

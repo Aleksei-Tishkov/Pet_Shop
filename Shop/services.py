@@ -56,9 +56,13 @@ def get_cart_sum(cart):
     return res
 
 
+def get_cart_entry_by_pk(pk):
+    return Cart.objects.get(pk=pk)
+
+
 def delete_product_from_cart(cart_pk, user) -> None:
     try:
-        product = Cart.objects.get(pk=cart_pk)
+        product = get_cart_entry_by_pk(cart_pk)
         if product.customer == user:
             product.delete()
     except ObjectDoesNotExist:
@@ -67,5 +71,4 @@ def delete_product_from_cart(cart_pk, user) -> None:
 
 def clear_cart(user) -> None:
     get_cart_by_user(user).delete()
-
 

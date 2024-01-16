@@ -6,9 +6,9 @@ from django.urls import reverse, reverse_lazy
 from django.utils.text import slugify
 from django.views.generic import CreateView, UpdateView, ListView, DetailView, DeleteView
 from django.views.generic.edit import FormView
-from bootstrap_modal_forms.generic import BSModalCreateView, BSModalFormView
+from bootstrap_modal_forms.generic import BSModalCreateView, BSModalFormView, BSModalUpdateView
 
-from Shop.forms import CreateProductForm, EditProductForm, ProductImagesForm, CartAdditionForm
+from Shop.forms import CreateProductForm, EditProductForm, ProductImagesForm, CartAdditionForm, CartEntryChange
 from Shop.models import Product, Cart
 from django.shortcuts import render
 
@@ -119,6 +119,14 @@ class CartEntryCreator(LoginRequiredMixin, BSModalCreateView):
         return super().form_valid(form)
 
 
+class CartEditView(LoginRequiredMixin, BSModalUpdateView):
+    model = Cart
+    template_name = 'Shop/Cart_Addition.html'
+    form_class = CartEntryChange
+    success_message = 'Success: Book was updated.'
+    success_url = reverse_lazy('cart')
+
+
 class CartView(LoginRequiredMixin, ListView):
     template_name = 'Shop/Cart.html'
     model = Cart
@@ -141,6 +149,9 @@ class CartClearView(LoginRequiredMixin, BSModalFormView):
         return super().post(request, *args, **kwargs)
 
 
+
+
+
 def delete_cart_entry_view(request, pk):
     delete_product_from_cart(cart_pk=pk, user=request.user)
     return redirect('cart')
@@ -149,4 +160,25 @@ def delete_cart_entry_view(request, pk):
 def edit_cart_view(request):
     pass
 
+
+
+
+
+def view_that_asks_for_money(request):
+    # What you want the button to do.
+    paypal_dict = {
+        "business": "receiver_email@example.com",
+        "amount": "10000000.00",
+        "item_name": "name of the item",
+        "invoice": "unique-invoice-id",
+        "notify_url": request.build_absolute_uri(reverse('paypal-ipn')),
+        "return": request.build_absolute_uri(reverse('your-return-view')),
+        "cancel_return": request.build_absolute_uri(reverse('your-cancel-view')),
+        "custom": "premium_plan",  # Custom command to correlate to some function later (optional)
+    }
+
+    # Create the instance.
+    form = PayPalPaymentsForm(initial=paypal_dict)
+    context = {"form": form}
+    return render(request, "payment.html", context)
 
