@@ -38,9 +38,9 @@
 <body>
 
 <div class="modal fade back-drop" tabindex="-1" role="dialog" id="modal">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content"></div>
-  </div>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content"></div>
+    </div>
 </div>
 
 <nav class="autohide navbar navbar-expand-lg sticky-top justify-content-between back-drop">
@@ -63,15 +63,15 @@
         </div>
     </div>
 
-            {% if user.is_authenticated %}
+    {% if user.is_authenticated %}
 
-                    {% if user.theme.user_theme_theme == 1 %}
-                            <a href="{% url 'change_theme' %}" class="btn">☽</a>
-                    {% else %}
-                            <a  href="{% url 'change_theme' %}" class="btn">☼</a>
-                    {% endif %}
+        {% if user.theme.user_theme_theme == 1 %}
+            <a href="{% url 'change_theme' %}" class=""><i class="fa-regular fa-moon"></i></a>
+        {% else %}
+            <a href="{% url 'change_theme' %}" class=""><i class="fa-solid fa-sun"></i></a>
+        {% endif %}
 
-            {% endif %}
+    {% endif %}
 
     <div class="d-flex w-auto align-self-center mx-4" style="top: -1rem">
         <button class="navbar-toggler align-self-start align-content-start" type="button" data-bs-toggle="collapse"
@@ -99,45 +99,39 @@
                             {{ user.username | capfirst }}
                         </a>
                     {% else %}
-                    <a class="nav-link active" aria-current="page" href="/login">Log in</a>
+                        <a class="nav-link active" aria-current="page" href="/login">Log in</a>
                     {% endif %}
                 </li>
             </ul>
         </div>
     </div>
-
 </nav>
-<div class="wrapper_ps">
-    <div class="content_ps">
-        <img src={% static 'Images/Bg_tile_l.png' %} data-speed=".2" style="position: absolute; z-index: -5">
 
+<div class="wrapper_ps">
+    <div class="content_ps overflow-hidden">
+
+        <img src='{% static 'Images/Bg_tile_l.png' %}' style="position: absolute; z-index: -20" data-speed=".2">
 
         {% block content %}
             <h2>Some content</h2>
         {% endblock %}
 
+        {% block right_side %}
+        {% endblock %}
 
-
-
-    {% block right_side %}
-    {% endblock %}
-</div>
-<div class="footer mt-5 min-vw-100">
-        <div class="row ps-5 pe-5">
-            <div class="col-3">
-                <p>© Aleksei Tishkov, 2024</p>
-            </div>
-            <div class="col-5">
-                Here will be site info
-            </div>
-            <div class="col-3">
-                Here will be socials
+            <div class="row footer ps-2 pe-2 min-vw-100 mt-5">
+                <div class="col-12 col-md-3 ps-3 pe-3 footer__col">
+                    © Aleksei Tishkov, 2024
+                </div>
+                <div class="col-12 col-md-6 ps-3 pe-3 footer__col">
+                    Here will be site info
+                </div>
+                <div class="col-12 col-md-3 ps-3 pe-3 footer__col">
+                    Here will be socials
+                </div>
             </div>
 
-
-        </div>
     </div>
 </div>
-
 </body>
 </html>

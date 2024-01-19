@@ -7,15 +7,15 @@
 {% block blog_content %}
 
                     {% for p in object_list %}
-                        <div class="clearfix back-drop blog_post p-3 mt-5">
+                        <div class="clearfix back-drop blog_post p-3 mt-5 text-center text-md-start">
                             <div class="row">
-                                <div class="col-4">
+                                <div class="col-12 col-md-4 p-2">
                                     {% if p.main_photo %}
                                         <img src="{{ p.main_photo.url }}" width="80%"
                                              style="max-height: 15rem; object-fit: cover" alt="">
                                     {% endif %}
                                 </div>
-                                <div class="col-8 position-relative">
+                                <div class="col-12 col-md-8 position-relative p-2">
                                     <h2>{{ p.title }}</h2>
                                     <p>{{ p.summary }}</p>
                                     <p class="a_like">by <a href="./author/{{ p.author.user_slug }}">{{ p.author }}</a>

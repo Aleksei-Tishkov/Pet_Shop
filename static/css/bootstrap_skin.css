@@ -50,6 +50,8 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  min-height: 100%;
+  max-height: 100%;
 }
 
 h1 {
@@ -170,9 +172,10 @@ a {
   height: calc(var(--index) * 20);
   position: absolute;
   left: calc(var(--index) *4);
-  bottom: -1rem
+  bottom: -1rem;
+  z-index: -20;
 }
-
+s
 .grumpy-doggo {
   height: calc(var(--index) * 20);
   position: absolute;
@@ -231,6 +234,8 @@ a {
   font-family: Kodchasan_ps;
   text-transform: none;
   border-radius: 1.125rem;
+  width: fit-content;
+  height: fit-content;
 }
 
 .tag {
@@ -315,11 +320,8 @@ input#id_is_published, input#id_product_is_published {
   bottom: calc(var(--index) * 5);
 }
 
-.footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  border: 1px solid transparent;
+.footer .footer__col {
+  border: 1px solid;
 }
 
 .tag_block {
@@ -332,12 +334,14 @@ input#id_is_published, input#id_product_is_published {
   --bs-card-border-width: 0;
   position: relative;
   width: calc(var(--index) * 11);
+  min-width: 200px;
 }
 
 .card__wrapper {
   border-radius: 1.125rem;
   border: 1px solid transparent;
   width: calc(var(--index) * 11.1);
+  min-width: 200px;
 }
 
 .card__image {
@@ -384,7 +388,6 @@ input#id_is_published, input#id_product_is_published {
 
 .main_container {
   padding: calc(var(--index)*2);
-  margin-bottom: 10rem;
 }
 
 .main-block {

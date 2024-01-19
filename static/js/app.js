@@ -1,22 +1,14 @@
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother)
 
-ScrollSmoother.create({
-    wrapper: '.wrapper_ps',
-    content: '.content_ps',
-    smooth: 4,
-    effects: true
-})
 
-if (document.getElementById("right_side")) {
-    ScrollTrigger.create({
-        trigger: '.content_ps',
-        start: 'top top',
-        pin: '.right_side',
-        pinSpacing: false
+if (ScrollTrigger.isTouch !== 1) {
+    ScrollSmoother.create({
+        wrapper: '.wrapper_ps',
+        content: '.content_ps',
+        smooth: 4,
+        effects: true
     })
-
 }
-;
 
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -61,12 +53,16 @@ document.addEventListener('DOMContentLoaded', (e) => {
     }
 });
 
+let clear_cart = document.getElementById('clear-cart')
 
-document.addEventListener('DOMContentLoaded', (e) => {
-    modalForm(document.getElementById('clear-cart'), {
+if (clear_cart) {
+    document.addEventListener('DOMContentLoaded', (e) => {
+    modalForm(clear_cart, {
         formURL: "clear_cart/"
     })
 });
+}
+
 
 let constrain = 20;
 let mouseOverContainer = document.getElementById('card-row');

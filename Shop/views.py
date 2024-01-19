@@ -8,7 +8,8 @@ from django.views.generic import CreateView, UpdateView, ListView, DetailView, D
 from django.views.generic.edit import FormView
 from bootstrap_modal_forms.generic import BSModalCreateView, BSModalFormView, BSModalUpdateView
 
-from Shop.forms import CreateProductForm, EditProductForm, ProductImagesForm, CartAdditionForm, CartEntryChange
+from Shop.forms import CreateProductForm, EditProductForm, ProductImagesForm, CartAdditionForm, CartEntryChange, \
+    CartDeleteForm
 from Shop.models import Product, Cart
 from django.shortcuts import render
 
@@ -102,7 +103,7 @@ class CartEntryCreator(LoginRequiredMixin, BSModalCreateView):
     form_class = CartAdditionForm
     success_message = 'Product added to the cart'
     success_url = reverse_lazy('shop_main')
-    extra_context = {'quantity': 1}
+    extra_context = {'quantity': 1, 'name': None}
 
     def get_queryset(self):
         return get_product_by_slug(get_published_products(), self.kwargs['slug'])
@@ -123,7 +124,7 @@ class CartEditView(LoginRequiredMixin, BSModalUpdateView):
     model = Cart
     template_name = 'Shop/Cart_Addition.html'
     form_class = CartEntryChange
-    success_message = 'Success: Book was updated.'
+    success_message = 'Cart was updated.'
     success_url = reverse_lazy('cart')
 
 
@@ -142,26 +143,16 @@ class CartClearView(LoginRequiredMixin, BSModalFormView):
     model = Cart
     template_name = 'Shop/Cart_clear.html'
     success_url = reverse_lazy('shop_main')
-    form_class = CartAdditionForm
+    form_class = CartDeleteForm
 
     def post(self, request, *args, **kwargs):
         clear_cart(user=request.user.pk)
         return super().post(request, *args, **kwargs)
 
 
-
-
-
 def delete_cart_entry_view(request, pk):
     delete_product_from_cart(cart_pk=pk, user=request.user)
     return redirect('cart')
-
-
-def edit_cart_view(request):
-    pass
-
-
-
 
 
 def view_that_asks_for_money(request):

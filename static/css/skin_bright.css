@@ -269,12 +269,8 @@ input[type=password] {
 
 .card-children {
   position: absolute;
-  backdrop-filter: blur(10px);
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 1.125rem;
-  border: 1px solid rgba(var(--pet-typography-main), 0.9);
-  border-right-color: rgba(var(--pet-typography-main), 0.5);
-  border-bottom-color: rgba(var(--pet-typography-main), 0.5);
 }
 
 .upload__file::file-selector-button{

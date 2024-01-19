@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from rest_framework import viewsets
@@ -21,7 +22,7 @@ def request_error(request, exception):
     return render(request, 'page_400.html', status=400)
 
 
+@login_required
 def change_theme_view(request):
     change_theme(request.user)
     return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
-

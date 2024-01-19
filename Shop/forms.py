@@ -92,10 +92,16 @@ class CartEntryChange(BSModalModelForm):
                                                          'style': 'width: 30%',
                                                          'class': 'ps-2',
                                                          'value': _instance.quantity}))
+        print(self.__dict__)
+        self.name = _obj
+
 
     class Meta:
         model = Cart
         fields = ('quantity',)
 
 
-CartEntryChangeFormSet = formset_factory(CartEntryChange)
+class CartDeleteForm(BSModalModelForm):
+    class Meta:
+        model = Cart
+        fields = ('quantity',)

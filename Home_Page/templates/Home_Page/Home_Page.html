@@ -7,104 +7,95 @@
 {% load static %}
 
 {% block content %}
-    <script src={% static 'js/main_page_script.js' %} defer></script>
-    <div class="main_container min-vh-100 hero-section">
-        <div class="main_block">
-            <img data-speed=".4" class="doggo" src="{% static 'Images/Main_Doggo.png' %}" style="margin-bottom: -1rem">
+        <script src={% static 'js/main_page_script.js' %} defer></script>
+        <div class="main_container min-vh-100 hero-section position-relative">
+            <div class="main_block">
+                <img data-speed=".4" class="doggo" src="{% static 'Images/Main_Doggo.png' %}" style="margin-bottom: -1rem">
 
-            <div data-speed=".85" class="row main_header">
-                <h2 style="margin-bottom: -1rem">Treat them the only way possible.</h2>
-                <h1>THE BEST ONE</h1>
+                <div data-speed=".85" class="row main_header">
+                    <h2 style="margin-bottom: -1rem">Treat them the only way possible.</h2>
+                    <h1>THE BEST ONE</h1>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="main_container justify-content-center">
-        <div class="row g-1 transform">
-            <div data-speed=".9" class="col-lg-7 p-2 left__block">
-                <h3 class="left__item transform">Enjoy our finest selection of high-quality goods for the good boys
-                    and girls</h3>
-                <div class="row left__item transform">
+        <div class="main_container justify-content-center">
+            <div class="row g-1 transform">
+                <div data-speed=".9" class="col-lg-7 p-2 left__block text-center text-md-start">
+                    <h3 class="left__item transform">Enjoy our finest selection of high-quality goods for the good boys
+                        and girls!</h3>
+                    <div class="row left__item transform justify-content-center">
 
                         {% for p in prods %}
-                            <div class="col transform mt-4 ms-4" id="card-row">
-                        {% include 'Shop/Product_card_child.html' %}
+                            <div class="col col-auto col-lg-5 transform mt-4 ms-4 align-content-center" id="card-row">
+                                {% include 'Shop/Product_card_child.html' %}
                             </div>
                         {% endfor %}
 
-                </div>
+                    </div>
 
-            </div>
-            <div class="col-lg-5 right__block transform mt-2" data-speed=".9" id="canvas_father">
-                <div class="right__item">
-                    {% if user.is_authenticated %}
-                        <h2 class="text-end">Welcome back,<br>{{ user.username }}!</h2>
-                    {% else %}
-                        {% include 'User/Login_register.html' %}
-                    {% endif %}
                 </div>
-            </div>
-
-                <div class="left__block">
-                <h3 class="left__item transform mt-5 pt-5">Read the posts of pet experts. <br>Lifehacks, advices and much
-                    more!</h3>
-                <div class="right__block">
-                    <div class="clearfix back-drop blog_post pt-5">
-                <div class="row">
-                    <div class="col-lg-6 d-flex justify-content-center">
-                        {% if post.main_photo %}
-                        <img src='{{ post.main_photo.url }}' class="text-center blog_main_image" alt="...">
+                <div class="col-lg-5 right__block transform mt-2" data-speed=".9" id="canvas_father">
+                    <div class="right__item">
+                        {% if user.is_authenticated %}
+                            <h2 class="text-center mt-5 mt-md-0 text-md-end">Welcome back,<br>{{ user.username }}!</h2>
+                        {% else %}
+                            {% include 'User/Login_register.html' %}
                         {% endif %}
                     </div>
-                    <div class="col-lg-6">
-                        <h1 class='blog_body blog-title'>{{ post.title }}</h1>
-                        <h3 class="blog_body blog_summary">{{ post.summary }}</h3>
-                        <p class="blog_body">
-                            {% if tagz %}
-                                {% for t in tagz %}
-                                    <a href="/tag/{{ t.tag_slug }}/" class="btn tag">{{ t.tag_name }}</a>
-                                {% endfor %}
+                </div>
+            </div>
+
+            <div class="left__block">
+                <h3 class="left__item transform mt-5 pt-5">Read the posts of pet experts. <br>Lifehacks, advices and
+                    much
+                    more!</h3>
+            </div>
+            <div class="right__block">
+                <div class="clearfix back-drop blog_post pt-5 right__item">
+                    <div class="row">
+                        <div class="col-lg-6 d-flex justify-content-center">
+                            {% if post.main_photo %}
+                                <img src='{{ post.main_photo.url }}' class="text-center blog_main_image" alt="...">
                             {% endif %}
-                        </p>
-                    <h4 class="blog_body blog_author"> by {{ post.author.username }} </h4>
+                        </div>
+                        <div class="col-lg-6">
+                            <h1 class='blog_body blog-title'>{{ post.title }}</h1>
+                            <h3 class="blog_body blog_summary">{{ post.summary }}</h3>
+                            <p class="blog_body">
+                                {% if tagz %}
+                                    {% for t in tagz %}
+                                        <a href="/tag/{{ t.tag_slug }}/" class="btn tag">{{ t.tag_name }}</a>
+                                    {% endfor %}
+                                {% endif %}
+                            </p>
+                            <h4 class="blog_body blog_author"> by {{ post.author.username }} </h4>
+                        </div>
+                    </div>
+                    <div class="blog_body blog_content animate-heading">
+                        {{ post.content|linebreaks|truncatewords_html:300 }}
+                        <a href="{% url 'read_post' post.slug %}" class="btn btn-primary">Read more</a>
                     </div>
                 </div>
-                <div class="blog_body blog_content animate-heading">
-                    {{ post.content|linebreaks|truncatewords_html:300 }}
-<a href="{% url 'read_post' post.slug %}" class="btn btn-primary">Read more</a>
+            </div>
+            <div class="row g-1 transform text-center">
+                <div data-speed=".9" class="col-lg-7 p-2 left__block">
+                    <h2 class="left__item transform">And here is another block!</h2>
+                    <div class="row left__item transform justify-content-center">
+                        {% for p in prods_2 %}
+                            <div class="col col-auto transform mt-4 ms-4" id="card-row">
+                                {% include 'Shop/Product_card_child.html' %}
+                            </div>
+                        {% endfor %}
+                    </div>
                 </div>
 
-            </div>
+                <div class="col-lg-5 right__block transform justify-content-center" data-speed=".9" id="canvas_father">
+                    <h2 class="right__item transform">And here is another dog!</h2>
+                    <img class="right__item" src="{% static 'Images/1-unsplash.png' %}"
+                         style="width: calc(var(--index) * 10)">
                 </div>
+
             </div>
         </div>
 
-    </div>
-    <div class="main_container justify-content-center">
-        <div class="row g-1 transform">
-            <div data-speed=".9" class="col-lg-7 p-2 left__block">
-                <h2 class="left__item transform">And here is another block!</h2>
-                <div class="row left__item transform">
-
-                    {% for p in prods_2 %}
-                            <div class="col transform mt-4 ms-4" id="card-row">
-                        {% include 'Shop/Product_card_child.html' %}
-                            </div>
-                        {% endfor %}
-
-                </div>
-
-            </div>
-
-            <div class="col-lg-5 right__block transform" data-speed=".9" id="canvas_father">
-                <h2 class="right__item transform">And here is another dog!</h2>
-                <img class="right__item" src="{% static 'Images/1-unsplash.png' %}"
-                     style="width: calc(var(--index) * 10)">
-            </div>
-
 {% endblock %}
-
-<div>
-    <p>
-    <h2></h2>
-    <span></span></p>
-    <b></b></div>

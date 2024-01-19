@@ -148,7 +148,7 @@ button.close {
   background-color: rgba(var(--pet-secondary-dark), .1);
 }
 
-.footer {
+.footer .footer__col {
   background-color: rgba(var(--pet-secondary-dark), .5);
   border-color: rgba(var(--pet-white), 0.1);
 }
@@ -267,13 +267,8 @@ input[type=password] {
 
 .card-children {
   position: absolute;
-  backdrop-filter: blur(10px);
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 1.125rem;
-  border-top-color: rgba(var(--pet-typography-main), 0.2);
-  border-left-color: rgba(var(--pet-typography-main), 0.2);
-  border-right-color: rgba(var(--pet-typography-main), 0.1);
-  border-bottom-color: rgba(var(--pet-typography-main), 0.1);
 }
 
 .upload__file::file-selector-button{
