@@ -61,6 +61,12 @@ h1 {
   font-weight: 700;
 }
 
+h1.blog_body {
+  font-family: PS_Large, serif;
+  font-size: calc(var(--index) * 3);
+  font-weight: 700;
+}
+
 .h1__error {
   font-size: calc(var(--index) * 8);
 }

@@ -30,8 +30,11 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+PAYPAL_TEST = True
+
 ALLOWED_HOSTS = ['127.0.0.1', 'local_host', 'petshop.com', 'gannet-bold-caiman.ngrok-free.app']
 INTERNAL_IPS = ['127.0.0.1']
+CSRF_TRUSTED_ORIGINS = ['https://gannet-bold-caiman.ngrok-free.app']
 
 # Application definition
 
@@ -46,6 +49,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.forms',
     'rest_framework',
+    'cookie_consent',
+    'paypal.standard.ipn',
     'bootstrap_modal_forms',
     'image_uploader_widget',
     'django_extensions',

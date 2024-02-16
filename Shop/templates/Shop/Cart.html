@@ -1,13 +1,13 @@
-{% extends 'Shop/shop_base.html' %}
+{% extends 'base.html' %}
 {% load shop_tags %}
 
-{% block shop_title %}
+{% block title %}
     {{ title }}
 {% endblock %}
 
-{% block shop_content %}
+{% block content %}
     {% load static %}
-
+<div class="main_container vh-100 mt-5">
 {% if object_list %}
 <div class="container text-end">
 <div class="p-1 table-responsive table__card mt-5 container back-drop text-start">
@@ -25,13 +25,13 @@
     <tr>
       <td>{{ p.product.product_name }}</td>
       <td><p>{{ p.quantity }}
-      <a class="edit_cart" data-form-url="{% url 'edit_cart' p.pk %}">
+      <a class="edit_cart" data-form-url="{% url 'edit_cart' p.pk %}" title="Change quantity">
           <i class="fa-solid fa-pencil ms-1" aria-hidden="true"></i>
       </a></p>
       </td>
       <td>{{ p.product.product_price }}</td>
       <td>{{ p.quantity | multiply:p.product.product_price }}</td>
-      <td><a href="delete/{{ p.pk }}" class="delete__btn">
+      <td><a href="delete/{{ p.pk }}" title="Remove from cart" class="delete__btn">
         <i class="fa-solid fa-square-minus"></i>
           </a>
     </td>
@@ -49,5 +49,6 @@
 {% else %}
     <h2 class="mt-5">Your cart is empty</h2>
 {% endif %}
+</div>
 
 {% endblock %}

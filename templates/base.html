@@ -45,7 +45,7 @@
 
 <nav class="autohide navbar navbar-expand-lg sticky-top justify-content-between back-drop">
 
-    <a class="nav-link active mx-4" href="#">
+    <a class="nav-link active mx-4" href="{% url 'home:home' %}">
         <div class="row align-items-center m-2">
             <div class="col"><img src="{% static 'Images/favicon_lg.png' %}" style="height: 2rem"></div>
             <div class="col" style="margin-left: -1rem; margin-top: 1rem"><p class="fs-5"
@@ -81,9 +81,7 @@
         </button>
         <div class="collapse navbar-collapse align-content-center m-2" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 align-content-end">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/">Home</a>
-                </li>
+                
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/shop">Shop</a>
                 </li>

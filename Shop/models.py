@@ -61,6 +61,9 @@ class Product(models.Model):
         self.slug = slugify(self.product_name)
         super().save(*args, **kwargs)
 
+    def __str__(self):
+        return f'{self.product_name}'
+
 
 class ProductPhoto(models.Model):
     product_photo = models.ImageField(upload_to='product_photos/%Y/%m/%d', blank=True)
