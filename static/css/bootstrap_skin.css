@@ -17,8 +17,9 @@
 
 ::-webkit-scrollbar {
   z-index: -20;
-  width: 4px;
+  width: 2px;
   scroll-behavior: smooth;
+  background: transparent;
 }
 
 .content_ps, .doggo, .main_header, .transform {
