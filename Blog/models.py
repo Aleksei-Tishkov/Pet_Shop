@@ -1,5 +1,8 @@
 from django.db import models
 from django.urls import reverse
+from django.contrib.postgres.indexes import GinIndex
+from django.contrib.postgres.search import SearchVectorField, SearchVector
+
 from User.models import User
 
 
@@ -11,9 +14,7 @@ class PublishedManager(models.Manager):
 class Post(models.Model):
     class Meta:
         ordering = ['-time_create']
-        indexes = [
-            models.Index(fields=['-time_create'])
-        ]
+        indexes = [GinIndex(fields=["search_vector", ]), ]
 
     class Status(models.IntegerChoices):
         DRAFT = 0, 'Draft'
@@ -30,7 +31,8 @@ class Post(models.Model):
     time_updated = models.DateTimeField(auto_now=True)
     is_published = models.BooleanField(default=False)
     tags = models.ManyToManyField('PostTag', blank=True, related_name='tags')
-    # related_product = models.ManyToManyField('Shop.Shop', blank=True, related_name='product')
+
+    search_vector = SearchVectorField(null=True)
 
     objects = models.Manager()
     published = PublishedManager()
@@ -40,6 +42,10 @@ class Post(models.Model):
 
     def __str__(self):
         return f'{self.title}'
+
+    def update_search_vector(self):
+        Post.objects.filter(pk=self.pk).update(search_vector=SearchVector('title', 'content', 'summary'))
+        return
 
 
 class PostTag(models.Model):

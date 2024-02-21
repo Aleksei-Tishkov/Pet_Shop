@@ -39,3 +39,7 @@ def get_products_by_related_post(queryset, post):
 
 def get_posts_by_author(queryset, author):
     return queryset.filter(author__user_slug=author)
+
+
+def get_post_by_pk(model, pk):
+    return model.objects.filter(pk=pk)

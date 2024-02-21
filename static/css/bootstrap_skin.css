@@ -11,6 +11,21 @@
   src: url("../fonts/Nebulas-Bold_ps.otf") format("opentype");
 }
 
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+
 * {
   scrollbar-width: thin;
 }
@@ -110,6 +125,14 @@ a {
   height: 100%;
   width: 20% !important;
   padding: calc(var(--index)*2);
+}
+
+.main_title {
+  animation: 4s cubic-bezier(0.1, -1, 0.2, 0) 0s 1 fadeIn;
+}
+
+.sec_title {
+  animation: 2s ease-out 0s 1 slideInFromLeft;
 }
 
 .user_photo {
@@ -408,6 +431,7 @@ input#id_is_published, input#id_product_is_published {
   position: absolute;
   right: calc(var(--index) * 9);
   top: 25vh;
+  animation: 4s cubic-bezier(0.1, -1, 0.2, 0) 0s 1 fadeIn;
 }
 
 .main_header {

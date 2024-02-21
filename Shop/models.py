@@ -1,3 +1,5 @@
+from django.contrib.postgres.indexes import GinIndex
+from django.contrib.postgres.search import SearchVectorField, SearchVector
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.db.models import CheckConstraint, Q
@@ -28,9 +30,7 @@ class PublishedManager(models.Manager):
 class Product(models.Model):
     class Meta:
         ordering = ['-time_create']
-        indexes = [
-            models.Index(fields=['-time_create'])
-        ]
+        indexes = [GinIndex(fields=["search_vector",]),]
 
     class Status(models.IntegerChoices):
         DRAFT = 0, 'Draft'
@@ -50,7 +50,7 @@ class Product(models.Model):
     time_create = models.TimeField(auto_now_add=True)
     related_post = models.ManyToManyField(to=Post, blank=True,
                                           related_name='related_post')
-
+    search_vector = SearchVectorField(null=True)
     objects = models.Manager()
     published = PublishedManager()
 
@@ -63,6 +63,13 @@ class Product(models.Model):
 
     def __str__(self):
         return f'{self.product_name}'
+
+    def update_search_vector(self):
+        Product.objects.filter(pk=self.pk).update(search_vector=SearchVector(
+            'product_name', 'product_short_description', 'product_description'
+        ))
+        return
+
 
 
 class ProductPhoto(models.Model):
