@@ -4,4 +4,4 @@ from django.dispatch import receiver
 
 @receiver(request_finished)
 def post_save_product(sender, **kwargs):
-    print("Request finished!")
+    return

@@ -53,15 +53,15 @@
                 Pet_Shop</p></div>
         </div>
     </a>
-    <div class="d-none d-sm-block w-25 justify-content-center justify-content-center align-content-center mx-4">
+    <form action="{% url 'search:search_main' %}" method="get" class="d-none d-sm-block w-25 justify-content-center justify-content-center align-content-center mx-4">
         <div class="input-group">
-            <input class="shadow-sm form-control main-btn-ps back-drop" type="search" placeholder="Search smth :)"
+            <input class="shadow-sm form-control main-btn-ps back-drop" type="search" name="search" placeholder="Search smth :)"
                    id="example-search-input">
-            <button class="shadow-sm btn btn-primary search_btn" type="button" style="align-content: start">
+            <button class="shadow-sm btn btn-primary search_btn" type="submit" style="align-content: start">
                 <img src="{% static 'Images/Search.svg' %}" style="width: 75%">
             </button>
         </div>
-    </div>
+    </form>
 
     {% if user.is_authenticated %}
 
@@ -116,6 +116,8 @@
 
         {% block right_side %}
         {% endblock %}
+
+    <button onclick="topFunction()" class="btn upBtn" title="Go to top">Top</button>
 
 <div class="row footer ps-2 pe-2 min-vw-100 mt-5">
                 <div class="col-12 col-md-3 ps-3 pe-3 footer__col">

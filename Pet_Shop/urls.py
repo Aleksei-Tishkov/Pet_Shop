@@ -19,6 +19,7 @@ urlpatterns = [
     path('social-auth/', include('social_django.urls', namespace='social')),
     path('sitemap.xml', cache_page(86400)(sitemap), {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
     path('change_theme/', change_theme_view, name='change_theme'),
+    path('search/', include('Search.urls')),
 
 ]
 
