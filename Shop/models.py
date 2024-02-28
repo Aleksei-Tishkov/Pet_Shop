@@ -3,6 +3,8 @@ from django.contrib.postgres.search import SearchVectorField, SearchVector
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.db.models import CheckConstraint, Q
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 from django.template.defaultfilters import slugify
 from django.urls import reverse
 
@@ -91,4 +93,7 @@ class Cart(models.Model):
             ),
         ]
 
-# class ProductSpecs(models.Model):
+
+@receiver(post_save, sender=Product)
+def post_save_product(sender, instance, **kwargs):
+    instance.update_search_vector()

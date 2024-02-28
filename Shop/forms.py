@@ -92,7 +92,6 @@ class CartEntryChange(BSModalModelForm):
                                                          'style': 'width: 30%',
                                                          'class': 'ps-2',
                                                          'value': _instance.quantity}))
-        print(self.__dict__)
         self.name = _obj
 
 

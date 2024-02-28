@@ -43,7 +43,7 @@
     <h3 class="mt-5 text-end">Total: ${{ cart_sum }}</h3>
     <div class="container">
         <a class="btn mt-2" id="clear-cart">Clear cart</a>
-        <a href="" class="btn btn-primary mt-2">Proceed to payment</a>
+        <a class="btn btn-primary mt-2">Proceed to payment {{ form.render }}</a>
     </div>
 </div>
 {% else %}

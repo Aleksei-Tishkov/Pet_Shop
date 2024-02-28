@@ -31,7 +31,7 @@ class FullSearchResults(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context.update({
-            'search': self.request.GET.get('search', None) or '',
+            'search': self.request.path.split('/')[-1],
             # 'last': self.get_pagination_url()
         })
         return context

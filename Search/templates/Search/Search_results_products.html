@@ -7,7 +7,7 @@
 {% block content %}
     <div class="main_container container-fluid h-100 d-flex flex-column pt-5 mt-5">
         <div class="row main_block mb-5 flex-grow-1 mt-5">
-            <h2 class="form__title">You asked for "{{ search }}"</h2>
+            <h2 class="form__title">Here are all our products which refer to "{{ search }}"</h2>
             {% for p in object_list %}
                 {% include 'Shop/Product_card.html' %}
             {% endfor %}

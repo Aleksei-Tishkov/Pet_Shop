@@ -1,4 +1,6 @@
 from django.db import models
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 from django.urls import reverse
 from django.contrib.postgres.indexes import GinIndex
 from django.contrib.postgres.search import SearchVectorField, SearchVector
@@ -57,3 +59,8 @@ class PostTag(models.Model):
 
     def __str__(self):
         return self.tag_name.title()
+
+
+@receiver(post_save, sender=Post)
+def post_save_post(sender, instance, **kwargs):
+    instance.update_search_vector()

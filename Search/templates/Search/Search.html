@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block content %}
-    <div class="main_container container-fluid h-100 d-flex flex-column pt-5 mt-5">
+    <div class="main_container container-fluid min-vh-100 d-flex flex-column pt-5 mt-5">
         <div class="row main_block mb-5 flex-grow-1 mt-5">
             <h2 class="form__title">You asked for "{{ search }}"</h2>
                 {% if product_search_results or post_search_results %}
@@ -15,7 +15,7 @@
                                 {% include 'Shop/Product_card.html' %}
                             {% endfor %}
                             {% if product_search_results_count > 5 %}
-                                <a href="{% url 'search:products_search_results' search %}" class="mt-2">
+                                <a href="{% url 'search:products_search_results' search %}" class="mt-2 fs-4">
                                     Show all {{ product_search_results_count }} products
                                 </a>
                             {% endif %}
@@ -24,26 +24,21 @@
                         {% endif %}
 
                         {% if post_search_results %}
-                            <h3 class="mt-4">Here are some posts matching your question!</h3>
+                            <h3 class="mt-5">Here are some posts matching your question!</h3>
                             {% for p in post_search_results %}
                                 {% include 'Blog/Post_medium.html' %}
                             {% endfor %}
                             {% if post_search_results_count > 3 %}
-                                <a href="{% url 'search:posts_search_results' search %}" class="mt-2">
+                                <a href="{% url 'search:posts_search_results' search %}" class="mt-2 fs-4">
                                     Show all {{ post_search_results_count }} posts
                                 </a>
                             {% endif %}
                         {% else %}
-                        <h3 class="mt-4">There are no posts matching your question.</h3>
+                        <h3 class="mt-5">There are no posts matching your question.</h3>
                         {% endif %}
                 {% else %}
-                    <h3 class="mt-4">There are no products or posts matching your question.</h3>
+                    <h3 class="mt-5">There are no products or posts matching your question.</h3>
                 {% endif %}
-
-
-
-
-
         </div>
     </div>
 {% endblock %}

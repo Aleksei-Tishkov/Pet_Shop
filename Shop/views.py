@@ -1,3 +1,5 @@
+import uuid
+
 from django import forms
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.exceptions import PermissionDenied
@@ -7,13 +9,15 @@ from django.utils.text import slugify
 from django.views.generic import CreateView, UpdateView, ListView, DetailView, DeleteView
 from django.views.generic.edit import FormView
 from bootstrap_modal_forms.generic import BSModalCreateView, BSModalFormView, BSModalUpdateView
+from paypal.standard.forms import PayPalPaymentsForm
 
 from Shop.forms import CreateProductForm, EditProductForm, ProductImagesForm, CartAdditionForm, CartEntryChange, \
     CartDeleteForm
 from Shop.models import Product, Cart
+from Pet_Shop.settings import PAYPAL_BUSINESS_EMAIL
 from django.shortcuts import render
 
-# Create your views here.
+
 from Shop.services import link_product_photo_to_product, get_published_products, get_product_by_seller, \
     get_all_products, add_to_cart, get_product_by_slug, get_products_in_cart, get_cart_by_user, get_cart_sum, \
     clear_cart, delete_product_from_cart, get_available_products
@@ -131,12 +135,25 @@ class CartEditView(LoginRequiredMixin, BSModalUpdateView):
 class CartView(LoginRequiredMixin, ListView):
     template_name = 'Shop/Cart.html'
     model = Cart
-    extra_context = {'title': 'Cart', 'cart_sum': ''}
 
     def get_queryset(self):
         res = get_cart_by_user(self.request.user)
-        self.extra_context['cart_sum'] = get_cart_sum(res)
+        cart_sum = get_cart_sum(res)
+        paypal_dict = {
+            "business": PAYPAL_BUSINESS_EMAIL,
+            "amount": cart_sum,
+            "item_name": str(res),
+            "invoice": uuid.uuid4(),
+            "notify_url": self.request.build_absolute_uri(reverse('paypal-ipn')),
+            "return": self.request.build_absolute_uri(reverse('cart')),
+            "cancel_return": self.request.build_absolute_uri(reverse('cart')),
+            }
+        self.extra_context = {'title': 'Cart', 'cart_sum': cart_sum, 'form': PayPalPaymentsForm(initial=paypal_dict)}
         return res
+    
+    def get(self, request, *args, **kwargs):
+        self.get_queryset()
+        return super(CartView, self).get(request, *args, **kwargs)
 
 
 class CartClearView(LoginRequiredMixin, BSModalFormView):
@@ -153,23 +170,4 @@ class CartClearView(LoginRequiredMixin, BSModalFormView):
 def delete_cart_entry_view(request, pk):
     delete_product_from_cart(cart_pk=pk, user=request.user)
     return redirect('cart')
-
-
-def view_that_asks_for_money(request):
-    # What you want the button to do.
-    paypal_dict = {
-        "business": "receiver_email@example.com",
-        "amount": "10000000.00",
-        "item_name": "name of the item",
-        "invoice": "unique-invoice-id",
-        "notify_url": request.build_absolute_uri(reverse('paypal-ipn')),
-        "return": request.build_absolute_uri(reverse('your-return-view')),
-        "cancel_return": request.build_absolute_uri(reverse('your-cancel-view')),
-        "custom": "premium_plan",  # Custom command to correlate to some function later (optional)
-    }
-
-    # Create the instance.
-    form = PayPalPaymentsForm(initial=paypal_dict)
-    context = {"form": form}
-    return render(request, "payment.html", context)
 

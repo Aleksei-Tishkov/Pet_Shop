@@ -11,7 +11,7 @@ from Pet_Shop.sitemaps import sitemaps
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('__debug__/', include("debug_toolbar.urls")),
-    path("cookies/", include("cookie_consent.urls")),
+    path('cookies', include("cookie_consent.urls")),
     path('', include('Home_Page.urls')),
     path('', include('Shop.urls')),
     path('', include('Blog.urls')),

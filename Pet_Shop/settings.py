@@ -32,6 +32,10 @@ DEBUG = True
 
 PAYPAL_TEST = True
 
+PAYPAL_BUY_BUTTON_IMAGE = '../static/Images/PayPal.svg.png'
+
+PAYPAL_BUSINESS_EMAIL = "sb-iqryz29692058@business.example.com"
+
 ALLOWED_HOSTS = ['127.0.0.1', 'local_host', 'petshop.com', 'gannet-bold-caiman.ngrok-free.app']
 INTERNAL_IPS = ['127.0.0.1']
 CSRF_TRUSTED_ORIGINS = ['https://gannet-bold-caiman.ngrok-free.app']
@@ -49,7 +53,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.forms',
     'rest_framework',
-    'cookie_consent',
+    'cookie_consent',  # TODO: implement cookie consent feature
     'paypal.standard.ipn',
     'bootstrap_modal_forms',
     'image_uploader_widget',
