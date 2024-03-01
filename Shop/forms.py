@@ -94,7 +94,6 @@ class CartEntryChange(BSModalModelForm):
                                                          'value': _instance.quantity}))
         self.name = _obj
 
-
     class Meta:
         model = Cart
         fields = ('quantity',)
@@ -104,3 +103,20 @@ class CartDeleteForm(BSModalModelForm):
     class Meta:
         model = Cart
         fields = ('quantity',)
+
+
+class AddressForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(AddressForm, self).__init__(*args, **kwargs)
+        self.fields['customer_postalcode'].required = True
+        self.fields['customer_address'].required = True
+        self.fields['customer_postalcode'] = forms.IntegerField(max_value=999999,
+                                                                min_value=1,
+                                                                widget=forms.NumberInput(attrs={
+                                                                    'class': 'form-control col-3 back-drop'
+                                                                }))
+
+    class Meta:
+        model = Cart
+        fields = ('customer_postalcode', 'customer_address',)
+        widgets = {'customer_address': forms.TextInput(attrs={'class': 'form-control col-7 back-drop'})}

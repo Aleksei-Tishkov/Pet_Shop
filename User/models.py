@@ -11,6 +11,8 @@ class User(AbstractUser):
                                       default=settings.DEFAULT_USER_IMAGE,
                                       verbose_name='Avatar')
     user_slug = models.SlugField(unique=True)
+    user_postalcode = models.PositiveIntegerField(blank=True)
+    user_address = models.CharField(max_length=512, blank=True)
 
     def save(self, *args, **kwargs):
         self.user_slug = slugify(self.username)

@@ -12,15 +12,14 @@ from bootstrap_modal_forms.generic import BSModalCreateView, BSModalFormView, BS
 from paypal.standard.forms import PayPalPaymentsForm
 
 from Shop.forms import CreateProductForm, EditProductForm, ProductImagesForm, CartAdditionForm, CartEntryChange, \
-    CartDeleteForm
+    CartDeleteForm, AddressForm
 from Shop.models import Product, Cart
 from Pet_Shop.settings import PAYPAL_BUSINESS_EMAIL
 from django.shortcuts import render
 
-
 from Shop.services import link_product_photo_to_product, get_published_products, get_product_by_seller, \
     get_all_products, add_to_cart, get_product_by_slug, get_products_in_cart, get_cart_by_user, get_cart_sum, \
-    clear_cart, delete_product_from_cart, get_available_products
+    clear_cart, delete_product_from_cart, get_available_products, add_address_to_cart, delete_address
 
 
 class ProductCreateView(LoginRequiredMixin, CreateView):
@@ -137,23 +136,43 @@ class CartView(LoginRequiredMixin, ListView):
     model = Cart
 
     def get_queryset(self):
-        res = get_cart_by_user(self.request.user)
-        cart_sum = get_cart_sum(res)
-        paypal_dict = {
-            "business": PAYPAL_BUSINESS_EMAIL,
-            "amount": cart_sum,
-            "item_name": str(res),
-            "invoice": uuid.uuid4(),
-            "notify_url": self.request.build_absolute_uri(reverse('paypal-ipn')),
-            "return": self.request.build_absolute_uri(reverse('cart')),
-            "cancel_return": self.request.build_absolute_uri(reverse('cart')),
+        cart = get_cart_by_user(self.request.user)
+        if not cart:
+            return cart
+        if self.request.user.user_address or (cart[0].customer_postalcode and cart[0].customer_address):
+            shipping_address = True
+        else:
+            shipping_address = False
+        shipping_customer_postalcode = cart[0].customer_postalcode
+        shipping_customer_address = cart[0].customer_address
+        cart_sum = get_cart_sum(cart)
+        if shipping_address:
+            paypal_dict = {
+                "business": PAYPAL_BUSINESS_EMAIL,
+                "amount": cart_sum,
+                "item_name": str(cart),
+                "invoice": uuid.uuid4(),
+                "notify_url": self.request.build_absolute_uri(reverse('paypal-ipn')),
+                "return": self.request.build_absolute_uri(reverse('cart')),
+                "cancel_return": self.request.build_absolute_uri(reverse('cart')),
             }
-        self.extra_context = {'title': 'Cart', 'cart_sum': cart_sum, 'form': PayPalPaymentsForm(initial=paypal_dict)}
-        return res
-    
+            form = PayPalPaymentsForm(initial=paypal_dict)
+        else:
+            form = AddressForm()
+        self.extra_context = {'title': 'Cart', 'cart_sum': cart_sum, 'form': form,
+                              'shipping_address': shipping_address,
+                              'shipping_customer_postalcode': shipping_customer_postalcode,
+                              'shipping_customer_address': shipping_customer_address}
+        return cart
+
     def get(self, request, *args, **kwargs):
         self.get_queryset()
         return super(CartView, self).get(request, *args, **kwargs)
+
+    def post(self, request):
+        print(type(request.POST['customer_postalcode']))
+        add_address_to_cart(request.user, request.POST['customer_postalcode'], request.POST['customer_address'])
+        return redirect('cart')
 
 
 class CartClearView(LoginRequiredMixin, BSModalFormView):
@@ -171,3 +190,8 @@ def delete_cart_entry_view(request, pk):
     delete_product_from_cart(cart_pk=pk, user=request.user)
     return redirect('cart')
 
+
+def change_address(request):
+    cart = get_cart_by_user(request.user)
+    delete_address(cart)
+    return redirect('cart')

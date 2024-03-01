@@ -15,6 +15,7 @@ urlpatterns = [
     path('cart/clear_cart/', views.CartClearView.as_view(), name='clear_cart'),
     path('cart/delete/<int:pk>/', views.delete_cart_entry_view, name='cart_delete'),
     path('cart/edit_cart/<int:pk>', views.CartEditView.as_view(), name='edit_cart'),
+    path('change-shipping-address/', views.change_address, name='change_address'),
     path('paypal/', include("paypal.standard.ipn.urls")),
 
 ]

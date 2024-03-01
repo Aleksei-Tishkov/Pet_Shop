@@ -32,7 +32,7 @@ class PublishedManager(models.Manager):
 class Product(models.Model):
     class Meta:
         ordering = ['-time_create']
-        indexes = [GinIndex(fields=["search_vector",]),]
+        indexes = [GinIndex(fields=["search_vector", ]), ]
 
     class Status(models.IntegerChoices):
         DRAFT = 0, 'Draft'
@@ -73,7 +73,6 @@ class Product(models.Model):
         return
 
 
-
 class ProductPhoto(models.Model):
     product_photo = models.ImageField(upload_to='product_photos/%Y/%m/%d', blank=True)
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='product_photo')
@@ -84,14 +83,23 @@ class Cart(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='cart_product')
     quantity = models.PositiveIntegerField(blank=True, default=1,
                                            validators=(MinValueValidator(1), MaxValueValidator(25000)))
+    customer_postalcode = models.PositiveIntegerField(blank=True, null=True,
+                                                      validators=(MinValueValidator(1), MaxValueValidator(999999)))
+    customer_address = models.CharField(max_length=512, blank=True, null=True, )
 
-    class Meta:
-        constraints = [
-            CheckConstraint(
-                name="%(app_label)s_%(class)s_quantity_range",
-                check=Q(quantity__range=(1, 25000)),
-            ),
-        ]
+    def __str__(self):
+        return f'{self.pk}_PetShop_Cart(customer={self.customer_id})'
+
+
+class Order(models.Model):
+    seller = models.ForeignKey(User, on_delete=models.CASCADE, related_name='order_seller')
+    customer = models.ForeignKey(User, on_delete=models.CASCADE, related_name='order_customer')
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='order_product')
+    quantity = models.PositiveIntegerField(blank=True, default=1,
+                                           validators=(MinValueValidator(1), MaxValueValidator(25000)))
+    customer_postalcode = models.PositiveIntegerField(blank=True, null=True,
+                                                      validators=(MinValueValidator(1), MaxValueValidator(999999)))
+    customer_address = models.CharField(max_length=512, blank=True, null=True, )
 
 
 @receiver(post_save, sender=Product)
