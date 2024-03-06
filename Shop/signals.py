@@ -8,8 +8,6 @@ from Shop.services import get_cart_entry_by_pk, get_cart_sum, process_cart
 @receiver(valid_ipn_received)
 def paypal_checker_success(sender, **kwargs):
     ipn_obj = sender
-    #cart_sum = get_cart_sum(eval(ipn_obj.item_name))
-
     if ipn_obj.payment_status == 'Completed':
         if ipn_obj.receiver_email != PAYPAL_BUSINESS_EMAIL:
             # Not a valid payment

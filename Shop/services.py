@@ -40,6 +40,7 @@ def get_product_by_seller(queryset, seller):
 
 
 def add_to_cart(customer: User, product: Product, quantity: int) -> None:
+    print(customer)
     Cart.objects.create(customer_id=customer.pk,
                         product_id=product.pk,
                         quantity=quantity,
@@ -52,7 +53,13 @@ def get_product_by_slug(queryset, slug):
 
 
 def get_cart_by_user(user):
-    return Cart.objects.filter(customer_id=user)
+    cart = Cart.objects.filter(customer_id=user)
+    for c in cart:
+        product_quantity_in_stock = Product.objects.get(pk=c.product.pk).product_quantity
+        if c.quantity > product_quantity_in_stock:
+            c.quantity = product_quantity_in_stock
+            c.quantity_changed = True
+    return cart
 
 
 def add_address_to_cart(user, postal_code, address):
@@ -94,6 +101,7 @@ def clear_cart(user) -> None:
 
 
 def process_cart(string: str) -> None:
+    """business logic after successful payment"""
     user = int(re.search(r'(?<==)(?:\d+)', string)[0])
     cart = get_cart_by_user(user)
     customer_postalcode = cart[0].customer_postalcode
@@ -104,8 +112,9 @@ def process_cart(string: str) -> None:
         product_quantity = c.quantity
         if product.product_quantity - product_quantity < 0:
             return
+        # Updates product quantity in stock
         product.product_quantity -= product_quantity
-        product.save()                                  # Updates product quantity in stock
+        product.save()
         seller = c.product.product_seller
         pushes[seller].append(f'{c.quantity} {c.product}')
         Order.objects.create(seller=seller,
@@ -125,7 +134,6 @@ def process_cart(string: str) -> None:
                   from_email=settings.DEFAULT_FROM_EMAIL,
                   fail_silently=False,
                   )
-
 
 
 def delete_address(cart):

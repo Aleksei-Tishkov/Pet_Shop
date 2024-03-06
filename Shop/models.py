@@ -86,6 +86,7 @@ class Cart(models.Model):
     customer_postalcode = models.PositiveIntegerField(blank=True, null=True,
                                                       validators=(MinValueValidator(1), MaxValueValidator(999999)))
     customer_address = models.CharField(max_length=512, blank=True, null=True, )
+    quantity_changed = models.BooleanField(default=False)
 
     def __str__(self):
         return f'{self.pk}_PetShop_Cart(customer={self.customer_id})'

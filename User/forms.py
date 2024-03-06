@@ -63,13 +63,15 @@ class UserPasswordResetCompleteForm():
 class ProfilePageForm(forms.ModelForm):
     class Meta:
         model = get_user_model()
+        fields = ['username', 'first_name', 'last_name', 'user_postalcode', 'user_address', 'profile_photo']
         widgets = {
             'username': forms.TextInput(attrs={'class': 'form-control back-drop text-center'}),
             'first_name': forms.TextInput(attrs={'class': 'form-control back-drop text-center'}),
-            'last_name': forms.TextInput(attrs={'class': 'form-control back-drop text-center'}),
+            'last_name': forms.TextInput(attrs={'class': 'form-control back-drop text-center'},),
+            'user_postalcode': forms.NumberInput(attrs={'class': 'form-control back-drop text-center'}),
+            'user_address': forms.TextInput(attrs={'class': 'form-control back-drop text-center'},),
             'profile_photo': ImageUploaderWidget(attrs={'accept': 'image/png'})
         }
-        fields = ['username', 'first_name', 'last_name', 'profile_photo']
         labels = {
             'username': 'Username',
             'first_name': 'First name',

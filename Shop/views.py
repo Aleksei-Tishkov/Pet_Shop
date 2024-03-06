@@ -112,9 +112,12 @@ class CartEntryCreator(LoginRequiredMixin, BSModalCreateView):
         return get_product_by_slug(get_published_products(), self.kwargs['slug'])
 
     def form_valid(self, form):
-        form.instance.customer_id = self.request.user.pk
+        user = self.request.user
+        form.instance.customer_id = user.pk
         _object = self.get_object()
         self.quantity = _object.product_quantity
+        form.instance.customer_postalcode = user.user_postalcode
+        form.instance.customer_address = user.user_address
         form.instance.product = _object
         if form.instance.quantity > self.quantity:
             form.instance.quantity = self.quantity
@@ -139,7 +142,7 @@ class CartView(LoginRequiredMixin, ListView):
         cart = get_cart_by_user(self.request.user)
         if not cart:
             return cart
-        if self.request.user.user_address or (cart[0].customer_postalcode and cart[0].customer_address):
+        if cart[0].customer_postalcode and cart[0].customer_address:
             shipping_address = True
         else:
             shipping_address = False
