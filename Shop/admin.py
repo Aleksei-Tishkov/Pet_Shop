@@ -1,6 +1,7 @@
 from django.contrib import admin, messages
 from Shop.services import publish_prod, unpublish_prod
 from Shop.models import Product
+from Shop.models import ProductTag
 
 
 @admin.register(Product)
@@ -8,7 +9,7 @@ class ProductAdmin(admin.ModelAdmin):
     fields = ('product_name', 'slug', 'product_price', 'product_quantity', 'product_is_published',
               'product_type', 'related_post', 'product_seller'
               )
-    list_display = ('product_name', 'product_price', 'product_quantity', 'product_is_published', 'product_type',
+    list_display = ('product_name', 'product_price', 'product_quantity', 'product_is_published',
                     'product_seller',)
     prepopulated_fields = {'slug': ('product_name', )}
     list_display_links = ('product_name', )
@@ -26,3 +27,9 @@ class ProductAdmin(admin.ModelAdmin):
     def unpublish_product(self, request, queryset):
         count = unpublish_prod(queryset)
         self.message_user(request, f'Number of products unpublished: {count}.', messages.WARNING)
+
+
+@admin.register(ProductTag)
+class ProductTagAdmin(admin.ModelAdmin):
+    fields = ('product_tag_name', 'product_tag_slug')
+    prepopulated_fields = {'product_tag_slug': ('product_tag_name',)}

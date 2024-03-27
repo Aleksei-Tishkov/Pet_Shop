@@ -47,7 +47,7 @@ class Product(models.Model):
     product_short_description = models.TextField(blank=True, db_index=True, max_length=30)
     product_description = models.TextField(blank=True, db_index=True)
     product_is_published = models.BooleanField(default=False)
-    product_type = models.CharField(max_length=30, db_index=True)
+    product_type = models.ManyToManyField('ProductTag', default=None, blank=True, related_name='cats')
     product_seller = models.ForeignKey(to=User, on_delete=models.CASCADE, related_name='seller')
     time_create = models.TimeField(auto_now_add=True)
     related_post = models.ManyToManyField(to=Post, blank=True,
@@ -76,6 +76,17 @@ class Product(models.Model):
 class ProductPhoto(models.Model):
     product_photo = models.ImageField(upload_to='product_photos/%Y/%m/%d', blank=True)
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='product_photo')
+
+
+class ProductTag(models.Model):
+    product_tag_name = models.CharField(max_length=20, unique=True, db_index=True, verbose_name='Tag')
+    product_tag_slug = models.SlugField(max_length=20, unique=True, verbose_name='URL')
+
+    def get_absolute_url(self):
+        return reverse('prod_category', kwargs={'product_tag_slug': self.product_tag_slug})
+
+    def __str__(self):
+        return self.product_tag_name.title()
 
 
 class Cart(models.Model):

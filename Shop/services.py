@@ -6,7 +6,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.core.mail import send_mail
 
 from Pet_Shop import settings
-from Shop.models import Product, ProductPhoto, Cart, Order
+from Shop.models import Product, ProductPhoto, ProductTag, Cart, Order
 from User.models import User
 from django.db.models import Sum
 
@@ -138,3 +138,16 @@ def process_cart(string: str) -> None:
 
 def delete_address(cart):
     cart.update(customer_postalcode=None, customer_address=None)
+
+
+def get_all_categories():
+    return ProductTag.objects.all()
+
+
+def get_product_tag(model, instance):
+    return model.objects.get(product_tag_slug=instance.kwargs['product_tag_slug'])
+
+
+def get_products_by_tag(tag):
+    print(Product.objects.filter(product_type__product_tag_slug=tag))
+    return Product.objects.filter(product_type__product_tag_slug=tag)

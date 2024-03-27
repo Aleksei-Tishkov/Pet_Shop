@@ -20,10 +20,3 @@ def get_random_instances(query: QuerySet, times: int) -> list:
             instances = sample(instances, times)
     return instances
 
-
-
-
-
-
-
-

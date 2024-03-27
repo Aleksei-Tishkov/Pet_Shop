@@ -13,13 +13,14 @@ from paypal.standard.forms import PayPalPaymentsForm
 
 from Shop.forms import CreateProductForm, EditProductForm, ProductImagesForm, CartAdditionForm, CartEntryChange, \
     CartDeleteForm, AddressForm
-from Shop.models import Product, Cart
+from Shop.models import Product, Cart, ProductTag
 from Pet_Shop.settings import PAYPAL_BUSINESS_EMAIL
 from django.shortcuts import render
 
 from Shop.services import link_product_photo_to_product, get_published_products, get_product_by_seller, \
     get_all_products, add_to_cart, get_product_by_slug, get_products_in_cart, get_cart_by_user, get_cart_sum, \
-    clear_cart, delete_product_from_cart, get_available_products, add_address_to_cart, delete_address
+    clear_cart, delete_product_from_cart, get_available_products, add_address_to_cart, delete_address, get_product_tag, \
+    get_products_by_tag
 
 
 class ProductCreateView(LoginRequiredMixin, CreateView):
@@ -89,6 +90,20 @@ class ProductView(DetailView):
         return super().get_context_data(**context)
 
 
+class ProductTagView(ListView):
+    template_name = 'Shop/Shop.html'
+    allow_empty = False
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        tag = get_product_tag(ProductTag, self)
+        context['title'] = tag.product_tag_name.title()
+        return context
+
+    def get_queryset(self):
+        return get_products_by_tag(self.kwargs['product_tag_slug'])
+
+
 class SellerPage(ListView):
     template_name = 'Shop/Shop.html'
     paginate_by = 8
@@ -99,6 +114,14 @@ class SellerPage(ListView):
 
     def get_queryset(self):
         return get_product_by_seller(get_all_products(), self.request.user.pk)
+
+
+class AddProductTag(CreateView):
+    model = ProductTag
+    fields = '__all__'
+    template_name = 'Blog/Add_tag.html'
+    success_url = reverse_lazy('shop_main')
+    extra_context = {'title': 'Tag addition form'}
 
 
 class CartEntryCreator(LoginRequiredMixin, BSModalCreateView):

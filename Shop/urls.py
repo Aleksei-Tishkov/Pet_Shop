@@ -7,6 +7,8 @@ from Shop import views
 urlpatterns = [
     path('shop/', views.ShopView.as_view(), name='shop_main'),
     path('shop/add_product/', views.ProductCreateView.as_view(), name='add_product'),
+    path('shop/add_product_tag', views.AddProductTag.as_view(), name='add_product_tag'),
+    path('shop/category/<slug:product_tag_slug>/', views.ProductTagView.as_view(), name='prod_category'),
     path('shop/editorial/', views.SellerPage.as_view(), name='shop_editorial'),
     path('cart/', views.CartView.as_view(), name='cart'),
     path('shop/edit_product/<slug:slug>/', views.EditProductView.as_view(), name='edit_product'),

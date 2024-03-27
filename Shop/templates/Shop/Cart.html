@@ -26,7 +26,8 @@
       <td>{{ p.product.product_name }}</td>
       <td><p>{{ p.quantity }}
           {% if p.quantity_changed %}
-              <i style="color: #d60000;" class="fa-solid fa-arrow-trend-down" title="Since the time you've added this item to your cart, its quantity in our stock decreased. We're sorry... But there will be more soon!"></i>
+              <i style="color: #d60000;" class="fa-solid fa-arrow-trend-down"
+                 title="Since the time you've added this item to your cart, its quantity in our stock decreased. We're sorry... But there will be more soon!"></i>
           {% endif %}
       <a class="edit_cart" data-form-url="{% url 'edit_cart' p.pk %}" title="Change quantity">
           <i class="fa-solid fa-pencil ms-1" aria-hidden="true"></i>

@@ -17,7 +17,6 @@ def home_page(request):
         user = authenticate(username=request.POST['username'], password=request.POST['password'])
         if user is not None:
             login(request, user)
-    print(request.user.is_authenticated)
     cart = get_cart_by_user(request.user.pk) if request.user.is_authenticated else None
     return render(request, 'Home_Page/Home_Page.html', {'post': get_random_instance(get_published_posts()),
                                                         'form': UserLoginForm,
