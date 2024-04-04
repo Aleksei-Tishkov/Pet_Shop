@@ -1,9 +1,10 @@
+{% load socialaccount %}
 {% load static %}
 
 
 <div class="col-12 mt-3 d-flex align-items-center justify-content-center">
-    <h3 class="col-12 text-center">
-        Already have an account?<br>Log In!
+    <h3 class="col-12 text-center" style="color: rgba(243, 148, 34, 1)">
+        Already have an account?<br>Login!
     </h3>
 </div>
 <div class="col-12 mt-3 d-flex align-items-center justify-content-center">
@@ -24,9 +25,14 @@
         Forgot the password?
     </a>
 </div>
+<h3 <h3 class="text-center mt-3" style="color: rgba(243, 148, 34, 1)">Or login with your socials</h3>
 <div class="col-12 mt-2 d-flex align-items-center justify-content-center">
-    <a href="{% url 'social:begin' 'facebook' %}"><img src="{% static 'Images/icons8-facebook-50.png' %}"
-                                                       alt=""></a>
+    <a href="{% url 'social:begin' 'facebook' %}" title="Login with Facebook" class="ps-2 pe-2">
+        <i class="fa-brands fa-facebook fa-2xl"></i>
+    </a>
+    <a href="{% provider_login_url 'google' %}" title="Login with Google"  class="ps-2 pe-2">
+        <i class="fa-brands fa-google fa-2xl"></i>
+    </a>
 </div>
 <div class="col-12 mt-3 d-flex align-items-center justify-content-center">
     <h3 class="text-center mt-3"

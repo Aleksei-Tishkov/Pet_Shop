@@ -25,7 +25,7 @@ class EditProductForm(forms.ModelForm):
     class Meta:
         model = Product
         fields = ('product_name', 'product_main_photo', 'slug', 'product_short_description', 'product_description',
-                  'product_price', 'product_quantity', 'product_is_published')
+                  'product_price', 'product_quantity', 'product_type', 'product_is_published')
         widgets = {
             'product_name': forms.TextInput(attrs={'class': 'form-control back-drop'}),
             'product_main_photo': forms.FileInput(attrs={'class': 'upload__file'}),
@@ -34,6 +34,7 @@ class EditProductForm(forms.ModelForm):
             'product_description': forms.Textarea(attrs={'class': 'form-control back-drop', 'rows': 5}),
             'product_price': forms.NumberInput(attrs={'class': 'form-control back-drop'}),
             'product_quantity': forms.NumberInput(attrs={'class': 'form-control back-drop'}),
+            'product_type': forms.CheckboxSelectMultiple(),
             'product_is_published': forms.CheckboxInput(attrs={'class': "form-check-input",
                                                                'type': "checkbox",
                                                                'role': "switch"}

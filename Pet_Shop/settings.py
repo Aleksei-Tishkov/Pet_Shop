@@ -51,16 +51,25 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     'django.forms',
     'rest_framework',
+
     'cookie_consent',  # TODO: implement cookie consent feature
     'paypal.standard.ipn',
     'bootstrap_modal_forms',
     'image_uploader_widget',
     'django_extensions',
     'debug_toolbar',
+
     'social_django',
-    'ckeditor',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    
+    'ckeditor',     # TODO: implement text formatting for posts
+
     'Home_Page',
     'Blog',
     'User',
@@ -78,6 +87,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
+
 ]
 
 ROOT_URLCONF = 'Pet_Shop.urls'
@@ -185,8 +196,23 @@ LOGOUT_REDIRECT_URL = 'home:home'
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     'social_core.backends.facebook.FacebookOAuth2',
+    'allauth.account.auth_backends.AuthenticationBackend',
 
 )
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        }
+    }
+}
+
+SOCIALACCOUNT_LOGIN_ON_GET = True
 
 SOCIAL_AUTH_URL_NAMESPACE = 'social'
 
