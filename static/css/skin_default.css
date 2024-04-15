@@ -148,10 +148,6 @@ button.close {
   background-color: rgba(var(--pet-secondary-dark), .1);
 }
 
-.upBtn {
-  background-color: red; /* Set a background color */
-  color: white; /* Text color */
-}
 
 .footer .footer__col {
   background-color: rgba(var(--pet-secondary-dark), .5);

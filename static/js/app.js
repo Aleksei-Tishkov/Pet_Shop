@@ -102,7 +102,7 @@ let upbutton = document.querySelector('.upBtn');
 window.onscroll = function() {scrollFunction()};
 
 function scrollFunction() {
-  if (document.body.scrollTop > 10 || document.documentElement.scrollTop > 10) {
+  if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
     upbutton.style.display = "block";
   } else {
     upbutton.style.display = "none";

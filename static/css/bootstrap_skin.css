@@ -287,9 +287,8 @@ s
   z-index: 99; /* Make sure it does not overlap */
 
   cursor: pointer; /* Add a mouse pointer on hover */
-  padding: 15px; /* Some padding */
-  border-radius: 10px; /* Rounded corners */
-  font-size: 18px; /* Increase font size */
+
+  border-radius: 1.125rem; /* Rounded corners */
 }
 
 .upBtn:hover {
@@ -307,7 +306,6 @@ s
 .btn-paypal {
   max-height: calc(var(--index) * 0.1);
 }
-
 
 .add_post_btn {
   position:relative;
