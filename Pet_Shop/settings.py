@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'rest_framework',
 
     'cookie_consent',  # TODO: implement cookie consent feature
+
     'paypal.standard.ipn',
     'bootstrap_modal_forms',
     'image_uploader_widget',
@@ -67,8 +68,6 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
-    
-    'ckeditor',     # TODO: implement text formatting for posts
 
     'Home_Page',
     'Blog',

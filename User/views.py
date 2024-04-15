@@ -16,9 +16,7 @@ class UserLogin(LoginView):
     form_class = UserLoginForm
     template_name = 'User/Login.html'
     extra_context = {'title': 'Log In'}
-
-    # def get_success_url(self):
-    # return reverse_lazy('home')
+    redirect_authenticated_user = True
 
 
 class ProfilePage(LoginRequiredMixin, UpdateView):

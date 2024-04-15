@@ -11,6 +11,7 @@
                 <form method="post" class="form-switch" enctype="multipart/form-data">
                     {% csrf_token %}
                     {{ form.non_field_errors }}
+
                     {% for f in form %}
                         <h4>{{ f.label }}</h4>
                         <p>{{ f }}</p>

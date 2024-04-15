@@ -3,8 +3,13 @@ from django.core.exceptions import ValidationError
 from django.http import request
 from django.utils.text import slugify
 from ckeditor.fields import RichTextField
+from ckeditor.widgets import CKEditorWidget
 
 from Blog.models import Post
+
+
+class PetCKEditorWidget(CKEditorWidget):
+    template_name = "custom_ckeditor/widget.html"
 
 
 class AddPostForm(forms.ModelForm):

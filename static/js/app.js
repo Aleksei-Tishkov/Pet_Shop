@@ -97,12 +97,12 @@ mouseOverContainer.onmousemove = function (e) {
 };
 
 
-let upbutton = document.getElementsByClassName("upBtn");
+let upbutton = document.querySelector('.upBtn');
 
 window.onscroll = function() {scrollFunction()};
 
 function scrollFunction() {
-  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+  if (document.body.scrollTop > 10 || document.documentElement.scrollTop > 10) {
     upbutton.style.display = "block";
   } else {
     upbutton.style.display = "none";

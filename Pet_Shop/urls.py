@@ -3,7 +3,6 @@ from django.urls import path, include
 from django.views.decorators.cache import cache_page
 
 from Pet_Shop.views import page_not_found, server_error, permission_error, request_error, change_theme_view
-from Blog.models import Post, PostTag
 from django.contrib.sitemaps.views import sitemap
 from Pet_Shop.sitemaps import sitemaps
 

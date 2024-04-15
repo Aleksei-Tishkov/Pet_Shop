@@ -70,13 +70,10 @@ class ProfilePageForm(forms.ModelForm):
             'last_name': forms.TextInput(attrs={'class': 'form-control back-drop text-center'},),
             'user_postalcode': forms.NumberInput(attrs={'class': 'form-control back-drop text-center'}),
             'user_address': forms.TextInput(attrs={'class': 'form-control back-drop text-center'},),
-            'profile_photo': ImageUploaderWidget(attrs={'accept': 'image/png'})
+            'profile_photo': ImageUploaderWidget(attrs={'accept': 'image/png', 'class': 'w-75'})
         }
         labels = {
             'username': 'Username',
             'first_name': 'First name',
             'last_name': 'Last name',
         }
-
-
-

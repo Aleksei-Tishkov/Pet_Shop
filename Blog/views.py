@@ -146,7 +146,7 @@ class DeletePostView(DeleteView):
     template_name = 'Blog/DeletePost.html'
     context_object_name = 'post'
     slug_url_kwarg = 'slug'
-    success_url = reverse_lazy('editorial')
+    success_url = reverse_lazy('blog_main')
 
     def get_object(self, queryset=None):
         __object = get_object_or_404(get_all_posts(), slug=self.kwargs[self.slug_url_kwarg])
