@@ -1,9 +1,14 @@
 from django.conf.urls.static import static
 from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+
 from Blog import views
+from Blog.views import BlogViewSet
 
 from Pet_Shop import settings
 
+router = DefaultRouter()
+router.register('posts', BlogViewSet, basename='spa_posts')
 
 urlpatterns = [
     path('blog/', views.BlogView.as_view(), name='blog_main'),
@@ -16,6 +21,7 @@ urlpatterns = [
     path('blog/tag/<slug:tag_slug>/', views.TagView.as_view(), name='tag'),
     path('blog/author/<slug:author>', views.AuthorView.as_view(), name='post_authors'),
     path('blog/<slug:slug>/', views.PostView.as_view(), name='read_post'),
+    path('spa/blog/', include(router.urls)),
 
 ]
 

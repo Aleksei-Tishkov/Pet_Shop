@@ -6,11 +6,13 @@ from django.urls import reverse_lazy, reverse
 from django.utils.text import slugify
 from django.views import View
 from django.views.generic import ListView, DetailView, FormView, CreateView, UpdateView, DeleteView
+from rest_framework import viewsets, permissions, pagination
 
 from Blog.models import Post, PostTag
 from Blog.forms import AddPostForm, EditPostForm
 from django.utils import translation
 
+from Blog.serializers import PostSerializer
 from Blog.services import get_published_posts, get_posts_by_tag, get_tag, get_author, get_posts_by_author, get_all_posts
 from User.models import User
 
@@ -153,3 +155,18 @@ class DeletePostView(DeleteView):
         if __object and __object.author != self.request.user:
             raise PermissionDenied()
         return __object
+
+
+class PageNumberSetPagination(pagination.PageNumberPagination):
+    page_size = 4
+    page_size_query_param = 'page_size'
+    ordering = '-time_create'
+
+
+class BlogViewSet(viewsets.ModelViewSet):
+    serializer_class = PostSerializer
+    queryset = get_published_posts()
+    lookup_field = 'slug'
+    permission_classes = [permissions.AllowAny]
+    pagination_class = PageNumberSetPagination
+
